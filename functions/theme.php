@@ -32,7 +32,7 @@ function display_result( $attachment=false ) {
 	$retval = ob_get_clean();
 
 	if ( !$attachment ) {
-		$retval = '<script id="result-template" type="text/x-handlebars-template">' . $retval . '</script>';
+		$retval = '<script id="js-result-template" type="text/x-handlebars-template">' . $retval . '</script>';
 	}
 
 	return $retval;
@@ -48,20 +48,24 @@ function display_file_search() {
 
 	ob_start();
 ?>
-	<input id="search" class="form-control input-lg">
+	<input id="js-search" class="form-control input-lg" placeholder="Search">
 	<hr>
-	<div id="results" class="clearfix">
-<?php
-	foreach ( $attachments as $attachment ) {
-		echo display_result( $attachment );
-	}
+	<div class="results">
+		<div id="js-results-waiting" class="results-waiting hidden">
+			<span class="results-spinner glyphicon glyphicon-refresh glyphicon-spin"></span>
+		</div>
+		<div id="js-results" class="clearfix">
+			<?php
+			foreach ( $attachments as $attachment ) {
+				echo display_result( $attachment );
+			}
 
-	// Print Handlebars template for future requested results
-	echo display_result( false );
-?>
-	</div>
-<?php
-	return ob_get_clean();
-}
+			// Print Handlebars template for future requested results
+			echo display_result( false );
+			?>
+				</div>
+			<?php
+			return ob_get_clean();
+			}
 
 ?>
