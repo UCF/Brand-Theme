@@ -1,0 +1,15 @@
+// Styles that are directly tied to the site header/navigation should go in
+// this file.
+
+.site-header {
+  margin-bottom: 20px;
+}
+
+.site-title {
+  @extend .h1;
+  display: block;
+
+  a {
+    color: #000;
+  }
+}

@@ -1,0 +1,142 @@
+// Force sans-serif font on common components
+.alert,
+.badge,
+.breadcrumb,
+.btn,
+.carousel,
+.collapse,
+.dropdown,
+.jumbotron,
+.label,
+.list-group,
+.media,
+.modal,
+.nav,
+.navbar,
+.pagination,
+.panel,
+.well {
+  @include no-font-smoothing();
+  font-family: $font-family-sans-serif;
+}
+
+
+// Modals
+.modal-dialog {
+  margin-top: 75px; // UCF Header height + 25px pad
+}
+
+
+// Social Buttons
+.share-twitter,
+.share-facebook,
+.share-googleplus,
+.share-linkedin,
+.share-email {
+  @include sprite('../img/social-share-extended.png', '../img/social-share-extended-r.png', 354px, 62px);
+  display: inline-block;
+  height: 31px;
+  margin-top: 5px;
+  width: 70px;
+}
+
+.share-twitter {
+  background-position: -71px 0;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-position: -71px -31px;
+  }
+}
+
+.share-facebook {
+  background-position: 0 0;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-position: 0 -31px;
+  }
+}
+
+.share-googleplus {
+  background-position: -142px 0;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-position: -142px -31px;
+  }
+}
+
+.share-linkedin {
+  background-position: -213px 0;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-position: -213px -31px;
+  }
+}
+
+.share-email {
+  background-position: -284px 0;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-position: -284px -31px;
+  }
+}
+
+.social-menu {
+  margin: 20px 0;
+
+  li {
+    padding-left: 3px;
+    padding-right: 3px;
+  }
+
+  a {
+    @include sprite($url: '../img/footer-social.png', $url-r: '../img/footer-social-r.png', $width: 164px, $height: 30px);
+    height: 35px;
+    width: 32px;
+
+    &[href*="facebook"] {
+      background-position: 1px 0;
+    }
+
+    &[href*="twitter"] {
+      background-position: -66px 1px;
+    }
+
+    &[href*="flickr"] {
+      background-position: -32px 0;
+    }
+
+    &[href*="youtube"] {
+      background-position: -100px 0;
+    }
+
+    &[href*="google"] {
+      background-position: -133px 0;
+    }
+  }
+}
+
+
+// Spinner icon
+.glyphicon-spin {
+  @include animation(spin 2000ms infinite linear);
+}
+
+@keyframes spin {
+  0% {
+    @include rotate(0deg);
+  }
+
+  100% {
+    @include rotate(359deg);
+  }
+}

@@ -1,0 +1,272 @@
+// scss-lint:disable all
+
+
+// WordPress Login screen
+.login {
+  #nav,
+  #backtoblog {
+    padding: 0;
+
+    a {
+      color: #666 !important;
+      font-size: 14px;
+      padding: 10px;
+      text-decoration: none;
+
+      &:hover {
+        color: #000 !important;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  #nav {
+    float: left;
+    width: 50%;
+  }
+
+  #backtoblog {
+    margin-left: 50%;
+  }
+
+  #lostpasswordform,
+  #loginform {
+    margin-bottom: 20px;
+  }
+
+  #login h1 {
+    background: transparent url('../img/login-logo.png') no-repeat 50% 0;
+
+    a {
+      background-image: none;
+      color: #333;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      height: inherit;
+      line-height: 24px;
+      padding-top: 92px;
+      text-align: center;
+      text-decoration: none;
+      text-indent: 0;
+
+      &:hover {
+        color: #555;
+      }
+
+      .hide {
+        display: block;
+      }
+    }
+  }
+}
+
+
+// Custom Admin Pages
+// TODO: clean up/better naming schemas
+.i-am-a-fancy-admin {
+  code {
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+    display: block;
+    padding: 10px;
+  }
+
+  textarea {
+    height: 10em;
+    width: 70%;
+  }
+
+  .updated {
+    left: 50%;
+    margin: 0 0 20px;
+    position: absolute;
+    text-align: center;
+    top: 40px;
+    z-index: 100;
+  }
+
+  .sections {
+    float: left;
+    width: 200px;
+
+    a {
+      background-color: #fafafa;
+      border: 1px solid #f0f0f0;
+      color: #aaa;
+      display: block;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 10px;
+      text-decoration: none;
+
+      &:hover,
+      &.active {
+        background-color: #fff;
+        border: 1px solid #f0f0f0;
+        color: #21759B;
+      }
+    }
+
+    .section {
+      box-shadow: rgba(160, 160, 160, .1) 0 0 12px;
+      margin: 0 0 8px;
+    }
+  }
+
+  .container {
+    margin: 0 19px 0 0;
+    padding: 0;
+  }
+
+  .block {
+    display: block;
+  }
+
+  .checkbox-list,
+  .radio-list {
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: inline;
+      list-style-type: none;
+      margin-right: 20px;
+    }
+  }
+
+  .description em {
+    color: #21759B;
+    font-family: monospace;
+    font-weight: bold;
+  }
+
+  .field li label {
+    display: inherit;
+  }
+
+  .fields {
+    background-color: #fefefe;
+    border: 1px solid #f0f0f0;
+    box-shadow: rgba(160, 160, 160, .1) 0 0 12px;
+    margin-left: 215px;
+    padding: 20px;
+
+    .section {
+      h3 {
+        padding: 0 0 10px 0;
+        margin: 0;
+        color: #21759B;
+        font-size: 20px;
+        border-bottom: 1px solid #E1E5EB;
+      }
+
+      table {
+        padding: 0;
+        margin: 20px 0 20px 0;
+        clear: none;
+      }
+    }
+
+    .submit {
+      text-align: right;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
+
+
+#page-help {
+  .shortcode {
+    background-color: #fcfcfc;
+    border: 1px solid #e0e0e0;
+  }
+
+  .name {
+    background-color: #eaeaea;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 18px;
+    margin: 0 0 1em;
+    padding: 10px;
+  }
+
+  .documentation {
+    line-height: 1.5em;
+    padding: 10px;
+  }
+}
+
+
+#theme-help table {
+  border-collapse: collapse;
+
+  th,
+  td {
+    border: 1px solid #333;
+    padding: 5px;
+  }
+
+  th {
+    background-color: #f1f1f1;
+  }
+}
+
+
+// Shortcode Modal
+.shortcode-section {
+    display: none;
+}
+
+#select-shortcode-form-inner {
+  .button-primary {
+    margin-top: 15px;
+  }
+
+  .cols {
+    overflow: hidden;
+    clear: both;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 15px 0;
+  }
+
+  .col-left {
+    width: 30%;
+    float: left;
+  }
+
+  .col-right {
+    width: 65%;
+    float: right;
+  }
+
+  #shortcode-descriptions {
+    margin-top: 0;
+
+    li {
+      margin-top: 5px;
+    }
+  }
+
+  #shortcode-editors {
+    margin: 25px 0;
+
+    li {
+      border-bottom: 1px solid #f0f0f0;
+      padding: 0 0 25px 0;
+    }
+  }
+}
+
+
+// Misc.
+.meta-file-preview img {
+  max-width: 100%;
+}
+
+.description code {
+  background: none;
+  color: #21759B;
+  font-weight: bold;
+  padding: 0;
+}
+
+// scss-lint:enable all

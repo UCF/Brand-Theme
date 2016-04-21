@@ -1,0 +1,35 @@
+# osx noise
+.DS_Store
+profile
+
+# xcode noise
+build/*
+*.mode1
+*.mode1v3
+*.mode2v3
+*.perspective
+*.perspectivev3
+*.pbxuser
+*.xcworkspace
+xcuserdata
+
+# svn & cvs
+.svn
+CVS
+=======
+*~
+._*
+Thumbs.db
+
+# Bower
+src/components/*
+
+# Sass stuff
+src/scss/.sass-cache/*
+
+# Gulp
+node_modules/*
+gulp-config.json
+
+# Compiled theme assets
+static/*

@@ -1,0 +1,47 @@
+p:empty {
+  display: none;
+}
+
+// Force sans-serif on particular elements
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+.lead {
+  @include no-font-smoothing();
+  font-family: $font-family-sans-serif;
+}
+
+.lead {
+  line-height: 1.5;
+}
+
+.ucf-gold {
+  color: $ucf-gold;
+}
+
+.text-weight-light {
+  font-weight: 300;
+}
+
+.text-weight-heavy {
+  font-weight: 800;
+}
+
+hr {
+  margin-bottom: 30px;
+  margin-top: 30px;
+
+  @media (max-width: $screen-xs-max) {
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+}

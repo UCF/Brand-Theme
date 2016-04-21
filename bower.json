@@ -1,0 +1,22 @@
+{
+  "name": "UID Manager",
+  "version": "v0.0.1",
+  "homepage": "",
+  "authors": [
+    "UCF Web Communications"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass-official": "~3.3.6",
+    "typeahead.js": "^0.11.1",
+    "handlebars": "^4.0.5"
+  }
+}
