@@ -1,11 +1,6 @@
-# Generic Wordpress Theme Boilerplate for UCF Marketing
+# UID Manager
 
-Stripped-down version of UCF's Generic Theme.  Provides a base set of
-development tools, vanilla templates with semantic markup, and a starter
-set of custom post types for rapid development.
-
-Note that this theme does NOT come styled out-of-the-box; it is intended
-strictly as a base for development of new themes.
+WordPress theme that provides an interface for browsing and downloading existing UIDs and managing new UID requests.
 
 
 ## Installation Requirements:
@@ -75,4 +70,4 @@ content.  For more information, visit http://twitter.github.com/bootstrap/
 Note that this theme may not always be running the most up-to-date version of
 Bootstrap.  For the most accurate documentation on the theme's current
 Bootstrap version, visit http://bootstrapdocs.com/ and select the version number
-found at the top of `components/bootstrap-sass-official/bower.json`.
+found in `src/components/bootstrap-sass-official/bower.json`.
