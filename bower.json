@@ -16,7 +16,6 @@
   ],
   "dependencies": {
     "bootstrap-sass-official": "~3.3.6",
-    "typeahead.js": "^0.11.1",
-    "handlebars": "^4.0.5"
+    "typeahead.js": "^0.11.1"
   }
 }

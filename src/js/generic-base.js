@@ -1,5 +1,5 @@
 // Define globals for JSHint validation:
-/* global console, PostTypeSearchDataManager */
+/* global console */
 
 
 var Generic = {};
@@ -112,133 +112,6 @@ Generic.loadMoreSearchResults = function($){
   }
 };
 
-Generic.postTypeAutosuggest = function($) {
-  var $autosuggests;
-
-  function autosuggest($autosuggest) {
-    var id = $autosuggest.attr('id'),
-        resultsData = PostTypeAutosuggestManager.searches[id].results.data,
-        resultsHeader = PostTypeAutosuggestManager.searches[id].results.header || false,
-        resultsLimit = $autosuggest.attr('data-search-limit'),
-        fallbacksData = PostTypeAutosuggestManager.searches[id].fallbacks ? PostTypeAutosuggestManager.searches[id].fallbacks.data || false : false,
-        fallbacksHeader = PostTypeAutosuggestManager.searches[id].fallbacks ? PostTypeAutosuggestManager.searches[id].fallbacks.header || false : false,
-        fallbacksLimit = $autosuggest.attr('data-fallbacks-limit'),
-        labelText = $autosuggest.attr('data-search-label'),
-        inputPlaceholder = $autosuggest.attr('data-search-placeholder'),
-        showLabel = $autosuggest.attr('data-show-label'),
-        inputClass = $autosuggest.attr('data-input-class'),
-        $label = $('<label for="input-'+ id +'">'+ labelText +'</label>'),
-        $input = $('<input id="input-'+ id +'" type="text" class="form-control" autocomplete="off" placeholder="'+ inputPlaceholder +'">'),
-        $icon = $('<span class="glyphicon glyphicon-search"></span>');
-
-    var typeaheadSource = function(query, syncResults, asyncResults) {
-      // Match against keyterms in result.matches
-      var matches = [];
-
-      for (var i = 0; i < resultsData.length; i++) {
-        var result = resultsData[i];
-        for (var j = 0; j < result.matches.length; j++) {
-          var term = result.matches[j];
-          if (~term.toLowerCase().indexOf(query.toLowerCase())) {
-            matches.push(result);
-            break;
-          }
-        }
-      }
-
-      return syncResults(matches);
-    };
-
-    var typeaheadFallbackSource = function(query, syncResults, asyncResults) {
-      // Always return all fallback results, if fallbacks are available.
-      if (fallbacksData.length) {
-        return syncResults(fallbacksData);
-      }
-      else {
-        return;
-      }
-    };
-
-    function typeaheadConfigs() {
-      var retval = [];
-
-      // General results config
-      var results = {
-        display: 'title',
-        source: typeaheadSource
-      };
-
-      if (resultsLimit) {
-        results.limit = parseInt(resultsLimit, 10);
-      }
-
-      if (resultsHeader) {
-        results.templates = {
-          header: ['<span class="dropdown-header">'+ resultsHeader +'</span>']
-        };
-      }
-
-      retval.push(results);
-
-      // Fallback results config
-      if (fallbacksData.length) {
-        var fallbacks = {
-          display: 'title',
-          source: typeaheadFallbackSource
-        };
-
-        if (fallbacksLimit) {
-          fallbacks.limit = parseInt(fallbacksLimit, 10);
-        }
-
-        if (fallbacksHeader) {
-          fallbacks.templates = {
-            header: ['<span class="dropdown-header">'+ fallbacksHeader +'</span>']
-          };
-        }
-
-        retval.push(fallbacks);
-      }
-
-      return retval;
-    }
-
-    function init() {
-      if (showLabel === 'false' || showLabel === '') {
-        $label.addClass('sr-only');
-      }
-
-      $label.appendTo($autosuggest);
-
-      $input
-        .addClass(inputClass)
-        .appendTo($autosuggest)
-        .typeahead(
-          {
-            minLength: 1,
-            highlight: true
-          },
-          typeaheadConfigs()
-        )
-        .on('typeahead:select', function(e, suggestion) {
-          document.location = suggestion.permalink;
-        })
-        .after($icon);
-    }
-
-    init();
-  }
-
-
-  $autosuggests = $('.post-type-autosuggest');
-
-  if ($autosuggests.length) {
-    for (var i = 0; i < $autosuggests.length; i++) {
-      autosuggest($autosuggests.eq(i));
-    }
-  }
-};
-
 
 if (typeof jQuery !== 'undefined'){
   (function(){
@@ -246,7 +119,6 @@ if (typeof jQuery !== 'undefined'){
       Generic.addBodyClasses($);
       Generic.handleExternalLinks($);
       Generic.loadMoreSearchResults($);
-      Generic.postTypeAutosuggest($);
     });
   })(jQuery);
 }
