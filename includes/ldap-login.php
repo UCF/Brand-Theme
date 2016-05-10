@@ -33,6 +33,8 @@
 		<input name="uid-submit-auth" class="btn btn-default" id="uid-submit-auth" type="submit" value="Submit">
 	</div>
 
+	<?php wp_nonce_field( 'uid-auth', 'uid_auth_nonce' ); ?>
+
 </form>
 
 <?php get_footer(); ?>

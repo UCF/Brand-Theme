@@ -116,7 +116,10 @@ function ldap_required() {
 		&& isset( $_POST['uid-password'] )
 		&& strlen( $_POST['uid-password'] ) > 0
 	) {
-		if ( ldap_auth( $_POST['uid-username'], $_POST['uid-password'] ) ) {
+		if (
+			ldap_auth( $_POST['uid-username'], $_POST['uid-password'] )
+			&& wp_verify_nonce( $_REQUEST['uid_auth_nonce'], 'uid-auth' )
+		) {
 			ldap_set_session_data( $_POST['uid-username'] );
 			session_write_close();
 		}
