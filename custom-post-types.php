@@ -22,6 +22,7 @@ abstract class CustomPostType {
 		                         // (see also objectsToHTML and toHTML methods)
 		$taxonomies     = array( 'post_tag' ),
 		$built_in       = False,
+		$show_in_rest   = False,
 
 		// Optional default ordering for generic shortcode if not specified by user.
 		$default_orderby = null,
