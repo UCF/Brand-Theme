@@ -15,6 +15,10 @@ function display_site_title() {
 	return ob_get_clean();
 }
 
+function get_file_path( $title ) {
+	$title = strtolower ( str_replace( " ", "-", $title ) );
+	echo "https://s3.amazonaws.com/ucf/uid/" . $title . "/" . $title;
+}
 
 function display_file_search() {
 	// TODO

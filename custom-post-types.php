@@ -301,5 +301,22 @@ class Attachment extends CustomPostType {
 	}
 }
 
+class Uid extends CustomPostType {
+	public
+		$name           = 'uid',
+		$plural_name    = 'UIDs',
+		$singular_name  = 'UID',
+		$add_new_item   = 'Add New UID',
+		$edit_item      = 'Edit UID',
+		$new_item       = 'New UID',
+		$public         = True,
+		$use_editor     = False,
+		$use_order      = False,
+		$use_title      = True,
+		$use_metabox    = False,
+		$use_shortcode  = True,
+		$taxonomies     = array();
+}
+
 
 ?>

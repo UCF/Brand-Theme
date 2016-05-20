@@ -28,7 +28,8 @@ define( 'THEME_CUSTOMIZER_PREFIX', 'ucfgeneric_' ); // a unique prefix for panel
 
 Config::$custom_post_types = array(
 	'Page',
-	'Attachment'
+	'Attachment',
+	'Uid'
 );
 
 
