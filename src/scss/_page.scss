@@ -1,8 +1,15 @@
-.download-uid-links {
-    list-style: none;
-    padding: 0;
+.ng-cloak {
+    display: none;
+}
 
-    li {
-        display: inline-block;
+.uid-search {
+    font-size: 16px;
+
+    h2 {
+        font-weight: normal;
+
+        span {
+            font-weight: bold;
+        }
     }
 }

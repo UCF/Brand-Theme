@@ -1,5 +1,7 @@
 <?php
 
+// TODO: http://v2.wp-api.org/extending/modifying/#examples
+
 /**
  * Abstract class for defining custom post types.
  **/
@@ -173,7 +175,9 @@ abstract class CustomPostType {
 			'public'     => $this->options( 'public' ),
 			'taxonomies' => $this->options( 'taxonomies' ),
 			'_builtin'   => $this->options( 'built_in' ),
-			'show_in_rest' => $this->options( 'show_in_rest' )
+			'show_in_rest' => $this->options( 'show_in_rest' ),
+			'rest_base'    => $this->options( 'name' ) . 's',
+  			'rest_controller_class' => 'WP_REST_Posts_Controller',
 		);
 
 		if ( $this->options( 'use_order' ) ) {
@@ -315,8 +319,8 @@ class Uid extends CustomPostType {
 		$use_title      = True,
 		$use_metabox    = False,
 		$use_shortcode  = True,
+		$show_in_rest	= True,
 		$taxonomies     = array();
 }
-
 
 ?>
