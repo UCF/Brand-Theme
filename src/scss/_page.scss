@@ -2,14 +2,43 @@
     display: none !important;
 }
 
-.uid-search {
+body .uid-search {
     font-size: 16px;
 
+    hr {
+        border-color: #000;
+    }
+
     h2 {
-        font-weight: normal;
+        font-size: 30px;
+        font-weight: 300;
+        margin-bottom: 30px;
 
         span {
             font-weight: bold;
         }
+    }
+
+    h3 {
+        font-size: 30px;
+        font-weight: 900;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+    }
+
+    h4 {
+        text-transform: uppercase;
+    }
+
+    h5 {
+        font-size: 18px;
+    }
+
+    p.desc,
+    span.gform_description {
+        font-size: 30px;
+        font-weight: 300;
+        line-height: normal;
+        margin-bottom: 20px;
     }
 }
