@@ -17,6 +17,7 @@
   "dependencies": {
     "bootstrap-sass-official": "~3.3.6",
     "typeahead.js": "^0.11.1",
-    "angular": "1.5.5"
+    "angular": "1.5.5",
+    "aws-sdk": "aws-sdk-js#^2.3.14"
   }
 }

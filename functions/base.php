@@ -391,6 +391,40 @@ class FileField extends Field {
 }
 
 
+/**
+ * Amazon Upload form element
+ *
+ * @package default
+ * @author RJ Bruneel
+ * */
+class AmazonField extends Field {
+	function input_html() {
+		ob_start();
+?>
+		<div ng-cloak ng-app="UIDFileUpload" ng-controller="UIDFileUploadController as fileUploadCtrl">
+			<input name="file" type="file" uid-file-upload-directive>
+			<a class="button button-primary button-large" ng-click="fileUploadCtrl.uploadFile()">Upload</a>
+			<hr>
+			<div ng-show="fileUploadCtrl.error" class="uid-error">Error connecting to AWS!</div>
+			<div ng-show="fileUploadCtrl.loading"><img src="/uid/wp-admin/images/spinner.gif"> Refreshing file list</div>
+			<ul ng-show="!fileUploadCtrl.loading">
+				<li ng-repeat="file in fileUploadCtrl.fileList">
+					<h3>
+						<a class="button button-small" ng-click="fileUploadCtrl.deleteFile($index)">
+							Delete
+						</a>
+						{{ file.Key | getfilename }}
+					</h3>
+
+				</li>
+			</ul>
+		</div>
+		<?php
+		return ob_get_clean();
+	}
+}
+
+
 /***************************************************************************
  * UTILITY FUNCTIONS
  *
@@ -1372,6 +1406,10 @@ function display_meta_box_field( $post_id, $field ) {
 	case 'file':
 		$field['post_id'] = $post_id;
 		$field_obj = new FileField( $field );
+		break;
+	case 'amazon':
+		$field['post_id'] = $post_id;
+		$field_obj = new AmazonField( $field );
 		break;
 	default:
 		break;

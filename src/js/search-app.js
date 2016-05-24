@@ -16,9 +16,9 @@ function UIDSearchService($http) {
         }).success(function (data, status, headers, config) {
             callback(data);
         }).
-        error(function (data, status, headers, config) {
-            callback({ "error": true });
-        });
+            error(function (data, status, headers, config) {
+                callback({ "error": true });
+            });
     };
 
     return {
@@ -28,7 +28,13 @@ function UIDSearchService($http) {
 
 UIDSearchController.$inject = ['$scope', 'UIDSearchService'];
 function UIDSearchController($scope, UIDSearchService) {
-    var ctrl = this;
+    var ctrl = this,
+        creds = {
+            bucket: 'web.ucf.edu/uid',
+            access_key: 'AKIAJELYLJY2FL3ETG4Q',
+            secret_key: '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'
+        };
+
     ctrl.searchQuery = { term: '' };
     ctrl.results = [];
 

@@ -1,5 +1,8 @@
 // scss-lint:disable all
 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
 
 // WordPress Login screen
 .login {
@@ -267,6 +270,10 @@
   color: #21759B;
   font-weight: bold;
   padding: 0;
+}
+
+.uid-error {
+  color: #dd3d36;
 }
 
 // scss-lint:enable all

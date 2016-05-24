@@ -317,10 +317,22 @@ class Uid extends CustomPostType {
 		$use_editor     = False,
 		$use_order      = False,
 		$use_title      = True,
-		$use_metabox    = False,
+		$use_metabox    = True,
 		$use_shortcode  = True,
 		$show_in_rest	= True,
 		$taxonomies     = array();
+
+	public function fields() {
+		$prefix = $this->options( 'name' ).'_';
+		return array(
+			array(
+				'name' => 'Upload UID',
+				'description' => '',
+				'id' => $prefix.'amazon',
+				'type' => 'amazon',
+			),
+		);
+	}
 }
 
 ?>

@@ -109,10 +109,15 @@ gulp.task('js-main', function() {
 
 
 // Uglify admin js
-gulp.task('js-admin', function() {
-  return gulp.src(config.jsPath + '/admin.js')
+gulp.task('js-admin', function () {
+  var minified = [
+    config.componentsPath + '/angular/angular.js',
+    config.componentsPath + '/aws-sdk/dist/aws-sdk.js',
+    config.jsPath + '/admin.js'
+  ];
+  return gulp.src(minified)
     .pipe(concat('admin.min.js'))
-    .pipe(uglify())
+    // .pipe(uglify())
     .pipe(gulp.dest(config.jsMinPath));
 });
 
