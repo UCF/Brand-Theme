@@ -4,18 +4,27 @@
 		<?php wp_head(); ?>
 	</head>
 	<body ontouchstart <?php echo body_class(); ?>>
-		<header class="site-header">
-			<?php echo display_site_title(); ?>
-
-			<nav class="site-nav">
-				<?php
-				wp_nav_menu( array(
-					'theme_location' => 'header-menu',
-					'container' => false,
-					'menu_class' => 'list-inline site-header-menu',
-					'walker' => new Bootstrap_Walker_Nav_Menu()
-				) );
-				?>
-			</nav>
-		</header>
+		<div class="container-fluid site-header-container">
+			<div class="row">
+				<div class="container site-header">
+					<header class="row">
+						<div class="site-title-container col-md-3">
+							<?php echo display_site_title(); ?>
+						</div>
+						<div class="col-md-9">
+							<nav class="site-nav">
+								<?php
+								wp_nav_menu( array(
+									'theme_location' => 'header-menu',
+									'container' => false,
+									'menu_class' => 'list-inline site-header-menu',
+									'walker' => new Bootstrap_Walker_Nav_Menu()
+								) );
+								?>
+							</nav>
+						</div>
+					</header>
+				</div>
+			</div>
+		</div>
 		<main class="site-main">

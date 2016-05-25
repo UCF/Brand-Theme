@@ -12,7 +12,19 @@ body .uid-search {
     h2 {
         font-size: 30px;
         font-weight: 300;
-        margin-bottom: 30px;
+        padding-bottom: 5px;
+        position: relative;
+        margin: 40px 0 30px;
+
+        &:before {
+            content : "";
+            position: absolute;
+            left    : 0;
+            bottom  : 0;
+            height  : 1px;
+            width   : 22px;
+            border-bottom:2px solid $ucf-gold;
+        }
 
         span {
             font-weight: bold;
@@ -27,7 +39,19 @@ body .uid-search {
     }
 
     h4 {
+        padding-bottom: 15px;
+        position: relative;
         text-transform: uppercase;
+
+        &:before {
+            content : "";
+            position: absolute;
+            left    : 0;
+            bottom  : 0;
+            height  : 1px;
+            width   : 22px;
+            border-bottom:2px solid $ucf-gold;
+        }
     }
 
     h5 {
@@ -40,5 +64,19 @@ body .uid-search {
         font-weight: 300;
         line-height: normal;
         margin-bottom: 20px;
+
+        p {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+    }
+
+    .loading {
+        margin-top: 20px;
+    }
+
+    .uid-error {
+        color: #dd3d36;
+        margin-top: 20px;
     }
 }

@@ -405,8 +405,8 @@ class AmazonField extends Field {
 			<input name="file" type="file" uid-file-upload-directive>
 			<a class="button button-primary button-large" ng-click="fileUploadCtrl.uploadFile()">Upload</a>
 			<hr>
-			<div ng-show="fileUploadCtrl.error" class="uid-error">Error connecting to AWS!</div>
-			<div ng-show="fileUploadCtrl.loading"><img src="/uid/wp-admin/images/spinner.gif"> Refreshing file list</div>
+			<div ng-show="fileUploadCtrl.error" class="uid-error"><span class="glyphicon glyphicon-alert"></span> Error connecting to AWS!</div>
+			<div ng-show="fileUploadCtrl.loading"><span class="glyphicon glyphicon-refresh glyphicon-spin"></span> Refreshing file list</div>
 			<ul ng-show="!fileUploadCtrl.loading">
 				<li ng-repeat="file in fileUploadCtrl.fileList">
 					<h3>

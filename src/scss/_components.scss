@@ -21,6 +21,20 @@
 }
 
 
+// Left Nav
+.site-left-menu {
+  margin-top: 45px;
+
+  li {
+    display: block;
+    margin: 5px 0;
+     a {
+       color: #000;
+       font-weight: bold;
+     }
+  }
+}
+
 // Modals
 .modal-dialog {
   margin-top: 75px; // UCF Header height + 25px pad

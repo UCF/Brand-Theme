@@ -216,4 +216,39 @@ abstract class Shortcode {
     }
 }
 
+class UIDSearchSC extends Shortcode {
+    public
+        $name        = 'UIDSearch', // The name of the shortcode.
+        $command     = 'uid-search', // The command used to call the shortcode.
+        $description = 'Displays up and coming academic calendar entries', // The description of the shortcode.
+        $callback    = 'callback',
+        $wysiwyg     = True; // Whether to add it to the shortcode Wysiwyg modal.
+    public static function callback( $attr, $content='' ) {
+        ob_start();
+?>
+        <div ng-app="UIDSearch"  ng-controller="UIDSearchController as uidSearchCtrl" ng-cloak>
+
+            <input id="uid-search" class="form-control input-lg"
+                ng-model="uidSearchCtrl.searchQuery.term" ng-model-options="{ debounce: 300 }"
+                placeholder="Enter a unit name such as 'College of Sciences' or 'Registars Office'">
+            <div class="error uid-error" ng-show="uidSearchCtrl.error"><span class="glyphicon glyphicon-alert"></span> Error loading Unit Identifiers</div>
+            <div class="loading" ng-show="uidSearchCtrl.loading"><span class="glyphicon glyphicon-refresh glyphicon-spin"></span> Searching for Unit Identifiers</div>
+
+            <div ng-if="uidSearchCtrl.results.length && uidSearchCtrl.searchQuery.term.length > 2" ng-cloak>
+                <hr>
+                <h4>Results</h4>
+                <div class="row">
+                    <div class="col-md-4" ng-repeat="result in uidSearchCtrl.results">
+                        <h5>{{ result.title.rendered }}</h5>
+                        <img ng-src="https://s3.amazonaws.com/web.ucf.edu/uid/{{ result.slug }}/{{ result.slug }}.png" width="100%">
+                    </div>
+                </div>
+            </div>
+        </div>
+<?php
+        return ob_get_clean();
+
+    }
+}
+
 ?>

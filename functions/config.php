@@ -38,7 +38,7 @@ Config::$custom_taxonomies = array(
 );
 
 Config::$shortcodes = array(
-
+	'UIDSearchSC'
 );
 
 
@@ -444,14 +444,15 @@ function __init__() {
 	add_theme_support( 'title-tag' );
 
 	register_nav_menu( 'header-menu', __( 'Header Menu' ) );
+	register_nav_menu( 'left-menu', __( 'Left Menu' ) );
 	register_nav_menu( 'footer-menu', __( 'Footer Menu' ) );
 
 	// add_image_size( 'my-image-size', 620 );
 
 	// register_sidebar( array(
-	// 	'name'          => __( 'Sidebar' ),
-	// 	'id'            => 'sidebar',
-	// 	'description'   => 'Sidebar found on two column page templates and search pages',
+	// 	'name'          => __( 'Left' ),
+	// 	'id'            => 'left',
+	// 	'description'   => 'Sidebar found on two column page templates',
 	// 	'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 	// 	'after_widget'  => '</aside>',
 	// ) );
