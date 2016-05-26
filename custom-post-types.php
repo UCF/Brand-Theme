@@ -322,12 +322,39 @@ class Uid extends CustomPostType {
 		$show_in_rest	= True,
 		$taxonomies     = array();
 
+	public static function get_request_entries() {
+
+		$end_datetime = strtotime( "today" );
+		$start_datetime = strtotime( "-3 month" );
+
+		$search_criteria = array(
+			'start_date' => date( 'Y-m-d H:i:s', $start_datetime ),
+			'end_date' => date(' Y-m-d H:i:s', $end_datetime )
+		);
+
+		$entries = GFAPI::get_entries( 1, $search_criteria );
+		$entry_array['-- Select One --'] = 0;
+
+		foreach ($entries as $entry) {
+			$entry_array[$entry['1']] = $entry['id'];
+		}
+
+		return $entry_array;
+	}
+
 	public function fields() {
 		$prefix = $this->options( 'name' ).'_';
 		return array(
+			array (
+				'name' => 'Form Request Entry',
+				'description' => 'Select the form request entry associated with this UID.',
+				'id' => $prefix.'request',
+				'type' => 'select',
+				'choices' => $this->get_request_entries(),
+			),
 			array(
-				'name' => 'Upload UID',
-				'description' => '',
+				'name' => 'Upload UID Image',
+				'description' => 'Select a UID image file to upload.',
 				'id' => $prefix.'amazon',
 				'type' => 'amazon',
 			),
