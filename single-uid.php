@@ -1,5 +1,11 @@
 <?php disallow_direct_load( 'single-uid.php' ); ?>
-<?php get_header(); the_post(); ?>
+<?php get_header(); the_post();
+
+function get_file_path( $title ) {
+	$title = strtolower ( str_replace( " ", "-", $title ) );
+	echo "https://s3.amazonaws.com/ucf/uid/" . $title . "/" . $title;
+}
+ ?>
 
 <article>
 	<div class="container">
