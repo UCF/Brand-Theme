@@ -30,6 +30,3 @@ src/scss/.sass-cache/*
 # Gulp
 node_modules/*
 gulp-config.json
-
-# Compiled theme assets
-static/*
