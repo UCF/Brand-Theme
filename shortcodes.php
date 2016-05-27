@@ -227,10 +227,13 @@ class UIDSearchSC extends Shortcode {
         ob_start();
 ?>
         <div ng-app="UIDSearch"  ng-controller="UIDSearchController as uidSearchCtrl" ng-cloak>
-
-            <input id="uid-search" class="form-control input-lg"
-                ng-model="uidSearchCtrl.searchQuery.term" ng-model-options="{ debounce: 300 }"
-                placeholder="Enter a unit name such as 'College of Sciences' or 'Registars Office'">
+            <div class="uid-search-form-inner col-md-9 col-sm-9">
+                <label for="uid-search" class="sr-only">Search for a unit identifier</label>
+                <input id="uid-search" class="form-control input-lg"
+                    ng-model="uidSearchCtrl.searchQuery.term" ng-model-options="{ debounce: 300 }"
+                    placeholder="Enter a unit name such as 'College of Sciences' or 'Registars Office'">
+                <button class="btn btn-link" type="submit">Search</button>
+            </div>
             <div class="error uid-error" ng-show="uidSearchCtrl.error"><span class="glyphicon glyphicon-alert"></span> Error loading Unit Identifiers</div>
             <div class="loading" ng-show="uidSearchCtrl.loading"><span class="glyphicon glyphicon-refresh glyphicon-spin"></span> Searching for Unit Identifiers</div>
 

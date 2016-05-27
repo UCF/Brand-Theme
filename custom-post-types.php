@@ -273,6 +273,16 @@ class Page extends CustomPostType {
 				'id' => $prefix.'stylesheet',
 				'type' => 'file',
 			),
+			array(
+				'name' => 'Login Required for this Page',
+				'id' => $prefix.'protected_page',
+				'type' => 'radio',
+				'description' => '',
+				'choices' => array(
+					'Yes' => True,
+					'No' => False
+				),
+			),
 		);
 	}
 }

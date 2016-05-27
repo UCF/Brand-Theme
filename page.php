@@ -1,21 +1,24 @@
 <?php disallow_direct_load( 'page.php' ); ?>
-<?php ldap_required(); ?>
 <?php get_header(); the_post(); ?>
+<?php
+$post = attach_post_metadata_properties( $post );
+$page_protected = filter_var($post->page_protected_page, FILTER_VALIDATE_BOOLEAN);
+if($page_protected) {
+ 	ldap_required();
+}
+?>
 
 <article>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-3">
-				<!--div id="sidebar_left" class="col-md-2 col-sm-2 col-md-pull-7 col-sm-pull-7" role="navigation"-->
-
-					<?php
-					wp_nav_menu( array(
-						'theme_location' => 'left-menu',
-						'container' => false,
-						'menu_class' => 'list-inline site-left-menu'
-					) );
-					?>
-				<!--/div-->
+				<?php
+				wp_nav_menu( array(
+					'theme_location' => 'left-menu',
+					'container' => false,
+					'menu_class' => 'list-inline site-left-menu'
+				) );
+				?>
 			</div>
 			<div class="col-md-9">
 				<?php the_content(); ?>

@@ -2,10 +2,19 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
+		<div class="col-md-3">
+			<?php
+			wp_nav_menu( array(
+				'theme_location' => 'left-menu',
+				'container' => false,
+				'menu_class' => 'list-inline site-left-menu'
+			) );
+			?>
+		</div>
+		<div class="col-md-9">
 			<h1>Log In</h1>
-			<p>
-				To download brand assets, please log in using your NID and NID password below.
+			<p class="desc">
+				You must log in to access or request a Unit Identifier. Please enter your UCF Federated Identity below.
 			</p>
 			<form method="post" id="ldap-auth-form" action=".">
 				<?php if ( $ldap_error ): ?>
@@ -22,17 +31,23 @@
 				</div>
 				<?php endif;
 			?>
-				<div class="">
-					<div class="form-group">
-						<label for="uid-username">NID (Network ID)</label>
-						<input name="uid-username" class="form-control" id="uid-username" type="text">
+				<div class="row">
+					<div class="col-md-8 col-sm-12">
+						<div class="form-group">
+							<label for="uid-username">NID (Network ID)</label>
+							<input name="uid-username" class="form-control" id="uid-username" type="text" placeholder="NID (Network ID)">
+						</div>
+						<div class="form-group">
+							<label for="uid-password">Password</label>
+							<input name="uid-password" id="uid-password" class="form-control" type="password" placeholder="Password">
+						</div>
+						<input name="uid-submit-auth" class="btn btn-ucf" id="uid-submit-auth" type="submit" value="Submit">
 					</div>
-					<div class="form-group">
-						<label for="uid-password">Password</label>
-						<input name="uid-password" id="uid-password" class="form-control" type="password">
-					</div>
-					<input name="uid-submit-auth" class="btn btn-ucf" id="uid-submit-auth" type="submit" value="Submit">
 				</div>
+				<p class="forgot-password">
+					Forget your NID or pasword? Reset it <a href="http://mynid.ucf.edu/">here</a>.
+				</p>
+				<hr>
 				<?php wp_nonce_field( 'uid-auth', 'uid_auth_nonce' );
 			?>
 			</form>

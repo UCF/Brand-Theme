@@ -8,87 +8,87 @@
   display: none !important;
 }
 
-body .uid-search {
-  font-size: 16px;
+hr {
+  border-color: #000;
+  border-width: 2px;
+}
 
-  hr {
-    border-color: #000;
+h1 {
+  font-size: 30px;
+  font-weight: 900;
+  margin: 40px 0 20px;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 300;
+  margin: 40px 0 30px;
+  padding-bottom: 5px;
+  position: relative;
+
+  &::before {
+    border-bottom: 2px solid $ucf-gold;
+    bottom: 0;
+    content: '';
+    height: 1px;
+    left: 0;
+    position: absolute;
+    width: 22px;
   }
 
-  h1 {
-    margin-bottom: 20px;
+  span {
+    font-weight: bold;
   }
+}
 
-  h2 {
-    font-size: 30px;
-    font-weight: 300;
-    margin: 40px 0 30px;
-    padding-bottom: 5px;
-    position: relative;
+h3 {
+  font-size: 30px;
+  font-weight: 900;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
 
-    &::before {
-      border-bottom: 2px solid $ucf-gold;
-      bottom: 0;
-      content: '';
-      height: 1px;
-      left: 0;
-      position: absolute;
-      width: 22px;
-    }
+h4 {
+  padding-bottom: 15px;
+  position: relative;
+  text-transform: uppercase;
 
-    span {
-      font-weight: bold;
-    }
+  &::before {
+    border-bottom: 2px solid $ucf-gold;
+    bottom: 0;
+    content: '';
+    height: 1px;
+    left: 0;
+    position: absolute;
+    width: 22px;
   }
+}
 
-  h3 {
-    font-size: 30px;
-    font-weight: 900;
-    margin-bottom: 5px;
-    text-transform: uppercase;
+h5 {
+  font-size: 18px;
+}
+
+p.desc,
+span.gform_description {
+  font-size: 30px;
+  font-weight: 300;
+  line-height: normal;
+  margin-bottom: 20px;
+
+  p {
+    font-size: 16px;
+    margin-top: 10px;
   }
+}
 
-  h4 {
-    padding-bottom: 15px;
-    position: relative;
-    text-transform: uppercase;
+.loading {
+  margin-top: 20px;
+}
 
-    &::before {
-      border-bottom: 2px solid $ucf-gold;
-      bottom: 0;
-      content: '';
-      height: 1px;
-      left: 0;
-      position: absolute;
-      width: 22px;
-    }
-  }
-
-  h5 {
-    font-size: 18px;
-  }
-
-  p.desc,
-  span.gform_description {
-    font-size: 30px;
-    font-weight: 300;
-    line-height: normal;
-    margin-bottom: 20px;
-
-    p {
-      font-size: 16px;
-      margin-top: 10px;
-    }
-  }
-
-  .loading {
-    margin-top: 20px;
-  }
-
-  .uid-error {
-    color: $error;
-    margin-top: 20px;
-  }
+.uid-error {
+  color: $error;
+  margin-top: 20px;
 }
 
 .gform_button,
@@ -100,4 +100,8 @@ body .uid-search {
   letter-spacing: 1.8px;
   padding: 7px 15px;
   text-transform: uppercase;
+}
+
+.forgot-password {
+  margin-top: 40px;
 }
