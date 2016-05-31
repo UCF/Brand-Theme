@@ -94,7 +94,9 @@ Config::$setting_defaults = array(
 	'news_url' => 'http://today.ucf.edu/feed/',
 	'enable_google' => 1,
 	'search_per_page' => 10,
-	'cloud_typography_key' => '//cloud.typography.com/730568/675644/css/fonts.css', // Main site css key
+	'cloud_typography_key' => '//cloud.typography.com/730568/675644/css/fonts.css', // Main site css key,
+	'amazon_bucket' => 'web.ucf.edu',
+	'amazon_folder' => 'uid'
 );
 
 
@@ -161,6 +163,12 @@ function define_customizer_sections( $wp_customize ) {
 		THEME_CUSTOMIZER_PREFIX . 'webfonts',
 		array(
 			'title' => 'Web Fonts'
+		)
+	);
+	$wp_customize->add_section(
+		THEME_CUSTOMIZER_PREFIX . 'amazon_credentials',
+		array(
+			'title' => 'Amazon S3 API Credentials'
 		)
 	);
 
@@ -390,6 +398,68 @@ function define_customizer_fields( $wp_customize ) {
 		)
 	);
 
+
+	// Amazon S3 Credentials
+	$wp_customize->add_setting(
+		'amazon_bucket',
+		array(
+			'default'     => get_setting_default( 'amazon_bucket' )
+		)
+	);
+	$wp_customize->add_control(
+		'amazon_bucket',
+		array(
+			'type'        => 'text',
+			'label'       => 'Bucket',
+			'description' => 'Bucket where files are stored.',
+			'section'     => THEME_CUSTOMIZER_PREFIX . 'amazon_credentials'
+		)
+	);
+	$wp_customize->add_setting(
+		'amazon_folder',
+		array(
+			'default'     => get_setting_default( 'amazon_folder' )
+		)
+	);
+	$wp_customize->add_control(
+		'amazon_folder',
+		array(
+			'type'        => 'text',
+			'label'       => 'Folder',
+			'description' => 'Folder where files are stored under bucket.',
+			'section'     => THEME_CUSTOMIZER_PREFIX . 'amazon_credentials'
+		)
+	);
+	$wp_customize->add_setting(
+		'access_key',
+		array(
+			'default'     => get_setting_default( 'access_key' )
+		)
+	);
+	$wp_customize->add_control(
+		'access_key',
+		array(
+			'type'        => 'text',
+			'label'       => 'Access Key',
+			'description' => 'Access key used to access the Amazon S3 API.',
+			'section'     => THEME_CUSTOMIZER_PREFIX . 'amazon_credentials'
+		)
+	);
+	$wp_customize->add_setting(
+		'secret_key',
+		array(
+			'default'     => get_setting_default( 'secret_key' )
+		)
+	);
+	$wp_customize->add_control(
+		'secret_key',
+		array(
+			'type'        => 'text',
+			'label'       => 'Secret Key',
+			'description' => 'Secret key used to access the Amazon S3 API.',
+			'section'     => THEME_CUSTOMIZER_PREFIX . 'amazon_credentials'
+		)
+	);
 
 	/**
 	 * If Yoast SEO is activated, assume we're handling ALL SEO-related

@@ -401,6 +401,14 @@ class AmazonField extends Field {
 	function input_html() {
 		ob_start();
 ?>
+		<script>
+			var creds = {
+			bucket: '<? echo get_theme_mod_or_default( 'amazon_bucket' ) ?>',
+			folder: '<? echo get_theme_mod_or_default( 'amazon_folder' ) ?>',
+			access_key: '<? echo get_theme_mod_or_default( 'access_key' ) ?>',
+			secret_key: '<? echo get_theme_mod_or_default( 'secret_key' ) ?>'
+		};
+		</script>
 		<div ng-cloak ng-app="UIDFileUpload" ng-controller="UIDFileUploadController as fileUploadCtrl">
 			<input name="file" type="file" uid-file-upload-directive>
 			<a class="button button-primary button-large" ng-click="fileUploadCtrl.uploadFile()">Upload</a>
