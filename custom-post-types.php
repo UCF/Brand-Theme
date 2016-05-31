@@ -365,7 +365,7 @@ class Uid extends CustomPostType {
 			),
 			array(
 				'name' => 'Upload UID Image',
-				'description' => 'Select a UID image file to upload.',
+				'description' => 'Upload PNG and ZIP files named the same name as the permalink folder.',
 				'id' => $prefix.'amazon',
 				'type' => 'amazon',
 			),
