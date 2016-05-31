@@ -244,6 +244,7 @@ class UIDSearchSC extends Shortcode {
                     <div class="col-md-4" ng-repeat="result in uidSearchCtrl.results">
                         <h5>{{ result.title.rendered }}</h5>
                         <img ng-src="https://s3.amazonaws.com/web.ucf.edu/uid/{{ result.slug }}/{{ result.slug }}.png" width="100%">
+                        <a href="#" class="btn btn-ucf btn-download">Download <span class="glyphicons glyphicons-download-alt" aria-hidden="true"></span></a>
                     </div>
                 </div>
             </div>

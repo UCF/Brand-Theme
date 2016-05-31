@@ -270,20 +270,23 @@ WebcomAdmin.S3CRUD = function ($) {
 
   function UIDFileUploadFactory() {
     var getFileList = function (callback) {
+      if ($('#post_name').attr('value') !== '') {
+        var params = {
+          Bucket: creds.bucket,
+          Prefix: creds.folder + '/' + $('#post_name').attr('value')
+        };
 
-      var params = {
-            Bucket: creds.bucket,
-            Prefix: creds.folder + '/' + $('#post_name').attr('value')
-      };
-
-      aws.listObjectsV2(params, function (err, data) {
-        if (err) {
-          callback({error: true});
-          console.log(err, err.stack);
-        } else {
-          callback(data.Contents);
-        }
-      });
+        aws.listObjectsV2(params, function (err, data) {
+          if (err) {
+            callback({ error: true });
+            console.log(err, err.stack);
+          } else {
+            callback(data.Contents);
+          }
+        });
+      } else {
+        callback([]);
+      }
     };
 
     return {
@@ -307,11 +310,15 @@ WebcomAdmin.S3CRUD = function ($) {
 
     var updateView = function (fileList) {
       ctrl.loading = false;
-      if (fileList.error) {
-        displayError();
+      if (fileList && fileList.length) {
+        if (fileList.error) {
+          displayError();
+        } else {
+          ctrl.fileList = fileList;
+          $scope.$apply();
+        }
       } else {
-        ctrl.fileList = fileList;
-        $scope.$apply();
+        ctrl.fileList = [];
       }
     };
 

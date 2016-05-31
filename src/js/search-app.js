@@ -47,6 +47,7 @@ function UIDSearchController($scope, UIDSearchService) {
         if (newValue.length > 2) {
             ctrl.error = false;
             ctrl.loading = true;
+            $(".request-form").delay(2000).fadeIn();
             UIDSearchService.getUids(setUids, newValue);
         }
     });

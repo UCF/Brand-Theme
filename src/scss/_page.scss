@@ -43,7 +43,7 @@ h2 {
 }
 
 h3 {
-  font-size: 30px;
+  font-size: 30px !important;
   font-weight: 900;
   margin-bottom: 5px;
   text-transform: uppercase;
@@ -72,7 +72,7 @@ h5 {
 p.desc,
 span.gform_description {
   font-size: 30px;
-  font-weight: 300;
+  font-weight: 300 !important;
   line-height: normal;
   margin-bottom: 20px;
 
@@ -96,10 +96,19 @@ span.gform_description {
   background-color: $ucf-gold;
   border-radius: 0;
   border-width: 0;
+  color: #000;
   font-weight: bold;
   letter-spacing: 1.8px;
   padding: 7px 15px;
   text-transform: uppercase;
+}
+
+.btn-download {
+  margin-top: 20px;
+}
+
+.request-form {
+  display: none;
 }
 
 .forgot-password {
