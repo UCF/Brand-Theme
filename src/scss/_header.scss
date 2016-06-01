@@ -1,15 +1,56 @@
 // Styles that are directly tied to the site header/navigation should go in
 // this file.
 
+.site-header-container {
+  background-color: $ucf-gold;
+}
+
 .site-header {
-  margin-bottom: 20px;
+  background-color: $ucf-gold;
+  text-transform: uppercase;
+
+  .col-md-3 {
+    background-color: #000;
+  }
+}
+
+.site-title-container {
+  text-align: center;
 }
 
 .site-title {
   @extend .h1;
-  display: block;
+  background-color: #000;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0;
+  padding: 13px 0;
+
+  a {
+    color: #fff;
+  }
+}
+
+.site-nav {
+  margin: 13px 0 0 30px;
+
+  li {
+    font-size: 12px;
+    font-weight: 500;
+    margin-right: 25px;
+  }
 
   a {
     color: #000;
+  }
+}
+
+.site-left-menu > li {
+  > a {
+    text-transform: uppercase;
+  }
+
+  .sub-menu {
+    padding-left: 10px;
   }
 }

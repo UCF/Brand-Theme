@@ -391,6 +391,48 @@ class FileField extends Field {
 }
 
 
+/**
+ * Amazon Upload form element
+ *
+ * @package default
+ * @author RJ Bruneel
+ * */
+class AmazonField extends Field {
+	function input_html() {
+		ob_start();
+?>
+		<script>
+			var creds = {
+			bucket: '<? echo get_theme_mod_or_default( 'amazon_bucket' ) ?>',
+			folder: '<? echo get_theme_mod_or_default( 'amazon_folder' ) ?>',
+			access_key: '<? echo get_theme_mod_or_default( 'access_key' ) ?>',
+			secret_key: '<? echo get_theme_mod_or_default( 'secret_key' ) ?>'
+		};
+		</script>
+		<div ng-cloak ng-app="UIDFileUpload" ng-controller="UIDFileUploadController as fileUploadCtrl">
+			<input name="file" type="file" uid-file-upload-directive>
+			<a class="button button-primary button-large" ng-click="fileUploadCtrl.uploadFile()">Upload</a>
+			<hr>
+			<div ng-show="fileUploadCtrl.error" class="uid-error"><span class="glyphicon glyphicon-alert"></span> Error connecting to AWS!</div>
+			<div ng-show="fileUploadCtrl.loading"><span class="glyphicon glyphicon-refresh glyphicon-spin"></span> Refreshing file list</div>
+			<ul ng-show="!fileUploadCtrl.loading">
+				<li ng-repeat="file in fileUploadCtrl.fileList">
+					<h3>
+						<a class="button button-small" ng-click="fileUploadCtrl.deleteFile($index)">
+							Delete
+						</a>
+						{{ file.Key | getfilename }}
+					</h3>
+
+				</li>
+			</ul>
+		</div>
+		<?php
+		return ob_get_clean();
+	}
+}
+
+
 /***************************************************************************
  * UTILITY FUNCTIONS
  *
@@ -1372,6 +1414,10 @@ function display_meta_box_field( $post_id, $field ) {
 	case 'file':
 		$field['post_id'] = $post_id;
 		$field_obj = new FileField( $field );
+		break;
+	case 'amazon':
+		$field['post_id'] = $post_id;
+		$field_obj = new AmazonField( $field );
 		break;
 	default:
 		break;

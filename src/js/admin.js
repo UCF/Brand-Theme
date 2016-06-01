@@ -241,10 +241,174 @@ WebcomAdmin.shortcodeInterfaceTool = function($) {
 
 };
 
+/**
+ * AngularJS code to get, upload and delete files from AWS
+ **/
+
+WebcomAdmin.S3CRUD = function ($) {
+
+  // Configure The S3 Object
+  AWS.config.update({ accessKeyId: creds.access_key, secretAccessKey: creds.secret_key });
+  AWS.config.region = 'us-east-1';
+
+  var aws = new AWS.S3();
+
+  angular.module('UIDFileUpload', []);
+  angular.module('UIDFileUpload').factory('UIDFileUploadFactory', UIDFileUploadFactory);
+  angular.module('UIDFileUpload').controller('UIDFileUploadController', UIDFileUploadController);
+  angular.module('UIDFileUpload').directive('uidFileUploadDirective', UIDFileUploadDirective);
+  angular.module('UIDFileUpload').filter('getfilename', getFilenameFilter);
+
+  // Factory
+
+  function UIDFileUploadFactory() {
+    var getFileList = function (callback) {
+      if ($('#post_name').attr('value') !== '') {
+        var params = {
+          Bucket: creds.bucket,
+          Prefix: creds.folder + '/' + $('#post_name').attr('value')
+        };
+
+        aws.listObjectsV2(params, function (err, data) {
+          if (err) {
+            callback({ error: true });
+            console.log(err, err.stack);
+          } else {
+            callback(data.Contents);
+          }
+        });
+      } else {
+        callback([]);
+      }
+    };
+
+    return {
+      getFileList: getFileList
+    };
+  }
+
+  // Controller
+
+  UIDFileUploadController.$inject = ['$scope', 'UIDFileUploadFactory'];
+  function UIDFileUploadController($scope, UIDFileUploadFactory) {
+    var ctrl = this;
+    ctrl.loading = false;
+    ctrl.error = false;
+
+    var displayError = function () {
+      ctrl.loading = false;
+      ctrl.error = true;
+      $scope.$apply();
+    };
+
+    var updateView = function (fileList) {
+      ctrl.loading = false;
+      if (fileList && fileList.length) {
+        if (fileList.error) {
+          displayError();
+        } else {
+          ctrl.fileList = fileList;
+          $scope.$apply();
+        }
+      } else {
+        ctrl.fileList = [];
+      }
+    };
+
+    ctrl.uploadFile = function () {
+      if ($scope.file) {
+        ctrl.loading = true;
+        ctrl.error = false;
+        var orgFilename = $scope.file.name;
+
+        if (orgFilename.indexOf('.zip') !== -1 || orgFilename.indexOf('.png') !== -1) {
+          var filename = $('#post_name').attr('value') + '.png';
+          if (orgFilename.indexOf('.zip') !== -1) {
+            filename = $('#post_name').attr('value') + '.zip';
+          }
+
+          var bucketName = creds.bucket + '/' + creds.folder + '/' + $('#post_name').attr('value'),
+            params = { Bucket: bucketName, Key: filename, ContentType: $scope.file.type, Body: $scope.file, ServerSideEncryption: 'AES256' };
+
+          aws.putObject(params, function (err, data) {
+            if (err) {
+              displayError();
+              console.log(err.message);
+            } else {
+              UIDFileUploadFactory.getFileList(updateView);
+            }
+          });
+        } else {
+          // No File Selected
+          alert('Please Select a File with a .png or .zip file extension.');
+          UIDFileUploadFactory.getFileList(updateView);
+        }
+      } else {
+        alert('Please Select a File.');
+        UIDFileUploadFactory.getFileList(updateView);
+      }
+    };
+
+    ctrl.deleteFile = function (index) {
+      ctrl.loading = true;
+      ctrl.error = false;
+
+      var params = {
+          Bucket: creds.bucket,
+          Key: ctrl.fileList[index].Key
+      };
+
+      aws.deleteObject(params, function (err, data) {
+        if (err) {
+          displayError();
+          console.log(err, err.stack);
+        } else {
+          UIDFileUploadFactory.getFileList(updateView);
+        }
+      });
+    };
+
+    // Get file list on page load
+    UIDFileUploadFactory.getFileList(updateView);
+
+  }
+
+  // Directive
+
+  function UIDFileUploadDirective() {
+      return {
+          restrict: 'AE',
+          scope: {
+              file: '@'
+          },
+          link: function (scope, el, attrs) {
+              el.bind('change', function (event) {
+                var files = event.target.files,
+                    file = files[0];
+
+                scope.file = file;
+                scope.$parent.file = file;
+                scope.$apply();
+              });
+          }
+      };
+  }
+
+  // Filter
+
+  function getFilenameFilter() {
+    return function (item) {
+      var itemArray = item.split('/');
+      return itemArray[itemArray.length-1];
+    };
+  }
+
+};
 
 (function($){
   WebcomAdmin.__init__($);
   WebcomAdmin.utilityPageSections($);
   WebcomAdmin.fileUploader($);
   WebcomAdmin.shortcodeInterfaceTool($);
+  WebcomAdmin.S3CRUD($);
 })(jQuery);

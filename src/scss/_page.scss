@@ -1,0 +1,116 @@
+// Used to hide content before angular loads
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+  display: none !important;
+}
+
+hr {
+  border-color: #000;
+  border-width: 2px;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 900;
+  margin: 40px 0 20px;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 300;
+  margin: 40px 0 30px;
+  padding-bottom: 5px;
+  position: relative;
+
+  &::before {
+    border-bottom: 2px solid $ucf-gold;
+    bottom: 0;
+    content: '';
+    height: 1px;
+    left: 0;
+    position: absolute;
+    width: 22px;
+  }
+
+  span {
+    font-weight: bold;
+  }
+}
+
+h3 {
+  font-size: 30px !important;
+  font-weight: 900;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+h4 {
+  padding-bottom: 15px;
+  position: relative;
+  text-transform: uppercase;
+
+  &::before {
+    border-bottom: 2px solid $ucf-gold;
+    bottom: 0;
+    content: '';
+    height: 1px;
+    left: 0;
+    position: absolute;
+    width: 22px;
+  }
+}
+
+h5 {
+  font-size: 18px;
+}
+
+p.desc,
+span.gform_description {
+  font-size: 30px;
+  font-weight: 300 !important;
+  line-height: normal;
+  margin-bottom: 20px;
+
+  p {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+}
+
+.loading {
+  margin-top: 20px;
+}
+
+.uid-error {
+  color: $error;
+  margin-top: 20px;
+}
+
+.gform_button,
+.btn-ucf {
+  background-color: $ucf-gold;
+  border-radius: 0;
+  border-width: 0;
+  color: #000;
+  font-weight: bold;
+  letter-spacing: 1.8px;
+  padding: 7px 15px;
+  text-transform: uppercase;
+}
+
+.btn-download {
+  margin-top: 20px;
+}
+
+.request-form {
+  display: none;
+}
+
+.forgot-password {
+  margin-top: 40px;
+}

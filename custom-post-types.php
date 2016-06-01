@@ -1,5 +1,7 @@
 <?php
 
+// TODO: http://v2.wp-api.org/extending/modifying/#examples
+
 /**
  * Abstract class for defining custom post types.
  **/
@@ -22,6 +24,7 @@ abstract class CustomPostType {
 		                         // (see also objectsToHTML and toHTML methods)
 		$taxonomies     = array( 'post_tag' ),
 		$built_in       = False,
+		$show_in_rest   = False,
 
 		// Optional default ordering for generic shortcode if not specified by user.
 		$default_orderby = null,
@@ -173,7 +176,9 @@ abstract class CustomPostType {
 			'public'     => $this->options( 'public' ),
 			'taxonomies' => $this->options( 'taxonomies' ),
 			'_builtin'   => $this->options( 'built_in' ),
-			'show_in_rest' => $this->options( 'show_in_rest' )
+			'show_in_rest' => $this->options( 'show_in_rest' ),
+			'rest_base'    => $this->options( 'name' ) . 's',
+  			'rest_controller_class' => 'WP_REST_Posts_Controller',
 		);
 
 		if ( $this->options( 'use_order' ) ) {
@@ -268,6 +273,16 @@ class Page extends CustomPostType {
 				'id' => $prefix.'stylesheet',
 				'type' => 'file',
 			),
+			array(
+				'name' => 'Login Required for this Page',
+				'id' => $prefix.'protected_page',
+				'type' => 'radio',
+				'description' => '',
+				'choices' => array(
+					'Yes' => True,
+					'No' => False
+				),
+			),
 		);
 	}
 }
@@ -301,5 +316,61 @@ class Attachment extends CustomPostType {
 	}
 }
 
+class Uid extends CustomPostType {
+	public
+		$name           = 'uid',
+		$plural_name    = 'UIDs',
+		$singular_name  = 'UID',
+		$add_new_item   = 'Add New UID',
+		$edit_item      = 'Edit UID',
+		$new_item       = 'New UID',
+		$public         = True,
+		$use_editor     = False,
+		$use_order      = False,
+		$use_title      = True,
+		$use_metabox    = True,
+		$use_shortcode  = True,
+		$show_in_rest	= True,
+		$taxonomies     = array();
+
+	public static function get_request_entries() {
+
+		$end_datetime = strtotime( "today" );
+		$start_datetime = strtotime( "-3 month" );
+
+		$search_criteria = array(
+			'start_date' => date( 'Y-m-d H:i:s', $start_datetime ),
+			'end_date' => date(' Y-m-d H:i:s', $end_datetime )
+		);
+
+		$entries = GFAPI::get_entries( 1, $search_criteria );
+		$entry_array['-- Select One --'] = 0;
+
+		foreach ($entries as $entry) {
+			$entry_array[$entry['1']] = $entry['id'];
+		}
+
+		return $entry_array;
+	}
+
+	public function fields() {
+		$prefix = $this->options( 'name' ).'_';
+		return array(
+			array (
+				'name' => 'Form Request Entry',
+				'description' => 'Select the form request entry associated with this UID.',
+				'id' => $prefix.'request',
+				'type' => 'select',
+				'choices' => $this->get_request_entries(),
+			),
+			array(
+				'name' => 'Upload UID Image',
+				'description' => 'Upload PNG and ZIP files named the same name as the permalink folder.',
+				'id' => $prefix.'amazon',
+				'type' => 'amazon',
+			),
+		);
+	}
+}
 
 ?>

@@ -16,6 +16,8 @@ define( 'GA_ACCOUNT', get_theme_mod_or_default( 'ga_account' ) );
 define( 'CB_UID', get_theme_mod_or_default( 'cb_uid' ) );
 define( 'CB_DOMAIN', get_theme_mod_or_default( 'cb_domain' ) );
 
+define( 'LDAP_HOST', 'net.ucf.edu' );
+
 define( 'THEME_CUSTOMIZER_PREFIX', 'ucfgeneric_' ); // a unique prefix for panel/section IDs
 
 
@@ -28,7 +30,8 @@ define( 'THEME_CUSTOMIZER_PREFIX', 'ucfgeneric_' ); // a unique prefix for panel
 
 Config::$custom_post_types = array(
 	'Page',
-	'Attachment'
+	'Attachment',
+	'Uid'
 );
 
 
@@ -37,7 +40,7 @@ Config::$custom_taxonomies = array(
 );
 
 Config::$shortcodes = array(
-
+	'UIDSearchSC'
 );
 
 
@@ -91,7 +94,9 @@ Config::$setting_defaults = array(
 	'news_url' => 'http://today.ucf.edu/feed/',
 	'enable_google' => 1,
 	'search_per_page' => 10,
-	'cloud_typography_key' => '//cloud.typography.com/730568/675644/css/fonts.css', // Main site css key
+	'cloud_typography_key' => '//cloud.typography.com/730568/675644/css/fonts.css', // Main site css key,
+	'amazon_bucket' => 'web.ucf.edu',
+	'amazon_folder' => 'uid'
 );
 
 
@@ -158,6 +163,12 @@ function define_customizer_sections( $wp_customize ) {
 		THEME_CUSTOMIZER_PREFIX . 'webfonts',
 		array(
 			'title' => 'Web Fonts'
+		)
+	);
+	$wp_customize->add_section(
+		THEME_CUSTOMIZER_PREFIX . 'amazon_credentials',
+		array(
+			'title' => 'Amazon S3 API Credentials'
 		)
 	);
 
@@ -388,6 +399,68 @@ function define_customizer_fields( $wp_customize ) {
 	);
 
 
+	// Amazon S3 Credentials
+	$wp_customize->add_setting(
+		'amazon_bucket',
+		array(
+			'default'     => get_setting_default( 'amazon_bucket' )
+		)
+	);
+	$wp_customize->add_control(
+		'amazon_bucket',
+		array(
+			'type'        => 'text',
+			'label'       => 'Bucket',
+			'description' => 'Bucket where files are stored.',
+			'section'     => THEME_CUSTOMIZER_PREFIX . 'amazon_credentials'
+		)
+	);
+	$wp_customize->add_setting(
+		'amazon_folder',
+		array(
+			'default'     => get_setting_default( 'amazon_folder' )
+		)
+	);
+	$wp_customize->add_control(
+		'amazon_folder',
+		array(
+			'type'        => 'text',
+			'label'       => 'Folder',
+			'description' => 'Folder where files are stored under bucket.',
+			'section'     => THEME_CUSTOMIZER_PREFIX . 'amazon_credentials'
+		)
+	);
+	$wp_customize->add_setting(
+		'access_key',
+		array(
+			'default'     => get_setting_default( 'access_key' )
+		)
+	);
+	$wp_customize->add_control(
+		'access_key',
+		array(
+			'type'        => 'text',
+			'label'       => 'Access Key',
+			'description' => 'Access key used to access the Amazon S3 API.',
+			'section'     => THEME_CUSTOMIZER_PREFIX . 'amazon_credentials'
+		)
+	);
+	$wp_customize->add_setting(
+		'secret_key',
+		array(
+			'default'     => get_setting_default( 'secret_key' )
+		)
+	);
+	$wp_customize->add_control(
+		'secret_key',
+		array(
+			'type'        => 'text',
+			'label'       => 'Secret Key',
+			'description' => 'Secret key used to access the Amazon S3 API.',
+			'section'     => THEME_CUSTOMIZER_PREFIX . 'amazon_credentials'
+		)
+	);
+
 	/**
 	 * If Yoast SEO is activated, assume we're handling ALL SEO-related
 	 * modifications with it.  Don't add Facebook Opengraph theme options.
@@ -443,14 +516,15 @@ function __init__() {
 	add_theme_support( 'title-tag' );
 
 	register_nav_menu( 'header-menu', __( 'Header Menu' ) );
+	register_nav_menu( 'left-menu', __( 'Left Menu' ) );
 	register_nav_menu( 'footer-menu', __( 'Footer Menu' ) );
 
 	// add_image_size( 'my-image-size', 620 );
 
 	// register_sidebar( array(
-	// 	'name'          => __( 'Sidebar' ),
-	// 	'id'            => 'sidebar',
-	// 	'description'   => 'Sidebar found on two column page templates and search pages',
+	// 	'name'          => __( 'Left' ),
+	// 	'id'            => 'left',
+	// 	'description'   => 'Sidebar found on two column page templates',
 	// 	'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 	// 	'after_widget'  => '</aside>',
 	// ) );

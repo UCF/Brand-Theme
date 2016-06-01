@@ -65,7 +65,7 @@ gulp.task('css-main', function() {
 
 // Compile + bless admin scss
 gulp.task('css-admin', function() {
-  gulp.src(config.scssPath + '/admin.scss')
+  return gulp.src(config.scssPath + '/admin.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(minifyCss({compatibility: '*'}))
     .pipe(rename('admin.min.css'))
@@ -74,8 +74,7 @@ gulp.task('css-admin', function() {
       cascade: false
     }))
     .pipe(bless())
-    .pipe(gulp.dest(config.cssPath))
-    .pipe(browserSync.stream());
+    .pipe(gulp.dest(config.cssPath));
 });
 
 
@@ -85,7 +84,7 @@ gulp.task('css', ['scss-lint', 'css-main', 'css-admin']);
 
 // Run jshint on all js files in jsPath (except already minified files.)
 gulp.task('js-lint', function() {
-  gulp.src([config.jsPath + '/*.js', '!' + config.jsPath + '/*.min.js'])
+  return gulp.src([config.jsPath + '/*.js', '!' + config.jsPath + '/*.min.js'])
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'))
     .pipe(jshint.reporter('fail'));
@@ -96,25 +95,30 @@ gulp.task('js-lint', function() {
 gulp.task('js-main', function() {
   var minified = [
     config.componentsPath + '/bootstrap-sass-official/assets/javascripts/bootstrap.js',
+    config.componentsPath + '/angular/angular.js',
     config.jsPath + '/generic-base.js',
-    config.jsPath + '/script.js'
+    config.jsPath + '/script.js',
+    config.jsPath + '/search-app.js'
   ];
 
-  gulp.src(minified)
+  return gulp.src(minified)
     .pipe(concat('script.min.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest(config.jsMinPath))
-    .pipe(browserSync.stream());
+    // .pipe(uglify())
+    .pipe(gulp.dest(config.jsMinPath));
 });
 
 
 // Uglify admin js
-gulp.task('js-admin', function() {
-  gulp.src(config.jsPath + '/admin.js')
+gulp.task('js-admin', function () {
+  var minified = [
+    config.componentsPath + '/angular/angular.js',
+    config.componentsPath + '/aws-sdk/dist/aws-sdk.js',
+    config.jsPath + '/admin.js'
+  ];
+  return gulp.src(minified)
     .pipe(concat('admin.min.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest(config.jsMinPath))
-    .pipe(browserSync.stream());
+    // .pipe(uglify())
+    .pipe(gulp.dest(config.jsMinPath));
 });
 
 
@@ -123,7 +127,7 @@ gulp.task('js', ['js-lint', 'js-main', 'js-admin']);
 
 
 // Rerun tasks when files change
-gulp.task('watch', function() {
+gulp.task('watch', ['js', 'css'], function() {
   if (config.sync) {
     browserSync.init({
         proxy: {
@@ -132,8 +136,9 @@ gulp.task('watch', function() {
     });
   }
 
-  gulp.watch(config.scssPath + '/*.scss', ['css']).on('change', browserSync.reload);
-  gulp.watch(config.jsPath + '/*.js', ['js']).on('change', browserSync.reload);
+  gulp.watch(config.scssPath + '/*.scss', ['css']);
+  gulp.watch(config.jsPath + '/*.js', ['js']).on("change", browserSync.reload);
+  gulp.watch('**/*.php').on("change", browserSync.reload);
 });
 
 

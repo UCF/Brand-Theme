@@ -1,12 +1,32 @@
 <?php disallow_direct_load( 'page.php' ); ?>
-<?php get_header(); the_post(); ?>
+<?php the_post(); ?>
+<?php
+$post = attach_post_metadata_properties( $post );
+$page_protected = filter_var( $post->page_protected_page, FILTER_VALIDATE_BOOLEAN );
+if ( $page_protected ) {
+ 	ldap_required();
+}
+?>
+
+<?php get_header(); ?>
 
 <article>
-	<?php if ( !is_front_page() ): ?>
-	<h1><?php the_title(); ?></h1>
-	<?php endif; ?>
-
-	<?php the_content(); ?>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<?php
+				wp_nav_menu( array(
+					'theme_location' => 'left-menu',
+					'container' => false,
+					'menu_class' => 'list-inline site-left-menu'
+				) );
+				?>
+			</div>
+			<div class="col-md-9">
+				<?php the_content(); ?>
+			</div>
+		</div>
+	</div>
 </article>
 
 <?php get_footer(); ?>

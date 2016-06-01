@@ -1,5 +1,14 @@
-// scss-lint:disable all
+// Variable overrides
+@import 'variables';
 
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+  display: none !important;
+}
 
 // WordPress Login screen
 .login {
@@ -59,7 +68,6 @@
   }
 }
 
-
 // Custom Admin Pages
 // TODO: clean up/better naming schemas
 .i-am-a-fancy-admin {
@@ -102,7 +110,7 @@
       &.active {
         background-color: #fff;
         border: 1px solid #f0f0f0;
-        color: #21759B;
+        color: $highlight-color;
       }
     }
 
@@ -134,7 +142,7 @@
   }
 
   .description em {
-    color: #21759B;
+    color: $highlight-color;
     font-family: monospace;
     font-weight: bold;
   }
@@ -152,24 +160,24 @@
 
     .section {
       h3 {
-        padding: 0 0 10px 0;
-        margin: 0;
-        color: #21759B;
-        font-size: 20px;
         border-bottom: 1px solid #E1E5EB;
+        color: $highlight-color;
+        font-size: 20px;
+        margin: 0;
+        padding: 0 0 10px;
       }
 
       table {
-        padding: 0;
-        margin: 20px 0 20px 0;
         clear: none;
+        margin: 20px 0;
+        padding: 0;
       }
     }
 
     .submit {
-      text-align: right;
       margin: 0;
       padding: 0;
+      text-align: right;
     }
   }
 }
@@ -213,7 +221,7 @@
 
 // Shortcode Modal
 .shortcode-section {
-    display: none;
+  display: none;
 }
 
 #select-shortcode-form-inner {
@@ -222,20 +230,20 @@
   }
 
   .cols {
-    overflow: hidden;
-    clear: both;
     border-bottom: 1px solid #f0f0f0;
+    clear: both;
+    overflow: hidden;
     padding: 15px 0;
   }
 
   .col-left {
-    width: 30%;
     float: left;
+    width: 30%;
   }
 
   .col-right {
-    width: 65%;
     float: right;
+    width: 65%;
   }
 
   #shortcode-descriptions {
@@ -251,7 +259,7 @@
 
     li {
       border-bottom: 1px solid #f0f0f0;
-      padding: 0 0 25px 0;
+      padding: 0 0 25px;
     }
   }
 }
@@ -264,9 +272,11 @@
 
 .description code {
   background: none;
-  color: #21759B;
+  color: $highlight-color;
   font-weight: bold;
   padding: 0;
 }
 
-// scss-lint:enable all
+.uid-error {
+  color: $error;
+}
