@@ -1,12 +1,14 @@
 <?php disallow_direct_load( 'page.php' ); ?>
-<?php get_header(); the_post(); ?>
+<?php the_post(); ?>
 <?php
 $post = attach_post_metadata_properties( $post );
-$page_protected = filter_var($post->page_protected_page, FILTER_VALIDATE_BOOLEAN);
-if($page_protected) {
+$page_protected = filter_var( $post->page_protected_page, FILTER_VALIDATE_BOOLEAN );
+if ( $page_protected ) {
  	ldap_required();
 }
 ?>
+
+<?php get_header(); ?>
 
 <article>
 	<div class="container">

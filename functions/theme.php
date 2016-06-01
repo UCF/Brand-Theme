@@ -15,6 +15,7 @@ function display_site_title() {
 	return ob_get_clean();
 }
 
+
 /**
  * Authenticates the username/password combination with LDAP.
  *
@@ -130,6 +131,22 @@ function ldap_required() {
 		require_once THEME_INCLUDES_DIR . '/ldap-login.php';
 		die;
 	}
+}
+
+
+/**
+ * Adds post meta data values as $post object properties for convenience.
+ * Excludes WordPress' internal custom keys (prefixed with '_').
+ **/
+function attach_post_metadata_properties( $post ) {
+	$metas = get_post_meta( $post->ID );
+	foreach ( $metas as $key => $val ) {
+		if ( substr( $key, 0, 1 ) !== '_' ) {
+			$val = is_array( $val ) ? maybe_unserialize( $val[0] ) : maybe_unserialize( $val );
+			$post->$key = $val;
+		}
+	}
+	return $post;
 }
 
 ?>
