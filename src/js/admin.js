@@ -326,7 +326,7 @@ WebcomAdmin.S3CRUD = function ($) {
           if (orgFilename.indexOf('.zip') !== -1) {
             filename = $('#post_name').attr('value') + '.zip';
           }
-          console.log(filename);
+
           var bucketName = creds.bucket + '/' + creds.folder + '/' + $('#post_name').attr('value'),
             params = { Bucket: bucketName, Key: filename, ContentType: $scope.file.type, Body: $scope.file, ServerSideEncryption: 'AES256' };
 
