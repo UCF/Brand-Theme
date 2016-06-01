@@ -30,3 +30,6 @@ src/scss/.sass-cache/*
 # Gulp
 node_modules/*
 gulp-config.json
+
+# Visual Studio Code
+jsconfig.json
