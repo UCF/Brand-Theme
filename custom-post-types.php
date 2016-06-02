@@ -343,14 +343,20 @@ class Uid extends CustomPostType {
 			'end_date' => date(' Y-m-d H:i:s', $end_datetime )
 		);
 
-		$entries = GFAPI::get_entries( 1, $search_criteria );
-		$entry_array['-- Select One --'] = 0;
+		if ( is_plugin_active( 'gravityforms/gravityforms.php' ) ) {
+			$entries = GFAPI::get_entries( 1, $search_criteria );
+			$entry_array['-- Select One --'] = 0;
 
-		foreach ($entries as $entry) {
-			$entry_array[$entry['1']] = $entry['id'];
+			foreach ($entries as $entry) {
+				$entry_array[$entry['1']] = $entry['id'];
+			}
+
+			return $entry_array;
+		} else {
+			$entry_array['Enable Gravity Forms'] = 0;
+			return $entry_array;
 		}
 
-		return $entry_array;
 	}
 
 	public function fields() {
