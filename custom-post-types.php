@@ -364,14 +364,14 @@ class Uid extends CustomPostType {
 		return array(
 			array (
 				'name' => 'Form Request Entry',
-				'description' => 'Select the form request entry associated with this UID.',
+				'description' => 'Select the UID user request form entry.',
 				'id' => $prefix.'request',
 				'type' => 'select',
 				'choices' => $this->get_request_entries(),
 			),
 			array(
 				'name' => 'Upload UID Image',
-				'description' => 'Upload PNG and ZIP files named the same name as the permalink folder.',
+				'description' => 'Upload PNG and ZIP files. (The files will be renamed to match the permalink.)',
 				'id' => $prefix.'amazon',
 				'type' => 'amazon',
 			),
