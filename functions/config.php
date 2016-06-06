@@ -63,7 +63,6 @@ if ( get_theme_mod_or_default( 'cloud_typography_key' ) ) {
 Config::$scripts = array(
 	array( 'admin' => True, 'src' => THEME_JS_URL.'/admin.min.js', ),
 	array( 'name' => 'ucfhb-script', 'src' => '//universityheader.ucf.edu/bar/js/university-header.js?use-1200-breakpoint=1', ),
-	array( 'name' => 'theme-script', 'src' => THEME_JS_URL.'/script.min.js', ),
 );
 
 
@@ -566,6 +565,19 @@ function enqueue_frontend_theme_assets() {
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_frontend_theme_assets' );
 
+function localize_frontend_scripts() {
+	wp_register_script( 'theme-script', THEME_JS_URL . '/script.min.js' );
+
+	$translation_array = array(
+		'BASE_URL' => home_url(),
+	);
+
+	wp_localize_script( 'theme-script', 'CONFIG', $translation_array );
+
+	wp_enqueue_script( 'theme-script' );
+}
+
+add_action( 'wp_enqueue_scripts', 'localize_frontend_scripts' );
 
 /**
  * Hook frontend theme script output into wp_head().

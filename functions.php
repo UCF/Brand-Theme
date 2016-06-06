@@ -14,4 +14,25 @@ require_once 'shortcodes.php';          // Per theme shortcodes
  * listed above.
  **/
 
+function api_get_uids( $request ) {
+	$posts = get_posts( array(
+		'post_type' => 'uid',
+		'post_per_page' => -1,
+		's' => $request->get_param( 's' )
+	) );
+
+	if ( empty( $posts ) ) {
+		return null;
+	}
+
+	return $posts;
+}
+
+add_action( 'rest_api_init', function() {
+	register_rest_route( 'wp/v2', '/uids', array(
+		'methods'  => 'GET',
+		'callback' => 'api_get_uids'
+	) );
+} );
+
 ?>

@@ -4,13 +4,13 @@ angular.module('UIDSearch').controller('UIDSearchController', UIDSearchControlle
 
 UIDSearchService.$inject = ['$http'];
 function UIDSearchService($http) {
-    var URL = "/uid/wp-json/wp/v2/uids/?filter[s]=";
+    var URL = CONFIG.BASE_URL + "/wp-json/wp/v2/uids?s=";
 
     var getUids = function (callback, query) {
         $http({
             url: URL,
             method: "GET",
-            params: { 'filter[s]': query }
+            params: { 's': query }
         }).success(function (data, status, headers, config) {
             callback(data);
         }).error(function (data, status, headers, config) {

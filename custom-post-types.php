@@ -24,8 +24,6 @@ abstract class CustomPostType {
 		                         // (see also objectsToHTML and toHTML methods)
 		$taxonomies     = array( 'post_tag' ),
 		$built_in       = False,
-		$show_in_rest   = False,
-
 		// Optional default ordering for generic shortcode if not specified by user.
 		$default_orderby = null,
 		$default_order   = null;
@@ -171,14 +169,11 @@ abstract class CustomPostType {
 	 * */
 	public function register() {
 		$registration = array(
-			'labels'     => $this->labels(),
-			'supports'   => $this->supports(),
-			'public'     => $this->options( 'public' ),
-			'taxonomies' => $this->options( 'taxonomies' ),
-			'_builtin'   => $this->options( 'built_in' ),
-			'show_in_rest' => $this->options( 'show_in_rest' ),
-			'rest_base'    => $this->options( 'name' ) . 's',
-  			'rest_controller_class' => 'WP_REST_Posts_Controller',
+			'labels'       => $this->labels(),
+			'supports'     => $this->supports(),
+			'public'       => $this->options( 'public' ),
+			'taxonomies'   => $this->options( 'taxonomies' ),
+			'_builtin'     => $this->options( 'built_in' ),
 		);
 
 		if ( $this->options( 'use_order' ) ) {
@@ -191,7 +186,6 @@ abstract class CustomPostType {
 			add_shortcode( $this->options( 'name' ).'-list', array( $this, 'shortcode' ) );
 		}
 	}
-
 
 	/**
 	 * Shortcode for this custom post type.  Can be overridden for descendants.
@@ -261,8 +255,7 @@ class Page extends CustomPostType {
 		$use_order      = True,
 		$use_title      = True,
 		$use_metabox    = True,
-		$built_in       = True,
-		$show_in_rest   = True;
+		$built_in       = True;
 
 	public function fields() {
 		$prefix = $this->options( 'name' ).'_';
@@ -330,7 +323,6 @@ class Uid extends CustomPostType {
 		$use_title      = True,
 		$use_metabox    = True,
 		$use_shortcode  = True,
-		$show_in_rest	= True,
 		$taxonomies     = array();
 
 	public static function get_request_entries() {
