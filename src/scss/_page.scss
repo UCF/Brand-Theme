@@ -8,6 +8,10 @@
   display: none !important;
 }
 
+.uid-search {
+  margin-top: 45px;
+}
+
 hr {
   border-color: #000;
   border-width: 2px;
@@ -42,9 +46,11 @@ h2 {
   }
 }
 
-h3 {
+h3,
+body .gform_wrapper h3.gform_title {
   font-size: 30px !important;
   font-weight: 900;
+  letter-spacing: 1.5px !important;
   margin-bottom: 5px;
   text-transform: uppercase;
 }
