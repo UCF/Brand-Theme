@@ -6,6 +6,9 @@
 	<body ontouchstart <?php echo body_class(); ?>>
 		<div class="container-fluid site-header-container">
 			<div class="row">
+				<div class="header-image" style="background-image: url(http:<?php echo THEME_IMG_URL . '/brand-header.jpg' ?>)"></div>
+			</div>
+			<div class="row">
 				<div class="container site-header">
 					<header class="row">
 						<div class="site-title-container col-md-3">
