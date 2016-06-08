@@ -254,7 +254,7 @@ class UIDSearchSC extends Shortcode {
             <h4>Results</h4>
             <div class="row">
                 <div class="col-md-4" ng-repeat="result in uidSearchCtrl.results">
-                    <h5><a ng-href="{{ result.guid | replaceAll:'#038;' }}">{{ result.post_title }}</a></h5>
+                    <h5>{{ result.post_title }}</h5>
                     <img ng-src="<? echo AMAZON_AWS_URL ?><? echo $bucket ?>/<? echo $folder ?>/{{ result.post_name }}/{{ result.post_name }}.png" width="100%">
                     <a href="<? echo AMAZON_AWS_URL ?><? echo $bucket ?>/<? echo $folder ?>/{{ result.post_name }}/{{ result.post_name }}.zip"
                         class="btn btn-ucf btn-download">
