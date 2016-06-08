@@ -411,5 +411,7 @@ WebcomAdmin.S3CRUD = function ($) {
   WebcomAdmin.utilityPageSections($);
   WebcomAdmin.fileUploader($);
   WebcomAdmin.shortcodeInterfaceTool($);
-  WebcomAdmin.S3CRUD($);
+  if ($('.amazon-file-upload').length) {
+    WebcomAdmin.S3CRUD($);
+  }
 })(jQuery);
