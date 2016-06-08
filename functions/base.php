@@ -403,10 +403,10 @@ class AmazonField extends Field {
 ?>
 		<script>
 			var creds = {
-			bucket: '<? echo get_theme_mod_or_default( 'amazon_bucket' ) ?>',
-			folder: '<? echo get_theme_mod_or_default( 'amazon_folder' ) ?>',
-			access_key: '<? echo get_theme_mod_or_default( 'access_key' ) ?>',
-			secret_key: '<? echo get_theme_mod_or_default( 'secret_key' ) ?>'
+			bucket: '<?php echo get_theme_mod_or_default( 'amazon_bucket' ) ?>',
+			folder: '<?php echo get_theme_mod_or_default( 'amazon_folder' ) ?>',
+			access_key: '<?php echo get_theme_mod_or_default( 'access_key' ) ?>',
+			secret_key: '<?php echo get_theme_mod_or_default( 'secret_key' ) ?>'
 		};
 		</script>
 		<div class="amazon-file-upload" ng-cloak ng-app="UIDFileUpload" ng-controller="UIDFileUploadController as fileUploadCtrl">
@@ -418,11 +418,11 @@ class AmazonField extends Field {
 			<ul ng-show="!fileUploadCtrl.loading">
 				<li ng-repeat="file in fileUploadCtrl.fileList">
 					<h3>
-						<img ng-if="file.Key.indexOf('.png') != -1" ng-src="<? echo AMAZON_AWS_URL ?>{{ fileUploadCtrl.bucket }}/{{ file.Key }}">
+						<img ng-if="file.Key.indexOf('.png') != -1" ng-src="<?php echo AMAZON_AWS_URL ?>{{ fileUploadCtrl.bucket }}/{{ file.Key }}">
 						<a class="button button-small" ng-click="fileUploadCtrl.deleteFile($index)">
 							Delete
 						</a>
-						<a href="<? echo AMAZON_AWS_URL ?>{{ fileUploadCtrl.bucket }}/{{ file.Key }}">
+						<a href="<?php echo AMAZON_AWS_URL ?>{{ fileUploadCtrl.bucket }}/{{ file.Key }}">
 							{{ file.Key | getfilename }}
 						</a>
 					</h3>

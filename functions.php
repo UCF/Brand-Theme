@@ -35,4 +35,8 @@ add_action( 'rest_api_init', function() {
 	) );
 } );
 
+function get_amazon_url() {
+	return AMAZON_AWS_URL . get_theme_mod_or_default( 'amazon_bucket' ) . "/" . get_theme_mod_or_default( 'amazon_folder' ) . "/" ;
+}
+
 ?>
