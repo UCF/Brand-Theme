@@ -16,8 +16,8 @@
 			</div>
 			<div class="col-md-6">
 	            <h1><?php the_title(); ?></h1>
-                <img src="https://s3.amazonaws.com/web.ucf.edu/uid/<?php echo $post->post_name;?>/<?php echo $post->post_name;?>.png" width="100%">
-                <a href="https://s3.amazonaws.com/web.ucf.edu/uid/<?php echo $post->post_name;?>/<?php echo $post->post_name;?>.zip" class="btn btn-ucf btn-download">Download <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a>
+                <img src="<?php echo AMAZON_AWS_URL ?><?php echo get_theme_mod_or_default( 'amazon_bucket' ) ?>/<?php echo get_theme_mod_or_default( 'amazon_folder' ) ?>/<?php echo $post->post_name;?>/<?php echo $post->post_name;?>.png" width="100%">
+                <a href="<?php echo AMAZON_AWS_URL ?><?php echo get_theme_mod_or_default( 'amazon_bucket' ) ?>/<?php echo get_theme_mod_or_default( 'amazon_folder' ) ?>/<?php echo $post->post_name;?>/<?php echo $post->post_name;?>.zip" class="btn btn-ucf btn-download">Download <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a>
 			</div>
 		</div>
 	</div>
