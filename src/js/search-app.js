@@ -5,7 +5,7 @@ angular.module('UIDSearch').filter('replaceAll', replaceAllFilter);
 
 UIDSearchService.$inject = ['$http'];
 function UIDSearchService($http) {
-    var URL = CONFIG.BASE_URL + "/wp-json/wp/v2/uids?s=";
+    var URL = CONFIG.BASE_URL + "/wp-json/rest/uids?s=";
 
     var getUids = function (callback, query) {
         $http({

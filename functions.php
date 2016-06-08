@@ -29,7 +29,7 @@ function api_get_uids( $request ) {
 }
 
 add_action( 'rest_api_init', function() {
-	register_rest_route( 'wp/v2', '/uids', array(
+	register_rest_route( 'rest', '/uids', array(
 		'methods'  => 'GET',
 		'callback' => 'api_get_uids'
 	) );
