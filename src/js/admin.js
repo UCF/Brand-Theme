@@ -294,6 +294,7 @@ WebcomAdmin.S3CRUD = function ($) {
     var ctrl = this;
     ctrl.loading = false;
     ctrl.error = false;
+    ctrl.bucket = creds.bucket;
 
     var displayError = function () {
       ctrl.loading = false;

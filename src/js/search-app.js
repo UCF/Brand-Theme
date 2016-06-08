@@ -1,6 +1,7 @@
 angular.module('UIDSearch', []);
 angular.module('UIDSearch').service('UIDSearchService', UIDSearchService);
 angular.module('UIDSearch').controller('UIDSearchController', UIDSearchController);
+angular.module('UIDSearch').filter('replaceAll', replaceAllFilter);
 
 UIDSearchService.$inject = ['$http'];
 function UIDSearchService($http) {
@@ -57,4 +58,10 @@ function UIDSearchController($scope, UIDSearchService) {
         }
     });
 
+}
+
+function replaceAllFilter() {
+    return function (input, needle) {
+        return input.replace(new RegExp(needle, "g"), '');
+    };
 }

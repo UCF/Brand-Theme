@@ -225,11 +225,13 @@ class UIDSearchSC extends Shortcode {
         $wysiwyg     = True; // Whether to add it to the shortcode Wysiwyg modal.
     public static function callback( $attr, $content='' ) {
         ob_start();
+        $bucket = get_theme_mod_or_default( 'amazon_bucket' );
+        $folder = get_theme_mod_or_default( 'amazon_folder' );
 ?>
     <script>
         var creds = {
-        bucket: '<? echo get_theme_mod_or_default( 'amazon_bucket' ) ?>',
-        folder: '<? echo get_theme_mod_or_default( 'amazon_folder' ) ?>',
+        bucket: '<? echo $bucket ?>',
+        folder: '<? echo $folder ?>',
         access_key: '<? echo get_theme_mod_or_default( 'access_key' ) ?>',
         secret_key: '<? echo get_theme_mod_or_default( 'secret_key' ) ?>'
     };
@@ -252,9 +254,12 @@ class UIDSearchSC extends Shortcode {
             <h4>Results</h4>
             <div class="row">
                 <div class="col-md-4" ng-repeat="result in uidSearchCtrl.results">
-                    <h5><a ng-href="/uid/uid/{{ result.post_name }}/">{{ result.title.rendered }}</a></h5>
-                    <img ng-src="https://s3.amazonaws.com/web.ucf.edu/uid/{{ result.post_name }}/{{ result.post_name }}.png" width="100%">
-                    <a href="https://s3.amazonaws.com/web.ucf.edu/uid/{{ result.post_name }}/{{ result.post_name }}.zip" class="btn btn-ucf btn-download">Download <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a>
+                    <h5><a ng-href="{{ result.guid | replaceAll:'#038;' }}">{{ result.post_title }}</a></h5>
+                    <img ng-src="<? echo AMAZON_AWS_URL ?><? echo $bucket ?>/<? echo $folder ?>/{{ result.post_name }}/{{ result.post_name }}.png" width="100%">
+                    <a href="<? echo AMAZON_AWS_URL ?><? echo $bucket ?>/<? echo $folder ?>/{{ result.post_name }}/{{ result.post_name }}.zip"
+                        class="btn btn-ucf btn-download">
+                        Download <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+                    </a>
                 </div>
             </div>
         </div>

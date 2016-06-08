@@ -409,7 +409,7 @@ class AmazonField extends Field {
 			secret_key: '<? echo get_theme_mod_or_default( 'secret_key' ) ?>'
 		};
 		</script>
-		<div ng-cloak ng-app="UIDFileUpload" ng-controller="UIDFileUploadController as fileUploadCtrl">
+		<div class="amazon-file-upload" ng-cloak ng-app="UIDFileUpload" ng-controller="UIDFileUploadController as fileUploadCtrl">
 			<input name="file" type="file" uid-file-upload-directive>
 			<a class="button button-primary button-large" ng-click="fileUploadCtrl.uploadFile()">Upload</a>
 			<hr>
@@ -418,10 +418,13 @@ class AmazonField extends Field {
 			<ul ng-show="!fileUploadCtrl.loading">
 				<li ng-repeat="file in fileUploadCtrl.fileList">
 					<h3>
+						<img ng-if="file.Key.indexOf('.png') != -1" ng-src="<? echo AMAZON_AWS_URL ?>{{ fileUploadCtrl.bucket }}/{{ file.Key }}">
 						<a class="button button-small" ng-click="fileUploadCtrl.deleteFile($index)">
 							Delete
 						</a>
-						{{ file.Key | getfilename }}
+						<a href="<? echo AMAZON_AWS_URL ?>{{ fileUploadCtrl.bucket }}/{{ file.Key }}">
+							{{ file.Key | getfilename }}
+						</a>
 					</h3>
 
 				</li>

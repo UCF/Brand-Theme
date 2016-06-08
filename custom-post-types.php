@@ -1,7 +1,5 @@
 <?php
 
-// TODO: http://v2.wp-api.org/extending/modifying/#examples
-
 /**
  * Abstract class for defining custom post types.
  **/

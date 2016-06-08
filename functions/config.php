@@ -20,6 +20,8 @@ define( 'LDAP_HOST', 'net.ucf.edu' );
 
 define( 'THEME_CUSTOMIZER_PREFIX', 'ucfgeneric_' ); // a unique prefix for panel/section IDs
 
+define('AMAZON_AWS_URL', 'https://s3.amazonaws.com/' );
+
 
 /**
  * Set config values including meta tags, registered custom post types, styles,

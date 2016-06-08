@@ -103,7 +103,7 @@ gulp.task('js-main', function() {
 
   return gulp.src(minified)
     .pipe(concat('script.min.js'))
-    // .pipe(uglify())
+    .pipe(uglify())
     .pipe(gulp.dest(config.jsMinPath));
 });
 
@@ -117,7 +117,7 @@ gulp.task('js-admin', function () {
   ];
   return gulp.src(minified)
     .pipe(concat('admin.min.js'))
-    // .pipe(uglify())
+    .pipe(uglify())
     .pipe(gulp.dest(config.jsMinPath));
 });
 
