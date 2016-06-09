@@ -253,13 +253,16 @@ class UIDSearchSC extends Shortcode {
             <hr>
             <h4>Results</h4>
             <div class="row">
-                <div class="col-md-4" ng-repeat="result in uidSearchCtrl.results">
-                    <h5>{{ result.post_title }}</h5>
-                    <img ng-src="<?php echo get_amazon_url() ?>{{ result.post_name }}/{{ result.post_name }}.png" width="100%">
-                    <a href="<?php echo get_amazon_url() ?>{{ result.post_name }}/{{ result.post_name }}.zip"
-                        class="btn btn-ucf btn-download">
-                        Download <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
-                    </a>
+                <div ng-repeat="result in uidSearchCtrl.results">
+                    <div class="clearfix" ng-if="$index % 3 == 0"></div>
+                    <div class="col-md-4 uid-result">
+                        <h5>{{ result.post_title }}</h5>
+                        <img ng-src="<?php echo get_amazon_url() ?>{{ result.post_name }}/{{ result.post_name }}.png" width="100%">
+                        <a href="<?php echo get_amazon_url() ?>{{ result.post_name }}/{{ result.post_name }}.zip"
+                            class="btn btn-ucf btn-download">
+                            Download <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
