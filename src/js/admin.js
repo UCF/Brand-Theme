@@ -263,10 +263,11 @@ WebcomAdmin.S3CRUD = function ($) {
 
   function UIDFileUploadFactory() {
     var getFileList = function (callback) {
-      if ($('#post_name').attr('value') !== '') {
+      var $postName = $('#editable-post-name');
+      if ($postName.length) {
         var params = {
           Bucket: creds.bucket,
-          Prefix: creds.folder + '/' + $('#post_name').attr('value')
+          Prefix: creds.folder + '/' + $postName.text()
         };
 
         aws.listObjectsV2(params, function (err, data) {
@@ -320,29 +321,39 @@ WebcomAdmin.S3CRUD = function ($) {
       if ($scope.file) {
         ctrl.loading = true;
         ctrl.error = false;
-        var orgFilename = $scope.file.name;
+        var orgFilename = $scope.file.name,
+          postName = $('#editable-post-name');
 
-        if (orgFilename.indexOf('.zip') !== -1 || orgFilename.indexOf('.png') !== -1) {
-          var filename = $('#post_name').attr('value') + '.png';
-          if (orgFilename.indexOf('.zip') !== -1) {
-            filename = $('#post_name').attr('value') + '.zip';
-          }
+        if (postName.length) {
+          if (orgFilename.indexOf('.zip') !== -1 || orgFilename.indexOf('.png') !== -1) {
+            postName = postName.text();
 
-          var bucketName = creds.bucket + '/' + creds.folder + '/' + $('#post_name').attr('value'),
-            params = { Bucket: bucketName, Key: filename, ContentType: $scope.file.type, Body: $scope.file, ServerSideEncryption: 'AES256' };
-
-          aws.putObject(params, function (err, data) {
-            if (err) {
-              displayError();
-              console.log(err.message);
-            } else {
-              UIDFileUploadFactory.getFileList(updateView);
+            var extension = '.png';
+            if (orgFilename.indexOf('.zip') !== -1) {
+              extension = '.zip';
             }
-          });
+
+            var bucketName = creds.bucket + '/' + creds.folder + '/' + postName,
+              params = { Bucket: bucketName, Key: postName + extension, ContentType: $scope.file.type, Body: $scope.file, ServerSideEncryption: 'AES256' };
+
+            console.log(params);
+
+            aws.putObject(params, function (err, data) {
+              if (err) {
+                displayError();
+                console.log(err.message);
+              } else {
+                UIDFileUploadFactory.getFileList(updateView);
+              }
+            });
+          } else {
+            // No File Selected
+            alert('Please Select a File with a .png or .zip file extension.');
+            UIDFileUploadFactory.getFileList(updateView);
+          }
         } else {
-          // No File Selected
-          alert('Please Select a File with a .png or .zip file extension.');
-          UIDFileUploadFactory.getFileList(updateView);
+          alert('Please enter a title above and wait for permalink to appear.');
+          ctrl.loading = false;
         }
       } else {
         alert('Please Select a File.');
@@ -411,5 +422,7 @@ WebcomAdmin.S3CRUD = function ($) {
   WebcomAdmin.utilityPageSections($);
   WebcomAdmin.fileUploader($);
   WebcomAdmin.shortcodeInterfaceTool($);
-  WebcomAdmin.S3CRUD($);
+  if ($('.amazon-file-upload').length) {
+    WebcomAdmin.S3CRUD($);
+  }
 })(jQuery);

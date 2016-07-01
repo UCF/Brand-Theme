@@ -9,13 +9,10 @@
   background-color: $ucf-gold;
   text-transform: uppercase;
 
-  .col-md-3 {
-    background-color: #000;
+  .site-title-container {
+      background-color: #000;
+    text-align: center;
   }
-}
-
-.site-title-container {
-  text-align: center;
 }
 
 .site-title {

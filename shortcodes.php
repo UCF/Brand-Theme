@@ -230,10 +230,10 @@ class UIDSearchSC extends Shortcode {
 ?>
     <script>
         var creds = {
-        bucket: '<? echo $bucket ?>',
-        folder: '<? echo $folder ?>',
-        access_key: '<? echo get_theme_mod_or_default( 'access_key' ) ?>',
-        secret_key: '<? echo get_theme_mod_or_default( 'secret_key' ) ?>'
+        bucket: '<?php echo $bucket ?>',
+        folder: '<?php echo $folder ?>',
+        access_key: '<?php echo get_theme_mod_or_default( 'access_key' ) ?>',
+        secret_key: '<?php echo get_theme_mod_or_default( 'secret_key' ) ?>'
     };
     </script>
     <div ng-app="UIDSearch"  ng-controller="UIDSearchController as uidSearchCtrl" ng-cloak>
@@ -253,13 +253,16 @@ class UIDSearchSC extends Shortcode {
             <hr>
             <h4>Results</h4>
             <div class="row">
-                <div class="col-md-4" ng-repeat="result in uidSearchCtrl.results">
-                    <h5><a ng-href="{{ result.guid | replaceAll:'#038;' }}">{{ result.post_title }}</a></h5>
-                    <img ng-src="<? echo AMAZON_AWS_URL ?><? echo $bucket ?>/<? echo $folder ?>/{{ result.post_name }}/{{ result.post_name }}.png" width="100%">
-                    <a href="<? echo AMAZON_AWS_URL ?><? echo $bucket ?>/<? echo $folder ?>/{{ result.post_name }}/{{ result.post_name }}.zip"
-                        class="btn btn-ucf btn-download">
-                        Download <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
-                    </a>
+                <div ng-repeat="result in uidSearchCtrl.results">
+                    <div class="clearfix" ng-if="$index % 3 == 0"></div>
+                    <div class="col-md-4 uid-result">
+                        <h5>{{ result.post_title }}</h5>
+                        <img ng-src="<?php echo get_amazon_url() ?>{{ result.post_name }}/{{ result.post_name }}.png" width="100%">
+                        <a href="<?php echo get_amazon_url() ?>{{ result.post_name }}/{{ result.post_name }}.zip"
+                            class="btn btn-ucf btn-download">
+                            Download <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

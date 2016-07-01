@@ -164,7 +164,12 @@
         color: $highlight-color;
         font-size: 20px;
         margin: 0;
-        padding: 0 0 10px;
+        padding: 20px 0 10px;
+      }
+
+      ul {
+        list-style: disc;
+        margin: 10px 0 10px 21px;
       }
 
       table {
@@ -266,12 +271,11 @@
 
 // Amazon File Upload
 .amazon-file-upload {
-  img {
+  img.preview-image {
     margin-bottom: 10px;
     max-width: 100%;
   }
 }
-
 
 // Misc.
 .meta-file-preview img {

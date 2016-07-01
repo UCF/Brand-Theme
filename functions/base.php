@@ -403,26 +403,26 @@ class AmazonField extends Field {
 ?>
 		<script>
 			var creds = {
-			bucket: '<? echo get_theme_mod_or_default( 'amazon_bucket' ) ?>',
-			folder: '<? echo get_theme_mod_or_default( 'amazon_folder' ) ?>',
-			access_key: '<? echo get_theme_mod_or_default( 'access_key' ) ?>',
-			secret_key: '<? echo get_theme_mod_or_default( 'secret_key' ) ?>'
+			bucket: '<?php echo get_theme_mod_or_default( 'amazon_bucket' ) ?>',
+			folder: '<?php echo get_theme_mod_or_default( 'amazon_folder' ) ?>',
+			access_key: '<?php echo get_theme_mod_or_default( 'access_key' ) ?>',
+			secret_key: '<?php echo get_theme_mod_or_default( 'secret_key' ) ?>'
 		};
 		</script>
 		<div class="amazon-file-upload" ng-cloak ng-app="UIDFileUpload" ng-controller="UIDFileUploadController as fileUploadCtrl">
 			<input name="file" type="file" uid-file-upload-directive>
 			<a class="button button-primary button-large" ng-click="fileUploadCtrl.uploadFile()">Upload</a>
 			<hr>
-			<div ng-show="fileUploadCtrl.error" class="uid-error"><span class="glyphicon glyphicon-alert"></span> Error connecting to AWS!</div>
-			<div ng-show="fileUploadCtrl.loading"><span class="glyphicon glyphicon-refresh glyphicon-spin"></span> Refreshing file list</div>
+			<div ng-show="fileUploadCtrl.error" class="uid-error">Error connecting to AWS!</div>
+			<div ng-show="fileUploadCtrl.loading">Refreshing file list</div>
 			<ul ng-show="!fileUploadCtrl.loading">
 				<li ng-repeat="file in fileUploadCtrl.fileList">
 					<h3>
-						<img ng-if="file.Key.indexOf('.png') != -1" ng-src="<? echo AMAZON_AWS_URL ?>{{ fileUploadCtrl.bucket }}/{{ file.Key }}">
+						<img class="preview-image" ng-if="file.Key.indexOf('.png') != -1" ng-src="<?php echo AMAZON_AWS_URL ?>{{ fileUploadCtrl.bucket }}/{{ file.Key }}">
 						<a class="button button-small" ng-click="fileUploadCtrl.deleteFile($index)">
 							Delete
 						</a>
-						<a href="<? echo AMAZON_AWS_URL ?>{{ fileUploadCtrl.bucket }}/{{ file.Key }}">
+						<a href="<?php echo AMAZON_AWS_URL ?>{{ fileUploadCtrl.bucket }}/{{ file.Key }}">
 							{{ file.Key | getfilename }}
 						</a>
 					</h3>
