@@ -43,7 +43,8 @@ Config::$custom_taxonomies = array(
 
 Config::$shortcodes = array(
 	'UIDSearchSC',
-	'SideBarSC'
+	'SideBarSC',
+	'CalloutSC'
 );
 
 

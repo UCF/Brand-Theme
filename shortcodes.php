@@ -223,7 +223,7 @@ class SideBarSC extends Shortcode {
 	public
 		$name        = 'SideBar', // The name of the shortcode.
 		$command     = 'sidebar', // The command used to call the shortcode.
-		$description = 'Add a sidebar', // The description of the shortcode.
+		$description = 'Creates a floating sidebar, in which any text, media or shortcode content can be added.', // The description of the shortcode.
 		$callback    = 'callback',
 		$wysiwyg     = True; // Whether to add it to the shortcode Wysiwyg modal.
 
@@ -231,14 +231,14 @@ class SideBarSC extends Shortcode {
 		return array(
 			array(
 				'name'		=> 'Background color',
-				'id'		=> 'background_color_id',
+				'id'		=> 'background_color',
 				'help_text'	=> '(Optional) The background color of the sidebar.  Font color can be modified by selecting text within this shortcode and picking a color from the text editor\'s Font Color dropdown menu.',
 				'type'		=> 'text',
 				'default'	=> '#eeeeee'
 			),
 			array(
 				'name'		=> 'Select a position',
-				'id'		=> 'sidebar_position_id',
+				'id'		=> 'position',
 				'type'		=> 'dropdown',
 				'choices'	=> array(
 					array(
@@ -253,7 +253,7 @@ class SideBarSC extends Shortcode {
 			),
 			array(
 				'name'		=> 'Content Alignment',
-				'id'		=> 'sidebar_content_align_id',
+				'id'		=> 'content_align',
 				'type'		=> 'dropdown',
 				'choices'	=> array(
 					array(
@@ -277,19 +277,131 @@ class SideBarSC extends Shortcode {
 		ob_start();
 
 		$pull = ( $attr['position'] == ( 'left' || 'right' ) ) ? 'pull-' . $attr['position'] : 'pull-right';
-		$bgcolor = $attr['background'] ? $attr['background'] : '#f0f0f0';
+		$bgcolor = $attr['background_color'] ? $attr['background_color'] : '#f0f0f0';
 		$content_align = $attr['content_align'] ? 'text-' . $attr['content_align'] : '';
 		$content = do_shortcode( $content );
 
 		?>
-			<div class="col-md-5 col-sm-6 <?php echo $pull ?> sidebar">
-				<section class="sidebar-inner <?php echo $content_align ?>" style="background-color: <?php echo $bgcolor ?>"><?php echo $content ?></section>
-			</div>
+		<div class="col-md-5 col-sm-6 <?php echo $pull ?> sidebar">
+			<section class="sidebar-inner <?php echo $content_align ?>" style="background-color: <?php echo $bgcolor ?>">
+				<?php echo $content ?>
+			</section>
+		</div>
 		<?php
 		return ob_get_clean();
 	}
 }
 
+
+/**
+ * Create a callout.
+ **/
+class CalloutSC extends Shortcode {
+	public
+		$name        = 'Callout', // The name of the shortcode.
+		$command     = 'callout', // The command used to call the shortcode.
+		$description = 'Creates a full-width callout box, in which any text, media or shortcode content can be added.', // The description of the shortcode.
+		$callback    = 'callback',
+		$wysiwyg     = True; // Whether to add it to the shortcode Wysiwyg modal.
+
+	public function params() {
+		return array(
+			array(
+				'name'		=> 'Background color',
+				'id'		=> 'background_color',
+				'help_text'	=> '(Optional) The background color of the callout box.  Font color can be modified by selecting text within this shortcode and picking a color from the text editor\'s Font Color dropdown menu.',
+				'type'		=> 'text',
+				'default'	=> '#eeeeee'
+			),
+			array(
+				'name'		=> 'Content Alignment',
+				'id'		=> 'content_align',
+				'type'		=> 'dropdown',
+				'choices'	=> array(
+					array(
+						'name'	=> 'Left',
+						'value'	=> 'left'
+					),
+					array(
+						'name'	=> 'Center',
+						'value'	=> 'center'
+					),
+					array(
+						'name'	=> 'Right',
+						'value'	=> 'right'
+					)
+				)
+			),
+			array(
+				'name'		=> 'Enable affixing',
+				'id'		=> 'affix',
+				'help_text' => 'When set to \'True\', this callout box will affix to the top of the page when scrolled to. It will stay affixed until another affixable callout box is scrolled to, or when the end of the page is reached.',
+				'type'		=> 'dropdown',
+				'choices'	=> array(
+					array(
+						'name'	=> 'True',
+						'value'	=> 1
+					),
+					array(
+						'name'	=> 'False',
+						'value'	=> 0
+					)
+				)
+			),
+			array(
+				'name'		=> 'CSS Classes',
+				'id'		=> 'css_class',
+				'help_text'	=> '(Optional) CSS classes to apply to the callout. Separate classes with a space.',
+				'type'		=> 'text'
+			)
+		);
+	}
+
+	public static function callback ( $attr, $content='' ) {
+		ob_start();
+
+		$bgcolor = $attr['background_color'] ? $attr['background_color'] : '#f0f0f0';
+		$content_align = $attr['content_align'] ? 'text-' . $attr['content_align'] : '';
+		$css_class = $attr['css_class'] ? $attr['css_class'] : '';
+		$inline_css = $attr['inline_css'] ? $attr['inline_css'] : '';
+		$affix = $attr['affix'] ? filter_var( $attr['affix'], FILTER_VALIDATE_BOOLEAN ) : false;
+		$content = do_shortcode( $content );
+
+		$inline_css = 'background-color: ' . $bgcolor . ';' . $inline_css;
+		if ( $affix ) {
+			$css_class .= ' callout-affix';
+		}
+
+		// Close out our existing .span, .row and .container
+		?>
+				</div>
+			</div>
+		</div>
+		<div class="container-wide callout-outer">
+			<div class="callout <?php echo $css_class ?>" style="<?php echo $inline_css ?>">
+				<div class="container">
+					<div class="row content-wrap">
+						<div class="col-md-12 callout-inner <?php echo $content_align ?>">
+							<?php echo $content; ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php
+		// Reopen standard .container, .row and .span
+		?>
+		<div class="container">
+			<div class="row content-wrap">
+				<div class="col-md-12">
+		<?php
+		return ob_get_clean();
+	}
+}
+
+/**
+ * Create a uid search field.
+ **/
 class UIDSearchSC extends Shortcode {
 	public
 		$name        = 'UIDSearch', // The name of the shortcode.
