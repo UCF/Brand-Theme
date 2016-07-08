@@ -23,6 +23,7 @@ if ( $page_protected ) {
 				?>
 			</div>
 			<div class="col-md-9">
+				<h1><?php the_title(); ?></h1>
 				<?php the_content(); ?>
 			</div>
 		</div>
