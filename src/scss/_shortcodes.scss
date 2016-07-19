@@ -112,20 +112,20 @@
     z-index: 3;
 
     &::before {
-        color: rgb(153, 153, 153);
-        content: "\e003";
-        display: block;
-        font-family: 'Glyphicons Halflings';
-        font-size: 24px;
-        height: 45px;
-        left: 0;
-        line-height: 45px;
-        position: absolute;
-        text-align: center;
-        text-indent: 0;
-        top: 0;
-        width: 60px;
-        z-index: 4;
+      color: rgb(153, 153, 153);
+      content: '\e003';
+      display: block;
+      font-family: 'Glyphicons Halflings';
+      font-size: 24px;
+      height: 45px;
+      left: 0;
+      line-height: 45px;
+      position: absolute;
+      text-align: center;
+      text-indent: 0;
+      top: 0;
+      width: 60px;
+      z-index: 4;
     }
 
   }
