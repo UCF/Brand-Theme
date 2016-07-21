@@ -3,13 +3,6 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-3">
-			<?php
-			wp_nav_menu( array(
-				'theme_location' => 'left-menu',
-				'container' => false,
-				'menu_class' => 'list-inline site-left-menu'
-			) );
-			?>
 		</div>
 		<div class="col-md-9">
 			<h1>Log In</h1>

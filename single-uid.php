@@ -6,13 +6,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-3">
-				<?php
-				wp_nav_menu( array(
-					'theme_location' => 'left-menu',
-					'container' => false,
-					'menu_class' => 'list-inline site-left-menu'
-				) );
-				?>
+				<?php echo display_submenu( $post ); ?>
 			</div>
 			<div class="col-md-6">
 	            <h1><?php the_title(); ?></h1>
