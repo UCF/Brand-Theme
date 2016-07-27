@@ -1,6 +1,79 @@
 // Styles that are directly tied to the site footer/navigation should go in
 // this file.
 
-.site-footer {
-  margin: 40px 0;
+.main-site-footer {
+  background: #3e3e3e;
+  margin-top: 20px;
+  padding: 48px 0;
+  text-align: center;
+
+  .main-site-title {
+    color: #fff;
+    font-family: $font-family-sans-serif;
+    font-size: 19px;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  .site-footer-menu {
+    li {
+      border-right: 1px solid #fff;
+      padding-right: 10px;
+
+      a {
+        color: #fff;
+        font-size: 10px;
+      }
+
+      &:last-child {
+        border-right: 0;
+      }
+    }
+  }
+
+  .social {
+    margin-bottom: 24px;
+
+    .social-icon {
+      background: #fff;
+      border-radius: 50%;
+      display: inline-block;
+      height: 32px;
+      margin: 0 5px;
+      padding-top: 10px;
+      width: 32px;
+
+      &:hover {
+        background: #d4d4d4;
+      }
+    }
+
+    span {
+      color: #3e3e3e;
+      font-size: 24px;
+      line-height: 0;
+      padding: 6px;
+
+      &.fa-facebook {
+        font-size: 20px;
+        padding: 6px 8px 0;
+      }
+
+      &.fa-twitter {
+        font-size: 20px;
+      }
+
+      &.fa-google-plus {
+        font-size: 20px;
+        padding: 0 2px 0 4px;
+      }
+
+      &.fa-linkedin {
+        font-size: 20px;
+        padding: 4px 8px;
+      }
+    }
+  }
+
 }

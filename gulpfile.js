@@ -37,6 +37,9 @@ gulp.task('bower', function() {
       gulp.src(config.componentsPath + '/bootstrap-sass-official/assets/fonts/*/*')
         .pipe(gulp.dest(config.fontPath));
 
+      gulp.src(config.componentsPath + '/font-awesome/fonts/*')
+        .pipe(gulp.dest(config.fontPath + '/font-awesome/'));
+
     });
 });
 
