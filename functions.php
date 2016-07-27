@@ -199,4 +199,113 @@ function display_submenu ( $post ) {
 	return ob_get_clean();
 }
 
+
+/**
+ * Methods used to display the footer
+ **/
+function display_social() {
+	$facebook_url   = get_theme_mod_or_default( 'facebook_url' );
+	$twitter_url    = get_theme_mod_or_default( 'twitter_url' );
+	$googleplus_url = get_theme_mod_or_default( 'googleplus_url' );
+	$linkedin_url   = get_theme_mod_or_default( 'linkedin_url' );
+	$instagram_url   = get_theme_mod_or_default( 'instagram_url' );
+	$pinterest_url   = get_theme_mod_or_default( 'pinterest_url' );
+	$youtube_url   = get_theme_mod_or_default( 'youtube_url' );
+	ob_start();
+?>
+	<div class="social">
+	<?php if ( $facebook_url ) : ?>
+		<a href="<?php echo $facebook_url; ?>" target="_blank" class="social-icon ga-event-link">
+			<span class="fa fa-facebook"></span>
+			<span class="sr-only">Like us on Facebook</span>
+		</a>
+	<?php endif; ?>
+	<?php if ( $twitter_url ) : ?>
+		<a href="<?php echo $twitter_url; ?>" target="_blank" class="social-icon ga-event-link">
+			<span class="fa fa-twitter"></span>
+			<span class="sr-only">Follow us on Twitter</span>
+		</a>
+	<?php endif; ?>
+	<?php if ( $googleplus_url ) : ?>
+		<a href="<?php echo $googleplus_url; ?>" target="_blank" class="social-icon ga-event-link">
+			<span class="fa fa-google-plus"></span>
+			<span class="sr-only">Follow us on Google+</span>
+		</a>
+	<?php endif; ?>
+	<?php if ( $linkedin_url ) : ?>
+		<a href="<?php echo $linkedin_url; ?>" target="_blank" class="social-icon ga-event-link">
+			<span class="fa fa-linkedin"></span>
+			<span class="sr-only">View our LinkedIn page</span>
+		</a>
+	<?php endif; ?>
+	<?php if ( $instagram_url ) : ?>
+		<a href="<?php echo $instagram_url; ?>" target="_blank" class="social-icon ga-event-link">
+			<span class="fa fa-instagram"></span>
+			<span class="sr-only">View our Instagram page</span>
+		</a>
+	<?php endif; ?>
+	<?php if ( $pinterest_url ) : ?>
+		<a href="<?php echo $pinterest_url; ?>" target="_blank" class="social-icon ga-event-link">
+			<span class="fa fa-pinterest-p"></span>
+			<span class="sr-only">View our Pinterest page</span>
+		</a>
+	<?php endif; ?>
+	<?php if ( $youtube_url ) : ?>
+		<a href="<?php echo $youtube_url; ?>" target="_blank" class="social-icon ga-event-link">
+			<span class="fa fa-youtube"></span>
+			<span class="sr-only">View our YouTube page</span>
+		</a>
+	<?php endif; ?>
+	</div>
+<?php
+	echo ob_get_clean();
+}
+
+
+function get_remote_menu( $menu_name ) {
+	global $wp_customize;
+	$customizing = isset( $wp_customize );
+	$result_name = $menu_name.'_json';
+	$result = get_transient( $result_name );
+	if ( false === $result || $customizing ) {
+		$opts = array(
+			'http' => array(
+				'timeout' => 15
+			)
+		);
+		$context = stream_context_create( $opts );
+		$file_location = get_theme_mod_or_default( $menu_name.'_feed' );
+		if ( empty( $file_location ) ) {
+			return;
+		}
+		$headers = get_headers( $file_location );
+		$response_code = substr( $headers[0], 9, 3 );
+		if ( $response_code !== '200' ) {
+			return;
+		}
+		$result = json_decode( file_get_contents( $file_location, false, $context ) );
+		if ( ! $customizing ) {
+			set_transient( $result_name, $result, (60 * 60 * 24) );
+		}
+	}
+	return $result;
+}
+
+
+function display_footer_menu() {
+	$menu = get_remote_menu( 'footer_menu' );
+	if ( empty( $menu) ) {
+		return;
+	}
+	ob_start();
+	?>
+		<ul class="list-inline site-footer-menu">
+	<?php foreach( $menu->items as $item ) : ?>
+		<li><a href="<?php echo $item->url; ?>"><?php echo $item->title; ?></a></li>
+	<?php endforeach; ?>
+		</ul>
+	<?php
+	echo ob_get_clean();
+}
+
 ?>

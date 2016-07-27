@@ -131,6 +131,12 @@ add_action( 'customize_register', 'define_customizer_panels' );
 
 function define_customizer_sections( $wp_customize ) {
 	$wp_customize->add_section(
+		THEME_CUSTOMIZER_PREFIX.'remote_menus',
+		array(
+			'title' => 'Remote Menus'
+		)
+	);
+	$wp_customize->add_section(
 		THEME_CUSTOMIZER_PREFIX . 'analytics',
 		array(
 			'title' => 'Analytics'
@@ -189,6 +195,20 @@ add_action( 'customize_register', 'define_customizer_sections' );
  **/
 
 function define_customizer_fields( $wp_customize ) {
+
+	// Remote menu
+	$wp_customize->add_setting(
+		'footer_menu_feed'
+	);
+	$wp_customize->add_control(
+		'footer_menu_feed',
+		array(
+			'type'        => 'text',
+			'label'       => 'Footer Menu Feed',
+			'description' => 'The JSON feed of the www.ucf.edu footer menu.',
+			'section'     => THEME_CUSTOMIZER_PREFIX.'remote_menus'
+		)
+	);
 
 	// Analytics
 	$wp_customize->add_setting(
@@ -380,6 +400,67 @@ function define_customizer_fields( $wp_customize ) {
 		)
 	);
 
+	$wp_customize->add_setting(
+		'googleplus_url'
+	);
+	$wp_customize->add_control(
+		'googleplus_url',
+		array(
+			'type'        => 'url',
+			'label'       => 'Google+ URL',
+			'description' => 'URL to the Google+ user account you would like to direct visitors to.  Example: <em>http://plus.google.com/UCF</em>',
+			'section'     => THEME_CUSTOMIZER_PREFIX . 'social'
+		)
+	);
+	$wp_customize->add_setting(
+		'linkedin_url'
+	);
+	$wp_customize->add_control(
+		'linkedin_url',
+		array(
+			'type'        => 'url',
+			'label'       => 'LinkedIn URL',
+			'description' => 'URL to the LinkedIn user account you would like to direct visitors to.  Example: <em>http://linkedin.com/UCF</em>',
+			'section'     => THEME_CUSTOMIZER_PREFIX . 'social'
+		)
+	);
+	$wp_customize->add_setting(
+		'instagram_url'
+	);
+	$wp_customize->add_control(
+		'instagram_url',
+		array(
+			'type'        => 'url',
+			'label'       => 'Instagram URL',
+			'description' => 'URL to the Instagram user account you would like to direct visitors to.  Example: <em>http://instagram.com/UCF</em>',
+			'section'     => THEME_CUSTOMIZER_PREFIX . 'social'
+		)
+	);
+	$wp_customize->add_setting(
+		'pinterest_url'
+	);
+	$wp_customize->add_control(
+		'pinterest_url',
+		array(
+			'type'        => 'url',
+			'label'       => 'Pinterest URL',
+			'description' => 'URL to the Pinterest user account you would like to direct visitors to.  Example: <em>http://pinterest.com/UCF</em>',
+			'section'     => THEME_CUSTOMIZER_PREFIX . 'social'
+		)
+	);
+	$wp_customize->add_setting(
+		'youtube_url'
+	);
+	$wp_customize->add_control(
+		'youtube_url',
+		array(
+			'type'        => 'url',
+			'label'       => 'YouTube URL',
+			'description' => 'URL to the YouTube user account you would like to direct visitors to.  Example: <em>http://youtube.com/UCF</em>',
+			'section'     => THEME_CUSTOMIZER_PREFIX . 'social'
+		)
+	);
+
 
 	// Web Fonts
 	$wp_customize->add_setting(
@@ -463,44 +544,6 @@ function define_customizer_fields( $wp_customize ) {
 			'section'     => THEME_CUSTOMIZER_PREFIX . 'amazon_credentials'
 		)
 	);
-
-	/**
-	 * If Yoast SEO is activated, assume we're handling ALL SEO-related
-	 * modifications with it.  Don't add Facebook Opengraph theme options.
-	 **/
-	include_once ABSPATH . 'wp-admin/includes/plugin.php';
-
-	if ( !is_plugin_active( 'wordpress-seo/wp-seo.php' ) ) {
-
-		$wp_customize->add_setting(
-			'enable_og',
-			array(
-				'default'     => 1,
-			)
-		);
-		$wp_customize->add_control(
-			'enable_og',
-			array(
-				'type'        => 'checkbox',
-				'label'       => 'Enable Opengraph',
-				'description' => 'Turn on the Opengraph meta information used by Facebook.',
-				'section'     => THEME_CUSTOMIZER_PREFIX . 'social'
-			)
-		);
-
-		$wp_customize->add_setting(
-			'fb_admins'
-		);
-		$wp_customize->add_control(
-			'fb_admins',
-			array(
-				'type'        => 'textarea',
-				'label'       => 'Facebook Admins',
-				'description' => 'Comma separated facebook usernames or user ids of those responsible for administrating any facebook pages created from pages on this site. Example: <em>592952074, abe.lincoln</em>',
-				'section'     => THEME_CUSTOMIZER_PREFIX . 'social'
-			)
-		);
-	}
 
 }
 add_action( 'customize_register', 'define_customizer_fields' );
