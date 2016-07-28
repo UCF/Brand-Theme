@@ -12,67 +12,70 @@
   margin-top: 45px;
 }
 
-hr {
-  border-color: #000;
-  border-width: 2px;
-}
+main {
 
-h1 {
-  font-size: 30px;
-  font-weight: 900;
-  margin: 40px 0 20px;
-  text-transform: uppercase;
-}
-
-h2 {
-  font-size: 30px;
-  font-weight: 300;
-  margin: 40px 0 30px;
-  padding-bottom: 5px;
-  position: relative;
-
-  &::before {
-    border-bottom: 2px solid $ucf-gold;
-    bottom: 0;
-    content: '';
-    height: 1px;
-    left: 0;
-    position: absolute;
-    width: 22px;
+  hr {
+    border-color: #000;
+    border-width: 2px;
   }
 
-  span {
-    font-weight: bold;
+  h1 {
+    font-size: 30px;
+    font-weight: 900;
+    margin: 40px 0 20px;
+    text-transform: uppercase;
   }
-}
 
-h3,
-body .gform_wrapper h3.gform_title {
-  font-size: 30px !important;
-  font-weight: 900;
-  letter-spacing: 1.5px !important;
-  margin-bottom: 5px;
-  text-transform: uppercase;
-}
+  h2 {
+    font-size: 30px;
+    font-weight: 300;
+    margin: 40px 0 30px;
+    padding-bottom: 5px;
+    position: relative;
 
-h4 {
-  padding-bottom: 15px;
-  position: relative;
-  text-transform: uppercase;
+    &::before {
+      border-bottom: 2px solid $ucf-gold;
+      bottom: 0;
+      content: '';
+      height: 1px;
+      left: 0;
+      position: absolute;
+      width: 22px;
+    }
 
-  &::before {
-    border-bottom: 2px solid $ucf-gold;
-    bottom: 0;
-    content: '';
-    height: 1px;
-    left: 0;
-    position: absolute;
-    width: 22px;
+    span {
+      font-weight: bold;
+    }
   }
-}
 
-h5 {
-  font-size: 18px;
+  h3,
+  body .gform_wrapper h3.gform_title {
+    font-size: 30px !important;
+    font-weight: 900;
+    letter-spacing: 1.5px !important;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+
+  h4 {
+    padding-bottom: 15px;
+    position: relative;
+    text-transform: uppercase;
+
+    &::before {
+      border-bottom: 2px solid $ucf-gold;
+      bottom: 0;
+      content: '';
+      height: 1px;
+      left: 0;
+      position: absolute;
+      width: 22px;
+    }
+  }
+
+  h5 {
+    font-size: 18px;
+  }
 }
 
 p.desc,

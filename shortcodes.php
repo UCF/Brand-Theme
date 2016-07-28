@@ -293,6 +293,30 @@ class SideBarSC extends Shortcode {
 }
 
 
+function get_all_images() {
+	$query_images_args = array(
+		'post_type'      => 'attachment',
+		'post_mime_type' => 'image',
+		'post_status'    => 'inherit',
+		'posts_per_page' => - 1,
+	);
+
+	$query_images = new WP_Query( $query_images_args );
+
+	$images = array(
+			'name'	=> '',
+			'value'	=> ''
+	);
+	foreach ( $query_images->posts as $image ) {
+		$images[] = array(
+			'name'	=> get_the_title( $image->ID ),
+			'value'	=> wp_get_attachment_url( $image->ID )
+		);
+	}
+
+	return $images;
+}
+
 /**
  * Create a callout.
  **/
@@ -312,6 +336,12 @@ class CalloutSC extends Shortcode {
 				'help_text'	=> '(Optional) The background color of the callout box.  Font color can be modified by selecting text within this shortcode and picking a color from the text editor\'s Font Color dropdown menu.',
 				'type'		=> 'text',
 				'default'	=> '#eeeeee'
+			),
+			array(
+				'name'		=> 'Background Image',
+				'id'		=> 'background_image',
+				'type'		=> 'dropdown',
+				'choices'	=> get_all_images()
 			),
 			array(
 				'name'		=> 'Content Alignment',
@@ -361,6 +391,7 @@ class CalloutSC extends Shortcode {
 		ob_start();
 
 		$bgcolor = $attr['background_color'] ? $attr['background_color'] : '#f0f0f0';
+		$background_image = $attr['background_image'] ? 'background-image: url(' . $attr['background_image'] . ');' : '';
 		$content_align = $attr['content_align'] ? 'text-' . $attr['content_align'] : '';
 		$css_class = $attr['css_class'] ? $attr['css_class'] : '';
 		$inline_css = $attr['inline_css'] ? $attr['inline_css'] : '';
@@ -378,7 +409,7 @@ class CalloutSC extends Shortcode {
 			</div>
 		</div>
 		<div class="container-wide callout-outer">
-			<div class="callout <?php echo $css_class ?>" style="<?php echo $inline_css ?>">
+			<div class="callout <?php echo $css_class ?>" style="<?php echo $inline_css ?><?php echo $background_image ?>">
 				<div class="container">
 					<div class="row content-wrap">
 						<div class="col-md-12 callout-inner <?php echo $content_align ?>">

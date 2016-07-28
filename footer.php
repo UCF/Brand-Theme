@@ -1,5 +1,8 @@
 		</main>
 		<footer class="site-footer">
+			<div class="contact-marketing">
+				<?php echo get_theme_mod_or_default( 'contact_marketing' ); ?>
+			</div>
 			<div class="main-site-footer">
 				<div class="container">
 					<p class="main-site-title">University of Central Florida</p>
