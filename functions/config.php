@@ -163,6 +163,12 @@ function define_customizer_sections( $wp_customize ) {
 		)
 	);
 	$wp_customize->add_section(
+		THEME_CUSTOMIZER_PREFIX . 'footer',
+		array(
+			'title' => 'Footer'
+		)
+	);
+	$wp_customize->add_section(
 		THEME_CUSTOMIZER_PREFIX . 'social',
 		array(
 			'title' => 'Social Media'
@@ -369,6 +375,21 @@ function define_customizer_fields( $wp_customize ) {
 				'max'  => 50,
 				'step' => 1
 			)
+		)
+	);
+
+
+	// Footer
+	$wp_customize->add_setting(
+		'contact_marketing'
+	);
+	$wp_customize->add_control(
+		'contact_marketing',
+		array(
+			'type'        => 'textarea',
+			'label'       => 'Contact Marketing Copy',
+			'description' => 'Copy in the footer with information about how to contact marketing',
+			'section'     => THEME_CUSTOMIZER_PREFIX . 'footer'
 		)
 	);
 

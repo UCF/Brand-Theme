@@ -1,16 +1,44 @@
 // Styles that are directly tied to the site footer/navigation should go in
 // this file.
 
+.contact-marketing {
+  background-color: #000;
+  color: #fff;
+  padding: 48px 0;
+  text-align: center;
+
+  h4 {
+    font-family: $font-family-archer;
+    font-size: 34px;
+    margin-bottom: 16px;
+    margin-top: 0;
+  }
+
+  p {
+    color: $ucf-gold;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 32px;
+    margin-bottom: 0;
+  }
+
+  address {
+    font-size: 16px;
+    font-weight: 200;
+    margin-bottom: 0;
+  }
+}
+
 .main-site-footer {
   background: #3e3e3e;
-  margin-top: 20px;
-  padding: 48px 0;
+  padding: 60px 0;
   text-align: center;
 
   .main-site-title {
     color: #fff;
     font-family: $font-family-sans-serif;
-    font-size: 19px;
+    font-size: 22px;
+    font-weight: 200;
     letter-spacing: 3px;
     margin-bottom: 12px;
     text-transform: uppercase;
@@ -23,7 +51,8 @@
 
       a {
         color: #fff;
-        font-size: 10px;
+        font-size: 12px;
+        font-weight: 200;
       }
 
       &:last-child {

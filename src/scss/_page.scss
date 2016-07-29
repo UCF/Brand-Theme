@@ -12,67 +12,88 @@
   margin-top: 45px;
 }
 
-hr {
-  border-color: #000;
-  border-width: 2px;
-}
+main {
 
-h1 {
-  font-size: 30px;
-  font-weight: 900;
-  margin: 40px 0 20px;
-  text-transform: uppercase;
-}
-
-h2 {
-  font-size: 30px;
-  font-weight: 300;
-  margin: 40px 0 30px;
-  padding-bottom: 5px;
-  position: relative;
-
-  &::before {
-    border-bottom: 2px solid $ucf-gold;
-    bottom: 0;
-    content: '';
-    height: 1px;
-    left: 0;
-    position: absolute;
-    width: 22px;
+  hr {
+    border-color: #000;
+    border-width: 2px;
   }
 
-  span {
-    font-weight: bold;
+  h1 {
+    font-size: 30px;
+    font-weight: 900;
+    margin: 40px 0 20px;
+    text-transform: uppercase;
   }
-}
 
-h3,
-body .gform_wrapper h3.gform_title {
-  font-size: 30px !important;
-  font-weight: 900;
-  letter-spacing: 1.5px !important;
-  margin-bottom: 5px;
-  text-transform: uppercase;
-}
+  .main-header {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 560px;
 
-h4 {
-  padding-bottom: 15px;
-  position: relative;
-  text-transform: uppercase;
+    div.callout-inner {
+      padding-left: 65%;
+    }
 
-  &::before {
-    border-bottom: 2px solid $ucf-gold;
-    bottom: 0;
-    content: '';
-    height: 1px;
-    left: 0;
-    position: absolute;
-    width: 22px;
+    h2 {
+      color: #fff;
+      font-size: 50px;
+      font-weight: 400;
+      line-height: 60px;
+      margin-top: 130px;
+      text-transform: uppercase;
+    }
+
+    a {
+      color: #000;
+      border-bottom: 1px solid #fff;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      margin-top: 20px;
+      padding-bottom: 20px;
+      text-transform: uppercase;
+
+      &.ucf-gold {
+        color: $ucf-gold;
+      }
+
+      &::after {
+        color: #fff;
+        content: ' >';
+      }
+    }
   }
-}
 
-h5 {
-  font-size: 18px;
+  h3,
+  body .gform_wrapper h3.gform_title {
+    font-size: 30px !important;
+    font-weight: 900;
+    letter-spacing: 1.5px !important;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+
+  h4 {
+    padding-bottom: 15px;
+    position: relative;
+    text-transform: uppercase;
+
+    &::before {
+      border-bottom: 2px solid $ucf-gold;
+      bottom: 0;
+      content: '';
+      height: 1px;
+      left: 0;
+      position: absolute;
+      width: 22px;
+    }
+  }
+
+  h5 {
+    font-size: 18px;
+  }
 }
 
 p.desc,
