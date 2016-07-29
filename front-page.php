@@ -1,15 +1,15 @@
 <?php disallow_direct_load( 'front-page.php' ); ?>
 
-<?php get_header(); the_post(); ?>
-
-<article>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
+<?php the_post(); ?>
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<?php wp_head(); ?>
+	</head>
+	<body ontouchstart <?php echo body_class(); ?>>
+		<main class="site-main">
+			<article>
 				<?php the_content(); ?>
-			</div>
-		</div>
-	</div>
-</article>
+			</article>
 
 <?php get_footer(); ?>

@@ -363,6 +363,23 @@ class CalloutSC extends Shortcode {
 				)
 			),
 			array(
+				'name'		=> 'Close and Reopen Main Container ',
+				'id'		=> 'toggle_container',
+				'help_text' => 'Close the main container div and reopened it. (Should be set to true in most cases)',
+				'type'		=> 'dropdown',
+				'default'	=> 1,
+				'choices'	=> array(
+					array(
+						'name'	=> 'True',
+						'value'	=> 1
+					),
+					array(
+						'name'	=> 'False',
+						'value'	=> 0
+					)
+				)
+			),
+			array(
 				'name'		=> 'Enable affixing',
 				'id'		=> 'affix',
 				'help_text' => 'When set to \'True\', this callout box will affix to the top of the page when scrolled to. It will stay affixed until another affixable callout box is scrolled to, or when the end of the page is reached.',
@@ -395,6 +412,7 @@ class CalloutSC extends Shortcode {
 		$content_align = $attr['content_align'] ? 'text-' . $attr['content_align'] : '';
 		$css_class = $attr['css_class'] ? $attr['css_class'] : '';
 		$inline_css = $attr['inline_css'] ? $attr['inline_css'] : '';
+		$toggle_container = $attr['toggle_container'] ? filter_var( $attr['toggle_container'], FILTER_VALIDATE_BOOLEAN ) : false;
 		$affix = $attr['affix'] ? filter_var( $attr['affix'], FILTER_VALIDATE_BOOLEAN ) : false;
 		$content = do_shortcode( $content );
 
@@ -404,10 +422,13 @@ class CalloutSC extends Shortcode {
 		}
 
 		// Close out our existing .span, .row and .container
-		?>
+
+		if ( $toggle_container ) {
+			?>
+					</div>
 				</div>
 			</div>
-		</div>
+		<?php } ?>
 		<div class="container-wide callout-outer">
 			<div class="callout <?php echo $css_class ?>" style="<?php echo $inline_css ?><?php echo $background_image ?>">
 				<div class="container">
@@ -421,11 +442,13 @@ class CalloutSC extends Shortcode {
 		</div>
 		<?php
 		// Reopen standard .container, .row and .span
-		?>
-		<div class="container">
-			<div class="row content-wrap">
-				<div class="col-md-12">
-		<?php
+		if ( $toggle_container ) {
+			?>
+			<div class="container">
+				<div class="row content-wrap">
+					<div class="col-md-12">
+			<?php
+		}
 		return ob_get_clean();
 	}
 }
