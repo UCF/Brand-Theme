@@ -185,7 +185,7 @@ function display_submenu ( $post ) {
 	ob_start();
 
 	if ( is_page() && $post->post_parent ) {
-		$parent_page = '<li class="parent-item">' . get_post($post->post_parent)->post_title . '</li>';
+		$parent_page = '<li class="parent-item">' . get_post( $post->post_parent )->post_title . '</li>';
 		$childpages = $parent_page . wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->post_parent . '&echo=0' );
 	} else {
 		$page_title = '<li class="parent-item">' . $post->post_title . '</li>';
