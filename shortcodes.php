@@ -318,6 +318,47 @@ function get_all_images() {
 }
 
 /**
+ * Create a heading.
+ **/
+class HeadingSC extends Shortcode {
+	public
+		$name        = 'Heading', // The name of the shortcode.
+		$command     = 'heading', // The command used to call the shortcode.
+		$description = 'Creates a full-width heading specifically for the homepage.', // The description of the shortcode.
+		$callback    = 'callback',
+		$wysiwyg     = True; // Whether to add it to the shortcode Wysiwyg modal.
+
+	public function params() {
+		return array(
+			array(
+				'name'		=> 'Background Image',
+				'id'		=> 'background_image',
+				'type'		=> 'dropdown',
+				'choices'	=> get_all_images()
+			),
+		);
+	}
+
+	public static function callback ( $attr, $content='' ) {
+		ob_start();
+		$background_image = $attr['background_image'] ? 'background-image: url(' . $attr['background_image'] . ');' : '';
+		$content = do_shortcode( $content );
+		?>
+		<div class="container-wide" style="<?php echo $inline_css ?><?php echo $background_image ?>">
+			<div class="heading container">
+				<div class="row">
+					<div class="col-md-5 col-md-offset-7">
+						<?php echo $content; ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php
+		return ob_get_clean();
+	}
+}
+
+/**
  * Create a callout.
  **/
 class CalloutSC extends Shortcode {
@@ -338,12 +379,6 @@ class CalloutSC extends Shortcode {
 				'default'	=> '#eeeeee'
 			),
 			array(
-				'name'		=> 'Background Image',
-				'id'		=> 'background_image',
-				'type'		=> 'dropdown',
-				'choices'	=> get_all_images()
-			),
-			array(
 				'name'		=> 'Content Alignment',
 				'id'		=> 'content_align',
 				'type'		=> 'dropdown',
@@ -359,23 +394,6 @@ class CalloutSC extends Shortcode {
 					array(
 						'name'	=> 'Right',
 						'value'	=> 'right'
-					)
-				)
-			),
-			array(
-				'name'		=> 'Close and Reopen Main Container ',
-				'id'		=> 'toggle_container',
-				'help_text' => 'Close the main container div and reopened it. (Should be set to true in most cases)',
-				'type'		=> 'dropdown',
-				'default'	=> 1,
-				'choices'	=> array(
-					array(
-						'name'	=> 'True',
-						'value'	=> 1
-					),
-					array(
-						'name'	=> 'False',
-						'value'	=> 0
 					)
 				)
 			),
@@ -408,11 +426,9 @@ class CalloutSC extends Shortcode {
 		ob_start();
 
 		$bgcolor = $attr['background_color'] ? $attr['background_color'] : '#f0f0f0';
-		$background_image = $attr['background_image'] ? 'background-image: url(' . $attr['background_image'] . ');' : '';
 		$content_align = $attr['content_align'] ? 'text-' . $attr['content_align'] : '';
 		$css_class = $attr['css_class'] ? $attr['css_class'] : '';
 		$inline_css = $attr['inline_css'] ? $attr['inline_css'] : '';
-		$toggle_container = $attr['toggle_container'] ? filter_var( $attr['toggle_container'], FILTER_VALIDATE_BOOLEAN ) : false;
 		$affix = $attr['affix'] ? filter_var( $attr['affix'], FILTER_VALIDATE_BOOLEAN ) : false;
 		$content = do_shortcode( $content );
 
@@ -422,15 +438,12 @@ class CalloutSC extends Shortcode {
 		}
 
 		// Close out our existing .span, .row and .container
-
-		if ( $toggle_container ) {
-			?>
-					</div>
+		?>
 				</div>
 			</div>
-		<?php } ?>
+		</div>
 		<div class="container-wide callout-outer">
-			<div class="callout <?php echo $css_class ?>" style="<?php echo $inline_css ?><?php echo $background_image ?>">
+			<div class="callout <?php echo $css_class ?>" style="<?php echo $inline_css ?>">
 				<div class="container">
 					<div class="row content-wrap">
 						<div class="col-md-12 callout-inner <?php echo $content_align ?>">
@@ -442,13 +455,11 @@ class CalloutSC extends Shortcode {
 		</div>
 		<?php
 		// Reopen standard .container, .row and .span
-		if ( $toggle_container ) {
-			?>
-			<div class="container">
-				<div class="row content-wrap">
-					<div class="col-md-12">
-			<?php
-		}
+		?>
+		<div class="container">
+			<div class="row content-wrap">
+				<div class="col-md-12">
+		<?php
 		return ob_get_clean();
 	}
 }
