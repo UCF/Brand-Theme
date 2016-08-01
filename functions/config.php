@@ -222,33 +222,6 @@ function define_customizer_fields( $wp_customize ) {
 		)
 	);
 
-	// Header
-	$wp_customize->add_setting(
-		'header_image'
-	);
-	$wp_customize->add_control(
-		'header_image',
-		array(
-			'type'        => 'text',
-			'label'       => 'Header Image',
-			'description' => 'Image displayed in the website header.',
-			'section'     => THEME_CUSTOMIZER_PREFIX.'header'
-		)
-	);
-
-	$wp_customize->add_setting(
-		'header_copy'
-	);
-	$wp_customize->add_control(
-		'header_copy',
-		array(
-			'type'        => 'text',
-			'label'       => 'Header Text',
-			'description' => 'Text displayed in the website header.',
-			'section'     => THEME_CUSTOMIZER_PREFIX.'header'
-		)
-	);
-
 	// Analytics
 	$wp_customize->add_setting(
 		'gw_verify'
