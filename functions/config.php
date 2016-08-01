@@ -131,6 +131,12 @@ add_action( 'customize_register', 'define_customizer_panels' );
 
 function define_customizer_sections( $wp_customize ) {
 	$wp_customize->add_section(
+		THEME_CUSTOMIZER_PREFIX.'header',
+		array(
+			'title' => 'Header'
+		)
+	);
+	$wp_customize->add_section(
 		THEME_CUSTOMIZER_PREFIX.'remote_menus',
 		array(
 			'title' => 'Remote Menus'
@@ -213,6 +219,33 @@ function define_customizer_fields( $wp_customize ) {
 			'label'       => 'Footer Menu Feed',
 			'description' => 'The JSON feed of the www.ucf.edu footer menu.',
 			'section'     => THEME_CUSTOMIZER_PREFIX.'remote_menus'
+		)
+	);
+
+	// Header
+	$wp_customize->add_setting(
+		'header_image'
+	);
+	$wp_customize->add_control(
+		'header_image',
+		array(
+			'type'        => 'text',
+			'label'       => 'Header Image',
+			'description' => 'Image displayed in the website header.',
+			'section'     => THEME_CUSTOMIZER_PREFIX.'header'
+		)
+	);
+
+	$wp_customize->add_setting(
+		'header_copy'
+	);
+	$wp_customize->add_control(
+		'header_copy',
+		array(
+			'type'        => 'text',
+			'label'       => 'Header Text',
+			'description' => 'Text displayed in the website header.',
+			'section'     => THEME_CUSTOMIZER_PREFIX.'header'
 		)
 	);
 
