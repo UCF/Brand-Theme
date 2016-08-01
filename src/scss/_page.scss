@@ -8,16 +8,7 @@
   display: none !important;
 }
 
-.uid-search {
-  margin-top: 45px;
-}
-
 main {
-
-  hr {
-    border-color: #000;
-    border-width: 2px;
-  }
 
   h1 {
     font-size: 30px;
@@ -54,105 +45,10 @@ main {
   h5 {
     font-size: 18px;
   }
-}
 
-.main-header {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 560px;
-
-  div.callout-inner {
-    padding-left: 65%;
+  hr {
+    border-color: #000;
+    border-width: 2px;
   }
 
-  h2 {
-    color: #fff;
-    font-size: 50px;
-    font-weight: 400;
-    line-height: 60px;
-    margin-top: 130px;
-    text-transform: uppercase;
-  }
-
-  a {
-    color: #000;
-    border-bottom: 1px solid #fff;
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    margin-top: 20px;
-    padding-bottom: 20px;
-    text-transform: uppercase;
-
-    &.ucf-gold {
-      color: $ucf-gold;
-    }
-
-    &::after {
-      font-family: FontAwesome;
-      color: #fff;
-      content: ' \f054';
-    }
-  }
-}
-
-p.desc,
-span.gform_description {
-  font-size: 30px;
-  font-weight: 300 !important;
-  line-height: normal;
-  margin-bottom: 20px;
-
-  p {
-    font-size: 16px;
-    margin-top: 10px;
-  }
-}
-
-.loading {
-  margin-top: 20px;
-}
-
-.uid-error {
-  color: $error;
-  margin-top: 20px;
-}
-
-.gform_button,
-.btn-ucf {
-  background-color: $ucf-gold;
-  border-radius: 0;
-  border-width: 0;
-  color: #000;
-  font-weight: bold;
-  letter-spacing: 1.8px;
-  padding: 7px 15px;
-  text-transform: uppercase;
-}
-
-.btn-download {
-  margin-top: 20px;
-}
-
-.request-form {
-  display: none;
-}
-
-.forgot-password {
-  margin-top: 40px;
-}
-
-.single-uid {
-  .btn-ucf {
-    margin-top: 40px;
-  }
-}
-
-.uid-result {
-  margin-bottom: 30px;
-
-  h5 {
-     min-height: 45px;
-  }
-}
+} // main close
