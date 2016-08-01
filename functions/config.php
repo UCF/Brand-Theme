@@ -131,6 +131,12 @@ add_action( 'customize_register', 'define_customizer_panels' );
 
 function define_customizer_sections( $wp_customize ) {
 	$wp_customize->add_section(
+		THEME_CUSTOMIZER_PREFIX.'header',
+		array(
+			'title' => 'Header'
+		)
+	);
+	$wp_customize->add_section(
 		THEME_CUSTOMIZER_PREFIX.'remote_menus',
 		array(
 			'title' => 'Remote Menus'

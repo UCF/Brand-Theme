@@ -265,6 +265,18 @@ class Page extends CustomPostType {
 				'type' => 'file',
 			),
 			array(
+				'name' => 'Background Image',
+				'id' => $prefix.'background_image',
+				'type' => 'file',
+				'description' => 'Image displayed in the header of the page.'
+			),
+			array(
+				'name' => 'Header Copy',
+				'id' => $prefix.'header_copy',
+				'type' => 'text',
+				'description' => 'Copy displayed in the header of the page.'
+			),
+			array(
 				'name' => 'Login Required for this Page',
 				'id' => $prefix.'protected_page',
 				'type' => 'radio',

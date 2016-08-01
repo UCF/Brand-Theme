@@ -185,9 +185,11 @@ function display_submenu ( $post ) {
 	ob_start();
 
 	if ( is_page() && $post->post_parent ) {
-		$childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->post_parent . '&echo=0' );
+		$parent_page = '<li class="parent-item">' . get_post( $post->post_parent )->post_title . '</li>';
+		$childpages = $parent_page . wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->post_parent . '&echo=0' );
 	} else {
-		$childpages = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->ID . '&echo=0' );
+		$page_title = '<li class="parent-item">' . $post->post_title . '</li>';
+		$childpages = $page_title . wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->ID . '&echo=0' );
 	}
 
 	if ( $childpages ) {
