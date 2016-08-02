@@ -41,6 +41,7 @@
 
     &.parent-item {
       border-bottom: 1px solid $ucf-gold;
+      margin-bottom: 25px;
     }
 
     &.parent-item,
@@ -50,6 +51,7 @@
 
     a {
       color: #5c5c5c;
+      letter-spacing: 2px;
     }
   }
 }

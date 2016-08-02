@@ -21,7 +21,9 @@
 						wp_nav_menu( array(
 							'theme_location' => 'header-menu',
 							'container' => false,
-							'menu_class' => 'list-inline site-header-menu',
+							'menu_class' => 'nav navbar-nav',
+							'menu_id' => 'mobile-header-menu',
+							'dropdown_event' => 'hover',
 							'walker' => new Bootstrap_Walker_Nav_Menu()
 						) );
 						?>
