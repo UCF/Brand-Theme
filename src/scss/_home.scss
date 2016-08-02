@@ -1,1 +1,41 @@
 
+.home {
+
+  .heading {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 560px;
+
+    h2 {
+        color: #fff;
+        font-size: 50px;
+        font-weight: 400;
+        line-height: 60px;
+        margin-top: 130px;
+        text-transform: uppercase;
+    }
+
+    a {
+        color: #000;
+        border-bottom: 1px solid #fff;
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        margin-top: 20px;
+        padding-bottom: 20px;
+        text-transform: uppercase;
+
+        &.ucf-gold {
+        color: $ucf-gold;
+        }
+
+        &::after {
+        font-family: FontAwesome;
+        color: #fff;
+        content: ' \f054';
+        }
+    }
+
+  }
+}

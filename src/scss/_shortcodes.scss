@@ -89,7 +89,22 @@
   font-size: 30px;
 }
 
-// UID Search Form
+.sidebar {
+
+  .sidebar-inner {
+    padding: 20px;
+  }
+}
+
+.callout {
+
+  .callout-inner {
+    padding: 20px;
+  }
+}
+
+// UID Search
+
 .uid-search-form-inner {
   display: inline-block;
   float: none;
@@ -131,16 +146,66 @@
   }
 }
 
-.sidebar {
+.uid-search {
+  margin-top: 45px;
+}
 
-  .sidebar-inner {
-    padding: 20px;
+p.desc,
+span.gform_description {
+  font-size: 30px;
+  font-weight: 300 !important;
+  line-height: normal;
+  margin-bottom: 20px;
+
+  p {
+    font-size: 16px;
+    margin-top: 10px;
   }
 }
 
-.callout {
+.loading {
+  margin-top: 20px;
+}
 
-  .callout-inner {
-    padding: 20px;
+.uid-error {
+  color: $error;
+  margin-top: 20px;
+}
+
+.gform_button,
+.btn-ucf {
+  background-color: $ucf-gold;
+  border-radius: 0;
+  border-width: 0;
+  color: #000;
+  font-weight: bold;
+  letter-spacing: 1.8px;
+  padding: 7px 15px;
+  text-transform: uppercase;
+}
+
+.btn-download {
+  margin-top: 20px;
+}
+
+.request-form {
+  display: none;
+}
+
+.forgot-password {
+  margin-top: 40px;
+}
+
+.single-uid {
+  .btn-ucf {
+    margin-top: 40px;
+  }
+}
+
+.uid-result {
+  margin-bottom: 30px;
+
+  h5 {
+     min-height: 45px;
   }
 }
