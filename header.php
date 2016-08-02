@@ -4,30 +4,29 @@
 		<?php wp_head(); ?>
 	</head>
 	<body ontouchstart <?php echo body_class(); ?>>
-		<div class="container-fluid site-header-container">
-			<div class="row">
-				<div class="header-image" style="background-image: url(<?php echo THEME_IMG_URL . '/brand-header.jpg' ?>)"></div>
-			</div>
-			<div class="row">
-				<div class="container site-header">
-					<header class="row">
-						<div class="site-title-container col-md-3">
-							<?php echo display_site_title(); ?>
+		<header>
+			<div class="header-image-container" style="background-image: url(<?php echo wp_get_attachment_url( $post->page_background_image ); ?>);">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-5 col-md-offset-7">
+							<h2><?php echo $post->page_header_copy; ?></h2>
 						</div>
-						<div class="col-md-9">
-							<nav class="site-nav">
-								<?php
-								wp_nav_menu( array(
-									'theme_location' => 'header-menu',
-									'container' => false,
-									'menu_class' => 'list-inline site-header-menu',
-									'walker' => new Bootstrap_Walker_Nav_Menu()
-								) );
-								?>
-							</nav>
-						</div>
-					</header>
+					</div>
 				</div>
 			</div>
-		</div>
+			<div class="nav-container container">
+				<div class="row">
+					<nav class="col-md-12">
+						<?php
+						wp_nav_menu( array(
+							'theme_location' => 'header-menu',
+							'container' => false,
+							'menu_class' => 'list-inline site-header-menu',
+							'walker' => new Bootstrap_Walker_Nav_Menu()
+						) );
+						?>
+					</nav>
+				</div>
+			</div>
+		</header>
 		<main class="site-main">

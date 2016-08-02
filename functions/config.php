@@ -44,6 +44,7 @@ Config::$custom_taxonomies = array(
 Config::$shortcodes = array(
 	'UIDSearchSC',
 	'SideBarSC',
+	'HeadingSC',
 	'CalloutSC'
 );
 
@@ -131,6 +132,12 @@ add_action( 'customize_register', 'define_customizer_panels' );
 
 function define_customizer_sections( $wp_customize ) {
 	$wp_customize->add_section(
+		THEME_CUSTOMIZER_PREFIX.'header',
+		array(
+			'title' => 'Header'
+		)
+	);
+	$wp_customize->add_section(
 		THEME_CUSTOMIZER_PREFIX.'remote_menus',
 		array(
 			'title' => 'Remote Menus'
@@ -160,6 +167,12 @@ function define_customizer_sections( $wp_customize ) {
 		THEME_CUSTOMIZER_PREFIX . 'search',
 		array(
 			'title'       => 'Search',
+		)
+	);
+	$wp_customize->add_section(
+		THEME_CUSTOMIZER_PREFIX . 'footer',
+		array(
+			'title' => 'Footer'
 		)
 	);
 	$wp_customize->add_section(
@@ -369,6 +382,21 @@ function define_customizer_fields( $wp_customize ) {
 				'max'  => 50,
 				'step' => 1
 			)
+		)
+	);
+
+
+	// Footer
+	$wp_customize->add_setting(
+		'contact_marketing'
+	);
+	$wp_customize->add_control(
+		'contact_marketing',
+		array(
+			'type'        => 'textarea',
+			'label'       => 'Contact Marketing Copy',
+			'description' => 'Copy in the footer with information about how to contact marketing',
+			'section'     => THEME_CUSTOMIZER_PREFIX . 'footer'
 		)
 	);
 

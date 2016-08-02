@@ -1,64 +1,44 @@
 // Styles that are directly tied to the site header/navigation should go in
 // this file.
 
-.site-header-container {
-  background-color: $ucf-gold;
-}
-
-.site-header {
-  background-color: $ucf-gold;
-  text-transform: uppercase;
-
-  .site-title-container {
-    background-color: #000;
-    text-align: center;
-  }
-}
-
-.site-title {
-  @extend .h1;
-  background-color: #000;
-  display: inline-block;
-  font-family: $font-family-archer;
-  font-size: 16px;
-  letter-spacing: 2px;
-  margin: 0;
-  padding: 13px 0;
-
-  a {
-    color: #fff;
-  }
-}
-
-.site-nav {
-  margin: 13px 0 0 30px;
-
-  li {
-    font-size: 12px;
-    font-weight: 500;
-    margin-right: 25px;
-  }
-
-  a {
-    color: #000;
-  }
-}
-
-.site-left-menu > li {
-  > a {
-    text-transform: uppercase;
-  }
-
-  .sub-menu {
-    padding-left: 10px;
-  }
-}
-
-.header-image {
+.header-image-container {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 200px;
-  margin: 0 auto;
-  position: relative;
+  min-height: 560px;
+
+  h2 {
+    color: #fff;
+    font-size: 50px;
+    font-weight: 400;
+    line-height: 60px;
+    margin-top: 130px;
+    text-transform: uppercase;
+  }
+}
+
+.nav-container {
+  padding: 0;
+
+  .site-header-menu {
+    border-bottom: 1px solid $ucf-gold;
+
+    .menu-item {
+      margin: 30px 0 25px;
+
+      a {
+        color: #5c5c5c;
+        font-size: 16px;
+        font-weight: 500;
+        letter-spacing: 2px;
+        margin-right: 30px;
+        text-transform: uppercase;
+
+        &::after {
+          font-family: FontAwesome;
+          content: ' \f078';
+        }
+      }
+    }
+  }
 }

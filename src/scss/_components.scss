@@ -24,19 +24,32 @@
 // Left Nav
 .site-left-menu {
   margin-top: 45px;
-  padding-left: 10px;
+  padding-left: 0;
+  margin-left: -10px;
 
   .children {
     padding-left: 20px;
   }
 
   li {
+    border-bottom: 1px solid #5c5c5c;
     display: block;
-    margin: 5px 0;
+    font-size: 16px;
+    margin: 5px 0 10px;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+
+    &.parent-item {
+      border-bottom: 1px solid $ucf-gold;
+    }
+
+    &.parent-item,
+    &.current_page_item {
+      font-weight: 800;
+    }
 
     a {
-      color: #000;
-      font-weight: bold;
+      color: #5c5c5c;
     }
   }
 }

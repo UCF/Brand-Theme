@@ -293,6 +293,71 @@ class SideBarSC extends Shortcode {
 }
 
 
+function get_all_images() {
+	$query_images_args = array(
+		'post_type'      => 'attachment',
+		'post_mime_type' => 'image',
+		'post_status'    => 'inherit',
+		'posts_per_page' => - 1,
+	);
+
+	$query_images = new WP_Query( $query_images_args );
+
+	$images = array(
+			'name'	=> '',
+			'value'	=> ''
+	);
+	foreach ( $query_images->posts as $image ) {
+		$images[] = array(
+			'name'	=> get_the_title( $image->ID ),
+			'value'	=> wp_get_attachment_url( $image->ID )
+		);
+	}
+
+	return $images;
+}
+
+/**
+ * Create a heading.
+ **/
+class HeadingSC extends Shortcode {
+	public
+		$name        = 'Heading', // The name of the shortcode.
+		$command     = 'heading', // The command used to call the shortcode.
+		$description = 'Creates a full-width heading specifically for the homepage.', // The description of the shortcode.
+		$callback    = 'callback',
+		$wysiwyg     = True; // Whether to add it to the shortcode Wysiwyg modal.
+
+	public function params() {
+		return array(
+			array(
+				'name'		=> 'Background Image',
+				'id'		=> 'background_image',
+				'type'		=> 'dropdown',
+				'choices'	=> get_all_images()
+			),
+		);
+	}
+
+	public static function callback ( $attr, $content='' ) {
+		ob_start();
+		$background_image = $attr['background_image'] ? 'background-image: url(' . $attr['background_image'] . ');' : '';
+		$content = do_shortcode( $content );
+		?>
+		<div class="container-wide" style="<?php echo $inline_css ?><?php echo $background_image ?>">
+			<div class="heading container">
+				<div class="row">
+					<div class="col-md-5 col-md-offset-7">
+						<?php echo $content; ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php
+		return ob_get_clean();
+	}
+}
+
 /**
  * Create a callout.
  **/
