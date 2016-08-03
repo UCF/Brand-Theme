@@ -379,6 +379,13 @@ class CalloutSC extends Shortcode {
 				'default'	=> '#eeeeee'
 			),
 			array(
+				'name'		=> 'Image',
+				'id'		=> 'image',
+				'image'		=> 'Display image to the right of the copy.',
+				'type'		=> 'dropdown',
+				'choices'	=> get_all_images()
+			),
+			array(
 				'name'		=> 'Content Alignment',
 				'id'		=> 'content_align',
 				'type'		=> 'dropdown',
@@ -426,6 +433,8 @@ class CalloutSC extends Shortcode {
 		ob_start();
 
 		$bgcolor = $attr['background_color'] ? $attr['background_color'] : '#f0f0f0';
+		$image = $attr['image'] ? $attr['image'] : '';
+		$copy_class = $attr['image'] ? 'col-xs-9 col-xs-offset-0 col-md-6 col-md-offset-3' : 'col-xs-9 col-xs-offset-1 col-md-6 col-md-offset-4';
 		$content_align = $attr['content_align'] ? 'text-' . $attr['content_align'] : '';
 		$css_class = $attr['css_class'] ? $attr['css_class'] : '';
 		$inline_css = $attr['inline_css'] ? $attr['inline_css'] : '';
@@ -446,9 +455,12 @@ class CalloutSC extends Shortcode {
 			<div class="callout <?php echo $css_class ?>" style="<?php echo $inline_css ?>">
 				<div class="container">
 					<div class="row content-wrap">
-						<div class="col-md-12 callout-inner <?php echo $content_align ?>">
-							<?php echo $content; ?>
+						<div class="<?php echo $copy_class ?> <?php echo $content_align ?>"><?php echo $content; ?></div>
+						<?php if( !empty( $image ) ) { ?>
+						<div class="col-xs-3 col-xs-offset-0 col-md-2 col-md-offset-0">
+							<img src="<?php echo $image ?>" width="100%">
 						</div>
+						<?php } ?>
 					</div>
 				</div>
 			</div>
@@ -458,7 +470,7 @@ class CalloutSC extends Shortcode {
 		?>
 		<div class="container">
 			<div class="row content-wrap">
-				<div class="col-md-12">
+				<div class="col-md-9 col-md-offset-3">
 		<?php
 		return ob_get_clean();
 	}

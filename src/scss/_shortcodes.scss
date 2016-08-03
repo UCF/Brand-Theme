@@ -97,9 +97,15 @@
 }
 
 .callout {
+  margin: 40px 0;
 
-  .callout-inner {
-    padding: 20px;
+  .content-wrap {
+    margin-bottom: 70px;
+    margin-top: 70px;
+
+    p {
+      margin-bottom: 0;
+    }
   }
 }
 

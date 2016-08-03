@@ -10,6 +10,10 @@
 
 main {
 
+  .content {
+    margin-top: 45px;
+  }
+
   h1 {
     font-size: 30px;
     font-weight: 900;
@@ -22,7 +26,7 @@ main {
     font-size: 30px !important;
     font-weight: 900;
     letter-spacing: 1.5px !important;
-    margin-bottom: 5px;
+    margin: 0 0 30px;
     text-transform: uppercase;
   }
 
@@ -44,6 +48,10 @@ main {
 
   h5 {
     font-size: 18px;
+  }
+
+  p {
+    margin-bottom: 40px;
   }
 
   hr {

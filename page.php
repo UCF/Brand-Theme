@@ -16,8 +16,7 @@ if ( $page_protected ) {
 			<div class="col-md-3">
 				<?php echo display_submenu( $post ); ?>
 			</div>
-			<div class="col-md-9">
-				<h1><?php the_title(); ?></h1>
+			<div class="content col-md-9">
 				<?php the_content(); ?>
 			</div>
 		</div>
