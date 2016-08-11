@@ -434,7 +434,7 @@ class CalloutSC extends Shortcode {
 
 		$bgcolor = $attr['background_color'] ? $attr['background_color'] : '#f0f0f0';
 		$image = $attr['image'] ? $attr['image'] : '';
-		$copy_class = $attr['image'] ? 'col-xs-9 col-xs-offset-0 col-md-6 col-md-offset-3' : 'col-xs-9 col-xs-offset-1 col-md-6 col-md-offset-4';
+		$copy_class = $attr['image'] ? 'col-xs-9 col-md-6 col-md-offset-3' : 'col-xs-9 col-xs-offset-1 col-md-6 col-md-offset-4';
 		$content_align = $attr['content_align'] ? 'text-' . $attr['content_align'] : '';
 		$css_class = $attr['css_class'] ? $attr['css_class'] : '';
 		$inline_css = $attr['inline_css'] ? $attr['inline_css'] : '';
@@ -457,8 +457,8 @@ class CalloutSC extends Shortcode {
 					<div class="row content-wrap">
 						<div class="<?php echo $copy_class ?> <?php echo $content_align ?>"><?php echo $content; ?></div>
 						<?php if( !empty( $image ) ) { ?>
-						<div class="col-xs-3 col-xs-offset-0 col-md-2 col-md-offset-0">
-							<img src="<?php echo $image ?>" width="100%">
+						<div class="col-xs-3 col-md-2">
+							<img src="<?php echo $image ?>" class="img-responsive">
 						</div>
 						<?php } ?>
 					</div>
