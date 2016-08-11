@@ -35,8 +35,8 @@
 					</p>
 					<p>
 						<strong>Shortcodes</strong> are small snippets of code, wrapped in square brackets [], that do some function or add some
-						predefined content to your story content.  On this site, we use them to add blockquotes, callout boxes, sidebars, and
-						more to Story and Issue content.
+						predefined content to pages.  On this site, we use them to add callout boxes, sidebars, and
+						more to Pages.
 					</p>
 				</li>
 
@@ -107,8 +107,8 @@
 					</p>
 					<p>
 						The shortcodes listed below have a <strong>starting tag</strong> ([my-shortcode]) and an <strong>ending tag</strong> ([/my-shortcode]).  Depending on
-						the shortcode used, such as the [lead] and [blockquote] shortcodes, <strong>content</strong> between the starting and ending tags is used.  Other
-						shortcodes, like the [slideshow] shortcode, do not use any content between the starting and ending tags.
+						the shortcode used, such as the [heading] and [callout] shortcodes, <strong>content</strong> between the starting and ending tags is used.  Other
+						shortcodes, like the [uid-search] shortcode, do not use any content between the starting and ending tags.
 					</p>
 					<p>
 						Some shortcodes use <strong>attributes</strong> to define extra options for whatever the given shortcode does.  For example, the [callout] and [sidebar]
@@ -116,8 +116,7 @@
 					</p>
 
 					<p>
-						The custom available shortcodes for this site, as well as their available attributes and examples, are listed below.  For information about adding
-						shortcodes to post content, please visit the Adding Content via Shortcodes section of the <a href="#stories">Story documentation</a>.
+						The custom available shortcodes for this site, as well as their available attributes and examples, are listed below.
 					</p>
 
 					<h3 id="shortcodes-callout">callout</h3>
@@ -135,7 +134,7 @@
 					<table>
 						<tr>
 							<th scope="col">Name</th>
-							<th scrop="col">Attribute</th>
+							<th scope="col">Attribute</th>
 							<th scope="col">Description</th>
 							<th scope="col">Default Value</th>
 						</tr>
@@ -148,7 +147,7 @@
 						<tr>
 							<td>Image</td>
 							<td>image</td>
-							<td>Image float right in the callout</td>
+							<td>Adds an image to the right of the copy in the callout.</td>
 							<td></td>
 						</tr>
 						<tr>
@@ -196,7 +195,7 @@
 					<table>
 						<tr>
 							<th scope="col">Name</th>
-							<th scrop="col">Attribute</th>
+							<th scope="col">Attribute</th>
 							<th scope="col">Description</th>
 							<th scope="col">Default Value</th>
 						</tr>
@@ -242,7 +241,7 @@
 					<table>
 						<tr>
 							<th scope="col">Name</th>
-							<th scrop="col">Attribute</th>
+							<th scope="col">Attribute</th>
 							<th scope="col">Description</th>
 							<th scope="col">Default Value</th>
 						</tr>
