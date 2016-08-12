@@ -2,13 +2,12 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-md-3">
-		</div>
-		<div class="col-md-9">
+		<div class="col-md-3"></div>
+		<div class="content col-md-9">
 			<h1>Log In</h1>
-			<p class="desc">
+			<h2>
 				You must log in to access or request a Unit Identifier. Please enter your UCF Federated Identity below.
-			</p>
+			</h2>
 			<form method="post" id="ldap-auth-form" action=".">
 				<?php if ( $ldap_error ): ?>
 				<div class="alert alert-danger">
