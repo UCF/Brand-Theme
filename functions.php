@@ -184,17 +184,25 @@ function get_amazon_url() {
 function display_submenu ( $post ) {
 	ob_start();
 
+	$menu_html = '';
+
 	if ( is_page() && $post->post_parent ) {
-		$parent_page = '<li class="parent-item">' . get_post( $post->post_parent )->post_title . '</li>';
-		$childpages = $parent_page . wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->post_parent . '&echo=0' );
+		$child_menu = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->post_parent . '&echo=0' );
+		if( !empty( $child_menu ) ) {
+			$parent_page = '<li class="parent-item">' . get_post( $post->post_parent )->post_title . '</li>';
+			$menu_html = $parent_page . $child_menu;
+		}
 	} else {
-		$page_title = '<li class="parent-item">' . $post->post_title . '</li>';
-		$childpages = $page_title . wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->ID . '&echo=0' );
+		$child_menu = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->ID . '&echo=0' );
+		if( !empty( $child_menu ) ) {
+			$page_title = '<li class="parent-item">' . $post->post_title . '</li>';
+			$menu_html = $page_title . $child_menu;
+		}
 	}
 
-	if ( $childpages ) {
+	if ( !empty( $menu_html ) ) {
 		?>
-			<ul class="site-left-menu"><?php echo $childpages ?></ul>
+			<ul class="site-left-menu"><?php echo $menu_html ?></ul>
 		<?php
 	}
 
