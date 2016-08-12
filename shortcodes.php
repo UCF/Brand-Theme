@@ -500,7 +500,7 @@ class UIDSearchSC extends Shortcode {
 	};
 	</script>
 	<div ng-app="UIDSearch"  ng-controller="UIDSearchController as uidSearchCtrl" ng-cloak>
-		<div class="uid-search-form-inner col-md-9 col-sm-9">
+		<div class="uid-search-form-inner col-lg-10 col-md-12 col-xs-12">
 			<label for="uid-search" class="sr-only">Search for a unit identifier</label>
 			<input id="uid-search" class="form-control input-lg"
 				ng-model="uidSearchCtrl.searchQuery.term" ng-model-options="{ debounce: 300 }"
@@ -514,12 +514,12 @@ class UIDSearchSC extends Shortcode {
 
 		<div ng-if="uidSearchCtrl.results.length">
 			<hr>
-			<h4>Results</h4>
+			<h2>Results</h2>
 			<div class="row">
 				<div ng-repeat="result in uidSearchCtrl.results">
 					<div class="clearfix" ng-if="$index % 3 == 0"></div>
 					<div class="col-md-4 uid-result">
-						<h5>{{ result.post_title }}</h5>
+						<h3>{{ result.post_title }}</h3>
 						<img ng-src="<?php echo get_amazon_url() ?>{{ result.post_name }}/{{ result.post_name }}.png" width="100%">
 						<a href="<?php echo get_amazon_url() ?>{{ result.post_name }}/{{ result.post_name }}.zip"
 							class="btn btn-ucf btn-download">

@@ -121,115 +121,121 @@
 
 // UID Search
 
-.uid-search-form-inner {
-  display: inline-block;
-  float: none;
-  padding: 0;
-  position: relative;
-
-  button {
-    background-color: transparent;
-    border: 0 solid transparent;
-    bottom: 0;
-    box-sizing: border-box;
-    height: 50px;
-    line-height: 50px;
-    overflow: hidden;
-    position: absolute;
-    right: 0;
-    text-indent: 70px;
-    top: 0;
-    width: 54px;
-    z-index: 3;
-
-    &::before {
-      color: rgb(153, 153, 153);
-      content: '\e003';
-      display: block;
-      font-family: 'Glyphicons Halflings';
-      font-size: 24px;
-      height: 45px;
-      left: 0;
-      line-height: 45px;
-      position: absolute;
-      text-align: center;
-      text-indent: 0;
-      top: 0;
-      width: 60px;
-      z-index: 4;
-    }
-
-  }
-}
-
-body .gform_wrapper h3.gform_title {
-  font-size: 30px !important;
-  font-weight: 900;
-  letter-spacing: 1.5px !important;
-  margin: 0 0 30px;
-  text-transform: uppercase;
-}
-
 .uid-search {
-  margin-top: 45px;
-}
+  min-height: 300px;
 
-p.desc,
-span.gform_description {
-  font-size: 30px;
-  font-weight: 300 !important;
-  line-height: normal;
-  margin-bottom: 20px;
+  .uid-search-form-inner {
+    display: inline-block;
+    float: none;
+    padding: 0;
+    position: relative;
 
-  p {
-    font-size: 16px;
-    margin-top: 10px;
+    button {
+      background-color: transparent;
+      border: 0 solid transparent;
+      bottom: 0;
+      box-sizing: border-box;
+      height: 50px;
+      line-height: 50px;
+      overflow: hidden;
+      position: absolute;
+      right: 0;
+      text-indent: 70px;
+      top: 0;
+      width: 54px;
+      z-index: 3;
+
+      &::before {
+        color: rgb(153, 153, 153);
+        content: '\e003';
+        display: block;
+        font-family: 'Glyphicons Halflings';
+        font-size: 24px;
+        height: 45px;
+        left: 0;
+        line-height: 45px;
+        position: absolute;
+        text-align: center;
+        text-indent: 0;
+        top: 0;
+        width: 60px;
+        z-index: 4;
+      }
+
+    }
   }
-}
 
-.loading {
-  margin-top: 20px;
-}
+  body .gform_wrapper h3.gform_title {
+    font-size: 30px !important;
+    font-weight: 900;
+    letter-spacing: 1.5px !important;
+    margin: 0 0 30px;
+    text-transform: uppercase;
+  }
 
-.uid-error {
-  color: $error;
-  margin-top: 20px;
-}
+  p.desc,
+  span.gform_description {
+    font-family: $font-family-archer;
+    font-size: 28px;
+    font-weight: 400 !important;
+    line-height: normal;
+    margin-bottom: 20px;
 
-.gform_button,
-.btn-ucf {
-  background-color: $ucf-gold;
-  border-radius: 0;
-  border-width: 0;
-  color: #000;
-  font-weight: bold;
-  letter-spacing: 1.8px;
-  padding: 7px 15px;
-  text-transform: uppercase;
-}
+    p {
+      font-family: $font-family-sans-serif;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+  }
 
-.btn-download {
-  margin-top: 20px;
-}
+  div.gfield_description {
+    line-height: 22px;
+  }
 
-.request-form {
-  display: none;
-}
+  .loading {
+    margin-top: 20px;
+  }
 
-.forgot-password {
-  margin-top: 40px;
-}
+  .uid-error {
+    color: $error;
+    margin-top: 20px;
+  }
 
-.single-uid {
+  .gform_button,
   .btn-ucf {
+    background-color: $ucf-gold;
+    border-radius: 0;
+    border-width: 0;
+    color: #000;
+    font-weight: bold;
+    letter-spacing: 1.8px;
+    padding: 7px 15px;
+    text-transform: uppercase;
+  }
+
+  .btn-download {
+    margin-top: 20px;
+  }
+
+  .request-form {
+    display: none;
+  }
+
+  .forgot-password {
     margin-top: 40px;
   }
-}
 
-.uid-result {
-  margin-bottom: 30px;
+  .single-uid {
+    .btn-ucf {
+      margin-top: 40px;
+    }
+  }
 
-  h5 {
-     min-height: 45px;
+  .uid-result {
+    margin-bottom: 30px;
+
+    h3 {
+      min-height: 55px;
+    }
   }
 }
