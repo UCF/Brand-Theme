@@ -100,8 +100,18 @@
   margin: 40px 0;
 
   .content-wrap {
-    margin-bottom: 70px;
-    margin-top: 70px;
+    margin: 80px -10px;
+
+    h2 {
+      font-family: $font-family-archer;
+      font-size: 40px;
+      font-weight: 600;
+      text-transform: none;
+
+      &::before {
+        border-bottom: 0;
+      }
+    }
 
     p {
       margin-bottom: 0;
@@ -150,6 +160,14 @@
     }
 
   }
+}
+
+body .gform_wrapper h3.gform_title {
+  font-size: 30px !important;
+  font-weight: 900;
+  letter-spacing: 1.5px !important;
+  margin: 0 0 30px;
+  text-transform: uppercase;
 }
 
 .uid-search {
