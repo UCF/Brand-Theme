@@ -121,6 +121,22 @@
 
 // UID Search
 
+.gform_button,
+.btn-ucf {
+  background-color: $ucf-gold;
+  border-radius: 0;
+  border-width: 0;
+  color: #000;
+  font-weight: bold;
+  letter-spacing: 1.8px;
+  padding: 7px 15px;
+  text-transform: uppercase;
+}
+
+.forgot-password {
+  margin-top: 40px;
+}
+
 .uid-search {
   min-height: 300px;
 
@@ -201,28 +217,12 @@
     margin-top: 20px;
   }
 
-  .gform_button,
-  .btn-ucf {
-    background-color: $ucf-gold;
-    border-radius: 0;
-    border-width: 0;
-    color: #000;
-    font-weight: bold;
-    letter-spacing: 1.8px;
-    padding: 7px 15px;
-    text-transform: uppercase;
-  }
-
   .btn-download {
     margin-top: 20px;
   }
 
   .request-form {
     display: none;
-  }
-
-  .forgot-password {
-    margin-top: 40px;
   }
 
   .single-uid {
