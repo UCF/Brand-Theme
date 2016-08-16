@@ -13,10 +13,7 @@ if ( $page_protected ) {
 <article>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-3">
-				<?php echo display_submenu( $post ); ?>
-			</div>
-			<div class="content col-md-9">
+			<div class="content col-md-12">
 				<?php the_content(); ?>
 			</div>
 		</div>
