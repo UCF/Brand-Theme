@@ -9,23 +9,27 @@
 
   h4 {
     font-family: $font-family-archer;
-    font-size: 34px;
+    font-size: 28px;
     margin-bottom: 16px;
     margin-top: 0;
   }
 
   p {
     color: $ucf-gold;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 500;
     line-height: 32px;
     margin-bottom: 0;
   }
 
   address {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 200;
     margin-bottom: 0;
+  }
+
+  a {
+    color: #fff;
   }
 }
 

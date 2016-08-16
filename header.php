@@ -8,7 +8,7 @@
 			<div class="header-image-container" style="background-image: url(<?php echo wp_get_attachment_url( $post->page_background_image ); ?>);">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-5 col-md-offset-7">
+						<div class="col-sm-6 col-sm-offset-3">
 							<h2><?php echo $post->page_header_copy; ?></h2>
 						</div>
 					</div>

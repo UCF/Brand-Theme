@@ -17,7 +17,6 @@ main {
   h1 {
     font-size: 27px;
     font-weight: 700;
-    letter-spacing: 2px;
     margin: 0 0 30px;
     text-transform: uppercase;
   }
@@ -26,7 +25,8 @@ main {
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 2px;
-    padding-bottom: 20px;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
     position: relative;
     text-transform: uppercase;
 
@@ -46,7 +46,8 @@ main {
     font-family: $font-family-archer;
     font-size: 28px;
     font-weight: 400;
-    padding-bottom: 20px;
+    margin-bottom: 15px;
+    padding-bottom: 0;
     text-transform: none;
 
     &::before {
@@ -57,7 +58,11 @@ main {
   p,
   li {
     font-size: 16px;
-    line-height: 30px;
+    line-height: 26px;
+  }
+
+  li {
+    margin-bottom: 10px;
   }
 
   p, ul {
@@ -66,7 +71,7 @@ main {
 
   hr {
     border-color: #000;
-    border-width: 2px;
+    border-width: 1px;
   }
 
 } // main close
