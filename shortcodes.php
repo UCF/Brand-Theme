@@ -434,7 +434,7 @@ class CalloutSC extends Shortcode {
 
 		$bgcolor = $attr['background_color'] ? $attr['background_color'] : '#f0f0f0';
 		$image = $attr['image'] ? $attr['image'] : '';
-		$copy_class = $attr['image'] ? 'col-xs-9 col-md-6 col-md-offset-3' : 'col-xs-9 col-xs-offset-1 col-md-6 col-md-offset-4';
+		$copy_class = $attr['image'] ? 'col-sm-9 col-md-8 col-md-offset-1 col-lg-6 col-lg-offset-2 text-left' : 'col-sm-12 col-md-8 col-md-offset-2';
 		$content_align = $attr['content_align'] ? 'text-' . $attr['content_align'] : '';
 		$css_class = $attr['css_class'] ? $attr['css_class'] : '';
 		$inline_css = $attr['inline_css'] ? $attr['inline_css'] : '';
@@ -470,7 +470,7 @@ class CalloutSC extends Shortcode {
 		?>
 		<div class="container">
 			<div class="row content-wrap">
-				<div class="col-md-9 col-md-offset-3">
+				<div class="col-md-12">
 		<?php
 		return ob_get_clean();
 	}
@@ -499,13 +499,15 @@ class UIDSearchSC extends Shortcode {
 		secret_key: '<?php echo get_theme_mod_or_default( 'secret_key' ) ?>'
 	};
 	</script>
-	<div ng-app="UIDSearch"  ng-controller="UIDSearchController as uidSearchCtrl" ng-cloak>
-		<div class="uid-search-form-inner col-lg-10 col-md-12 col-xs-12">
-			<label for="uid-search" class="sr-only">Search for a unit identifier</label>
-			<input id="uid-search" class="form-control input-lg"
-				ng-model="uidSearchCtrl.searchQuery.term" ng-model-options="{ debounce: 300 }"
-				placeholder="Enter a unit name such as 'College of Sciences' or 'Registars Office'">
-			<button class="btn btn-link" type="submit">Search</button>
+	<div ng-app="UIDSearch" class="uid-search" ng-controller="UIDSearchController as uidSearchCtrl" ng-cloak>
+		<div class="row uid-search-form-inner">
+			<div class="col-md-8">
+				<label for="uid-search" class="sr-only">Search for a unit identifier</label>
+				<input id="uid-search" class="form-control input-lg"
+					ng-model="uidSearchCtrl.searchQuery.term" ng-model-options="{ debounce: 300 }"
+					placeholder="Enter a unit name such as 'College of Sciences' or 'Registars Office'">
+				<button class="btn btn-link" type="submit">Search</button>
+			</div>
 		</div>
 		<div class="glyphicon glyphicons-search"></div>
 		<div class="error uid-error" ng-show="uidSearchCtrl.error"><span class="glyphicon glyphicon-alert"></span> Error loading Unit Identifiers</div>
@@ -515,8 +517,8 @@ class UIDSearchSC extends Shortcode {
 		<div ng-if="uidSearchCtrl.results.length">
 			<hr>
 			<h2>Results</h2>
-			<div class="row">
-				<div class="uid-result-container" ng-repeat="result in uidSearchCtrl.results">
+			<div class="row uid-result-container">
+				<div ng-repeat="result in uidSearchCtrl.results">
 					<div class="clearfix" ng-if="$index % 3 == 0"></div>
 					<div class="col-md-4 uid-result">
 						<h4>{{ result.post_title }}</h4>

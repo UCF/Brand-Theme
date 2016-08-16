@@ -18,8 +18,10 @@
 }
 
 .nav-container {
-  border-bottom: 1px solid $ucf-gold;
-  padding: 0;
+
+  nav {
+    border-bottom: 1px solid $ucf-gold;
+  }
 
   .nav>li>a,
   .nav .open a {
