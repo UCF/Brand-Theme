@@ -24,7 +24,6 @@
 								'container' => false,
 								'menu_class' => 'nav navbar-nav',
 								'menu_id' => 'mobile-header-menu',
-								'dropdown_event' => 'hover',
 								'walker' => new Bootstrap_Walker_Nav_Menu()
 							) );
 							?>

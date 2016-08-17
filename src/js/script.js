@@ -5,6 +5,13 @@
 
 $(function () {
 
+    /**
+     * Navigation Affix
+     */
+    var $navContainer = $('.nav-container'),
+        $menu = $navContainer,
+        offset = $navContainer.offset().top;
+
     var scroll = function() {
         if ($(window).scrollTop() >= offset) {
             $menu.addClass('navbar-fixed-top');
@@ -16,15 +23,23 @@ $(function () {
     };
 
     var onResize = function() {
-        offset = $navContainer.offset().top; // Reduce by 50px to account for university header.
+        offset = $navContainer.offset().top;
     };
 
-    var $navContainer = $('.nav-container'),
-        $menu = $navContainer,
-        offset = $navContainer.offset().top;
+    var initNavAffix = function() {
+        $(document).on('scroll', scroll);
+        $('body').scrollspy({ target: '.nav-container' });
+        $(window).on('resize', onResize);
+        scroll();
+    };
 
-    $(document).on('scroll', scroll);
-    $('body').scrollspy({ target: '.nav-container' });
-    $(window).on('resize', onResize);
-    scroll();
+    /**
+     * Init
+     */
+    var init = function () {
+        initNavAffix();
+    };
+
+    init();
+
 });
