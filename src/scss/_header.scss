@@ -24,6 +24,40 @@
   background-color: #fff;
   border-bottom: 1px solid $ucf-gold;
 
+  .navbar-nav {
+    margin: 0;
+
+    @media (max-width: $screen-sm-max) {
+      .dropdown-menu {
+
+        .menu-item {
+          border-bottom: 0;
+
+          a:hover {
+            background-color: inherit;
+          }
+        }
+      }
+    }
+
+  }
+
+  .navbar-header {
+    background-color: $ucf-gold;
+
+    .navbar-toggle {
+      border-color: #c90;
+
+      &:hover {
+        background-color: #c90;
+      }
+
+      .icon-bar {
+        background-color: #000;
+      }
+    }
+  }
+
   nav {
     padding: 5px 0;
   }
