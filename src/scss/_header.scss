@@ -20,6 +20,7 @@
 }
 
 .nav-container {
+  transition: background-color 0.3s ease;
   background-color: #fff;
   border-bottom: 1px solid $ucf-gold;
 
@@ -46,20 +47,28 @@
 
     a {
       color: #5c5c5c;
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 400;
       letter-spacing: 2px;
       margin-right: 5px;
       text-transform: uppercase;
 
       @media (min-width: $screen-lg-min) {
-        font-size: 16px;
+        font-size: 14px;
         margin-right: 20px;
       }
 
       &:hover {
         color: #000;
       }
+    }
+  }
+
+  &.navbar-fixed-top {
+    background-color: $ucf-gold;
+
+    a {
+      color: #000;
     }
   }
 
@@ -80,7 +89,7 @@
 
       >a {
         @include transition(.5s);
-        font-size: 14px;
+        font-size: 12px;
         margin: 0;
         padding: 12px 0;
 
