@@ -9,15 +9,14 @@ $(function () {
      * Navigation Affix
      */
     var $navContainer = $('.nav-container'),
-        $menu = $navContainer,
         offset = $navContainer.offset().top;
 
     var scroll = function() {
         if ($(window).scrollTop() >= offset) {
-            $menu.addClass('navbar-fixed-top');
+            $navContainer.addClass('navbar-fixed-top');
             $('body').addClass('fixed-navbar');
         } else {
-            $menu.removeClass('navbar-fixed-top');
+            $navContainer.removeClass('navbar-fixed-top');
             $('body').removeClass('fixed-navbar');
         }
     };
