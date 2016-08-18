@@ -42,7 +42,8 @@ main {
   }
 
   // The first h2 on the page has a different style
-  h1 + h2 {
+  h1 + h2,
+  .sub-heading {
     font-family: $font-family-archer;
     font-size: 28px;
     font-weight: 400;
