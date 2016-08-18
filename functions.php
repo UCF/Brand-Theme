@@ -181,34 +181,6 @@ function get_amazon_url() {
 	return AMAZON_AWS_URL . get_theme_mod_or_default( 'amazon_bucket' ) . "/" . get_theme_mod_or_default( 'amazon_folder' ) . "/" ;
 }
 
-function display_submenu ( $post ) {
-	ob_start();
-
-	$menu_html = '';
-
-	if ( is_page() && $post->post_parent ) {
-		$child_menu = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->post_parent . '&echo=0' );
-		if( !empty( $child_menu ) ) {
-			$parent_page = '<li class="parent-item">' . get_post( $post->post_parent )->post_title . '</li>';
-			$menu_html = $parent_page . $child_menu;
-		}
-	} else {
-		$child_menu = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->ID . '&echo=0' );
-		if( !empty( $child_menu ) ) {
-			$page_title = '<li class="parent-item">' . $post->post_title . '</li>';
-			$menu_html = $page_title . $child_menu;
-		}
-	}
-
-	if ( !empty( $menu_html ) ) {
-		?>
-			<ul class="site-left-menu"><?php echo $menu_html ?></ul>
-		<?php
-	}
-
-	return ob_get_clean();
-}
-
 
 /**
  * Methods used to display the footer
