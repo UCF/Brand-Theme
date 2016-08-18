@@ -521,7 +521,7 @@ class UIDSearchSC extends Shortcode {
 				<div ng-repeat="result in uidSearchCtrl.results">
 					<div class="clearfix" ng-if="$index % 3 == 0"></div>
 					<div class="col-md-4 uid-result">
-						<h4>{{ result.post_title }}</h4>
+						<h3>{{ result.post_title }}</h3>
 						<img ng-src="<?php echo get_amazon_url() ?>{{ result.post_name }}/{{ result.post_name }}.png" width="100%">
 						<a href="<?php echo get_amazon_url() ?>{{ result.post_name }}/{{ result.post_name }}.zip"
 							class="btn btn-ucf btn-download">
