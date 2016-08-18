@@ -2,7 +2,13 @@
 <?php get_header(); the_post(); ?>
 
 <article>
-	<?php the_content(); ?>
+	<div class="container">
+		<div class="row">
+			<div class="content col-md-12">
+				<?php the_content(); ?>
+			</div>
+		</div>
+	</div>
 </article>
 
 <?php get_footer(); ?>

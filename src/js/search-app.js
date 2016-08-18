@@ -42,6 +42,9 @@ function UIDSearchController($scope, UIDSearchService) {
             ctrl.noResults = true;
         }
         ctrl.results = data;
+        setTimeout(function () {
+            $(".uid-result-container").find("h4").matchHeight();
+        }, 500);
         $(".request-form").delay(2000).fadeIn();
     }
 

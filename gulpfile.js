@@ -99,6 +99,7 @@ gulp.task('js-main', function() {
   var minified = [
     config.componentsPath + '/bootstrap-sass-official/assets/javascripts/bootstrap.js',
     config.componentsPath + '/angular/angular.js',
+    config.componentsPath + '/matchHeight/dist/jquery.matchHeight-min.js',
     config.jsPath + '/generic-base.js',
     config.jsPath + '/script.js',
     config.jsPath + '/search-app.js'

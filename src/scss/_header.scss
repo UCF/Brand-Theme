@@ -1,33 +1,61 @@
 // Styles that are directly tied to the site header/navigation should go in
 // this file.
 
+// Navbar header images
 .header-image-container {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 560px;
+  min-height: 250px;
 
   h2 {
     color: #fff;
     font-size: 50px;
     font-weight: 400;
     line-height: 60px;
-    margin-top: 130px;
+    margin: 0;
+    padding: 90px 0;
+    text-align: center;
     text-transform: uppercase;
   }
 }
 
+// Navbar
 .nav-container {
+  transition: background-color 0.3s ease;
+  background-color: #fff;
   border-bottom: 1px solid $ucf-gold;
-  padding: 0;
 
-  .nav>li>a,
-  .nav .open a {
-    background-color: transparent;
+  .navbar-header {
+    background-color: $ucf-gold;
+
+    .navbar-toggle {
+      border-color: #c90;
+
+      &:hover {
+        background-color: #c90;
+      }
+
+      .icon-bar {
+        background-color: #000;
+      }
+    }
+  }
+
+  nav {
+    padding: 5px 0;
+
+    .nav {
+      margin: 0;
+
+      >li>a,
+      .open a {
+        background-color: transparent;
+      }
+    }
   }
 
   .menu-item {
-    margin: 30px 0 15px;
 
     &.current-menu-item > a {
       color: #000;
@@ -41,12 +69,16 @@
 
     a {
       color: #5c5c5c;
-      font-size: 16px;
+      font-size: 12px;
       font-weight: 400;
       letter-spacing: 2px;
-      margin-right: 30px;
-      padding-left: 0;
+      margin-right: 5px;
       text-transform: uppercase;
+
+      @media (min-width: $screen-lg-min) {
+        font-size: 14px;
+        margin-right: 20px;
+      }
 
       &:hover {
         color: #000;
@@ -54,12 +86,31 @@
     }
   }
 
+  &.navbar-fixed-top {
+    background-color: $ucf-gold;
+
+    a {
+      color: #000;
+    }
+  }
+
+  // Dropdown Menu
   .dropdown-menu {
     background-color: #f0f0f0;
     border: 0;
     border-radius: 0;
     box-shadow: none;
-    padding: 15px;
+    padding: 0 15px;
+
+    @media (max-width: $screen-sm-max) {
+      .menu-item {
+        border-bottom: 0;
+
+        a:hover {
+          background-color: inherit;
+        }
+      }
+    }
 
     >li {
       border-bottom: 1px solid #aaa;
@@ -71,6 +122,7 @@
 
       >a {
         @include transition(.5s);
+        font-size: 12px;
         margin: 0;
         padding: 12px 0;
 
@@ -80,10 +132,6 @@
         }
       }
     }
-  }
-
-  .dropdown-hover:hover .dropdown-menu {
-    display: block;
   }
 
 }
