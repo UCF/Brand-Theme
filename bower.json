@@ -19,6 +19,6 @@
     "font-awesome": "~4.5.0",
     "typeahead.js": "^0.11.1",
     "angular": "1.5.5",
-    "aws-sdk": "aws-sdk-js#^2.3.14"
+    "aws-sdk": "aws-sdk-js#^2.5.2"
   }
 }

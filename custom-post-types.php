@@ -373,7 +373,7 @@ class Uid extends CustomPostType {
 			),
 			array(
 				'name' => 'UID Artwork',
-				'description' => 'Upload PNG (400px wide image diplayed in UID search results) and ZIP file containing all the UID artwork for the client.',
+				'description' => 'Upload a 400px wide PNG visible by client in UID search and ZIP file containing all the UID artwork for the client.',
 				'id' => $prefix.'amazon',
 				'type' => 'amazon',
 			),
