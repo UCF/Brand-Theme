@@ -335,8 +335,8 @@ WebcomAdmin.S3CRUD = function ($) {
               extension = '.zip';
             }
 
-            var bucketName = creds.bucket + '/' + creds.folder + '/' + postName,
-              params = { Bucket: bucketName, Key: postName + extension, ContentType: $scope.file.type, Body: $scope.file, ServerSideEncryption: 'AES256' };
+            postName = creds.folder + '/' + postName + '/' + postName;
+            var params = { Bucket: creds.bucket, Key: postName + extension, ContentType: $scope.file.type, Body: $scope.file, ServerSideEncryption: 'AES256' };
 
             console.log(params);
 
