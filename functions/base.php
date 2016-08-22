@@ -422,13 +422,17 @@ class AmazonField extends Field {
 						<a class="button button-small" ng-click="fileUploadCtrl.deleteFile($index)">
 							Delete
 						</a>
-						<a href="<?php echo AMAZON_AWS_URL ?>{{ fileUploadCtrl.bucket }}/{{ file.Key }}">
-							{{ file.Key | getfilename }}
-						</a>
+						<p>
+							<a href="<?php echo AMAZON_AWS_URL ?>{{ fileUploadCtrl.bucket }}/{{ file.Key }}">
+								{{ file.Key | getfilename }}
+							</a>
+						</p>
 					</h3>
-
 				</li>
 			</ul>
+			<div>
+				<a href="<?php echo get_permalink( $POST->ID ) ?>">Verify UID download page</a>
+			</div>
 		</div>
 		<?php
 		return ob_get_clean();
