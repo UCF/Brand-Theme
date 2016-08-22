@@ -365,15 +365,15 @@ class Uid extends CustomPostType {
 		$prefix = $this->options( 'name' ).'_';
 		return array(
 			array (
-				'name' => 'Form Request Entry',
-				'description' => 'Select the UID user request form entry.',
+				'name' => 'Requested UID',
+				'description' => 'Select client UID request.',
 				'id' => $prefix.'request',
 				'type' => 'select',
 				'choices' => $this->get_request_entries(),
 			),
 			array(
-				'name' => 'Upload UID Image',
-				'description' => 'Upload PNG and ZIP files. (The files will be renamed to match the permalink.)',
+				'name' => 'UID Artwork',
+				'description' => 'Upload PNG (400px wide image diplayed in UID search results) and ZIP file containing all the UID artwork for the client.',
 				'id' => $prefix.'amazon',
 				'type' => 'amazon',
 			),
