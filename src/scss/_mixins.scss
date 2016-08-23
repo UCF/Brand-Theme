@@ -41,3 +41,9 @@
     background-size: $width $height;
   }
 }
+
+@mixin knockout() {
+  font-family: "Knockout 49 A", "Knockout 49 B";
+  font-style: normal;
+  font-weight: 400;
+}
