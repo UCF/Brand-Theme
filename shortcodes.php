@@ -336,18 +336,45 @@ class HeadingSC extends Shortcode {
 				'type'		=> 'dropdown',
 				'choices'	=> get_all_images()
 			),
+			array(
+				'name'		=> 'Content Alignment',
+				'id'		=> 'content_align',
+				'type'		=> 'dropdown',
+				'choices'	=> array(
+					array(
+						'name'	=> 'Left',
+						'value'	=> 'left'
+					),
+					array(
+						'name'	=> 'Center',
+						'value'	=> 'center'
+					),
+					array(
+						'name'	=> 'Right',
+						'value'	=> 'right'
+					)
+				)
+			),
+			array(
+				'name'		=> 'CSS Classes',
+				'id'		=> 'css_class',
+				'help_text'	=> '(Optional) CSS classes to apply to the callout. Separate classes with a space.',
+				'type'		=> 'text'
+			)
 		);
 	}
 
 	public static function callback ( $attr, $content='' ) {
 		ob_start();
 		$background_image = $attr['background_image'] ? 'background-image: url(' . $attr['background_image'] . ');' : '';
+		$content_align = $attr['content_align'] ? 'text-' . $attr['content_align'] : '';
+		$css_class = $attr['css_class'] ? $attr['css_class'] : '';
 		$content = do_shortcode( $content );
 		?>
 		<div class="container-wide" style="<?php echo $inline_css ?><?php echo $background_image ?>">
 			<div class="heading container">
 				<div class="row">
-					<div class="col-md-5 col-md-offset-7">
+					<div class="col-md-12 <?php echo $css_class ?> <?php echo $content_align ?>">
 						<?php echo $content; ?>
 					</div>
 				</div>
