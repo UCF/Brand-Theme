@@ -360,6 +360,38 @@ class HeadingSC extends Shortcode {
 				'id'		=> 'css_class',
 				'help_text'	=> '(Optional) CSS classes to apply to the callout. Separate classes with a space.',
 				'type'		=> 'text'
+			),
+			array(
+				'name'		=> 'Close Container',
+				'id'		=> 'close_container',
+				'help_text' => 'Close container to extend heading full width.',
+				'type'		=> 'dropdown',
+				'choices'	=> array(
+					array(
+						'name'	=> 'True',
+						'value'	=> 1
+					),
+					array(
+						'name'	=> 'False',
+						'value'	=> 0
+					)
+				)
+			),
+			array(
+				'name'		=> 'Open Container',
+				'id'		=> 'open_container',
+				'help_text' => 'Open container to extend heading full width.',
+				'type'		=> 'dropdown',
+				'choices'	=> array(
+					array(
+						'name'	=> 'True',
+						'value'	=> 1
+					),
+					array(
+						'name'	=> 'False',
+						'value'	=> 0
+					)
+				)
 			)
 		);
 	}
@@ -368,9 +400,16 @@ class HeadingSC extends Shortcode {
 		ob_start();
 		$background_image = $attr['background_image'] ? 'background-image: url(' . $attr['background_image'] . ');' : '';
 		$content_align = $attr['content_align'] ? 'text-' . $attr['content_align'] : '';
+		$inline_css = $attr['inline_css'] ? $attr['inline_css'] : '';
 		$css_class = $attr['css_class'] ? $attr['css_class'] : '';
 		$content = do_shortcode( $content );
-		?>
+
+		// Close out our existing .span, .row and .container
+		if( $attr['close_container'] ): ?>
+				</div>
+			</div>
+		</div>
+		<?php endif; ?>
 		<div class="container-wide" style="<?php echo $inline_css ?><?php echo $background_image ?>">
 			<div class="heading container">
 				<div class="row">
@@ -381,6 +420,13 @@ class HeadingSC extends Shortcode {
 			</div>
 		</div>
 		<?php
+		// Reopen standard .container, .row and .span
+		if( $attr['open_container'] ): ?>
+		<div class="container">
+			<div class="row content-wrap">
+				<div class="col-md-12">
+		<?php
+		endif;
 		return ob_get_clean();
 	}
 }
