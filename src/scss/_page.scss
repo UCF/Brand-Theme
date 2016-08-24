@@ -76,6 +76,36 @@ main {
     border-width: 1px;
   }
 
+  ol {
+    padding: 0;
+
+    li {
+      counter-increment: item;
+      display: block;
+      font-weight: bold;
+      margin-bottom: 10px;
+      padding-left: 40px;
+      text-indent: -46px;
+
+      &::before {
+        background-color: #F8C400;
+        border-radius: 100%;
+        color: white;
+        content: counter(item, decimal);
+        display: inline-block;
+        height: 19px;
+        margin-right: 5px;
+        padding: 0;
+        position: relative;
+        text-align: center;
+        text-indent: 0;
+        top: -2px;
+        vertical-align: bottom;
+        width: 19px;
+      }
+    }
+  }
+
 } // main close
 
 .single-uid {
