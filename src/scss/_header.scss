@@ -9,6 +9,7 @@
   min-height: 250px;
 
   h2 {
+    @include knockout();
     color: #fff;
     font-size: 50px;
     font-weight: 400;

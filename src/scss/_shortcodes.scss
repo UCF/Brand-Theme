@@ -242,32 +242,3 @@
     }
   }
 }
-
-// Heading
-
-.personality-container {
-  min-height: 175px;
-  padding-top: 45px;
-
-  div {
-    padding: 5px 8px;;
-    text-transform: uppercase;
-  }
-
-  .we-are {
-    @include knockout();
-    background-color: #000;
-    color: #fff;
-    display: inline-block;
-    font-size: 18px;
-  }
-
-  .personality {
-    background-color: $ucf-gold;
-    color: #000;
-    font-family: $font-family-sans-serif;
-    font-weight: 600;
-    font-size: 20px;
-    display: inline-block;
-  }
-}
