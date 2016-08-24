@@ -30,14 +30,15 @@ main {
     position: relative;
     text-transform: uppercase;
 
-    &::before {
-      border-bottom: 2px solid $ucf-gold;
+    &::after {
+      background-color: $ucf-gold;
       bottom: 0;
       content: '';
-      height: 1px;
+      display: block;
+      height: 3px;
       left: 0;
       position: absolute;
-      width: 70px;
+      width: 40px;
     }
   }
 
