@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="content col-md-12">
 			<h1>Log In</h1>
-			<p class="sub-heading">
+			<p class="h2">
 				You must log in to access or request a Unit Identifier. Please enter your UCF Federated Identity below.
 			</p>
 			<form method="post" id="ldap-auth-form" action=".">

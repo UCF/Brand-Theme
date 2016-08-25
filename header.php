@@ -22,7 +22,7 @@
 			</div>
 			<div class="nav-container container-fluid">
 				<div class="navbar-header">
-					<span class="navbar-title"></span>
+					<span class="visible-xs navbar-title">Navigation</span>
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mobile-nav" aria-expanded="false">
 						<span class="sr-only">Toggle navigation</span>
 						<span class="icon-bar"></span>

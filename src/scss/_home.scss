@@ -1,26 +1,8 @@
 
 .home {
 
-    h3 {
-        font-family: $font-family-archer;
-        font-size: 20px;
-        font-weight: bold;
-    }
-
     .copy-block {
         padding: 40px 0;
-    }
-
-    p,
-    li {
-        font-size: 12px;
-        line-height: 20px;
-    }
-
-    p.sub-heading {
-        font-size: 18px;
-        line-height: 24px;
-        font-style: italic;
     }
 
     .personality-container {
@@ -38,6 +20,7 @@
             color: #fff;
             display: inline-block;
             font-size: 18px;
+            letter-spacing: 3px;
         }
 
         .personality {
@@ -45,18 +28,19 @@
             color: #000;
             font-family: $font-family-sans-serif;
             font-weight: 600;
-            font-size: 20px;
+            font-size: 24px;
             display: inline-block;
         }
     }
 
-    .secondary-heading {
-        @include knockout();
-        background-color: $ucf-gold;
-        color: #fff;
-        font-size: 46px;
-        line-height: 50px;
-        padding: 30px 0;
-        text-transform: uppercase;
+    .pillars {
+
+        h3 {
+            font-family: $font-family-archer;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 0;
+        }
     }
+
 }
