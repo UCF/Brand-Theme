@@ -13,6 +13,7 @@
     color: #fff;
     font-size: 50px;
     font-weight: 400;
+    letter-spacing: 3px;
     line-height: 60px;
     margin: 0;
     padding: 90px 0;
@@ -54,6 +55,14 @@
         background-color: transparent;
       }
     }
+  }
+
+  .navbar-title {
+      float: left;
+      font-family: Georgia,serif,serif;
+      font-size: 20px;
+      padding: 11px 16px;
+      position: relative;
   }
 
   .menu-item {
