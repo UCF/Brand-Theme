@@ -1,41 +1,46 @@
 
 .home {
 
-  .heading {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 560px;
-
-    h2 {
-        color: #fff;
-        font-size: 50px;
-        font-weight: 400;
-        line-height: 60px;
-        margin-top: 130px;
-        text-transform: uppercase;
+    .copy-block {
+        padding: 40px 0;
     }
 
-    a {
-        color: #000;
-        border-bottom: 1px solid #fff;
-        font-size: 18px;
-        font-weight: 600;
-        letter-spacing: 3px;
-        margin-top: 20px;
-        padding-bottom: 20px;
-        text-transform: uppercase;
+    .personality-container {
+        min-height: 175px;
+        padding-top: 45px;
 
-        &.ucf-gold {
-        color: $ucf-gold;
+        div {
+            padding: 5px 8px;;
+            text-transform: uppercase;
         }
 
-        &::after {
-        font-family: FontAwesome;
-        color: #fff;
-        content: ' \f054';
+        .we-are {
+            @include knockout();
+            background-color: #000;
+            color: #fff;
+            display: inline-block;
+            font-size: 18px;
+            letter-spacing: 3px;
+        }
+
+        .personality {
+            background-color: $ucf-gold;
+            color: #000;
+            font-family: $font-family-sans-serif;
+            font-weight: 600;
+            font-size: 24px;
+            display: inline-block;
         }
     }
 
-  }
+    .pillars {
+
+        h3 {
+            font-family: $font-family-archer;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 0;
+        }
+    }
+
 }

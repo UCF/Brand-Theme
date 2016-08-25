@@ -5,12 +5,11 @@
 <article class="single-uid">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-3">
-				<?php echo display_submenu( $post ); ?>
-			</div>
-			<div class="col-md-6">
+			<div class="content col-md-12">
 	            <h1><?php the_title(); ?></h1>
-                <img src="<?php echo get_amazon_url() . $post->post_name . "/" . $post->post_name;?>.png" width="100%">
+                <img src="<?php echo get_amazon_url() . $post->post_name . "/" . $post->post_name;?>.png">
+			</div>
+			<div class="content col-md-12">
                 <a href="<?php echo get_amazon_url() . $post->post_name . "/" . $post->post_name;?>.zip" class="btn btn-ucf btn-download">Download <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a>
 			</div>
 		</div>

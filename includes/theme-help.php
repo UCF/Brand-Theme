@@ -48,27 +48,26 @@
 					<h3>User UID Search and Request Process</h3>
 					<ul>
 						<li>Users are required to login to search or request a new UID.</li>
-						<li>The user is directed to search for a UID to determine if the UID is availabe.</li>
-						<li>If the user finds the UID they are looking for they can download the UID.</li>
+						<li>The user can search for a UID to determine if the UID is availabe.</li>
+						<li>If the user finds the UID they are looking for they can download a zip file containing all the formats available for the UID.</li>
 						<li>If the UID is not found the user may request a new UID via the UID Request Form displayed below the search results.</li>
-						<li>An email is sent to the designers with the UID information.</li>
+						<li>An email is sent to the designers about the request and the user is sent a confirmation email.</li>
 					</ul>
 
 					<h3>Approval Process</h3>
 					<ul>
-						<li>The designer should navigate to the Forms -> Request A Unit Identifier -> Entries section of the WordPress Admin.</li>
-						<li>Click on the appropriate UID Request</li>
+						<li>Login and navigate to Forms -> Request A Unit Identifier -> Entries section of the WordPress Admin.</li>
+						<li>Click on the UID Request</li>
 						<li>
 							On the right sidebar a Notifications box will be available
 							<ul>
-								<li>Check to box next to "Admin Notification" to resend the request information to designers.</li>
-								<li>Check the box next to the "Request Approved" to send an email to the requester that the UID has been approved and is available to download. Include the link to the new UID in the notes section at the bottom.</li>
-								<li>Check the box next to the "Request Denied" to send an email to the requester notifying them to request has been denied.</li>
+								<li>Check the box next to "Admin Notification" to resend the request information.</li>
+								<li>Check the box next to the "Request Approved" to approve the request and send an email to the requester that the UID has been approved and is available to download. Add the link to the new UID in the notes section at the bottom.</li>
+								<li>Check the box next to the "Request Denied" to deny the request. An email is sent to the requester notifying them the request has been denied.</li>
 							</ul>
 						</li>
 						<li>Prior to approving the request create the new UID images using Illustrator.</li>
-						<li>Create a new UID post and upload a PNG and ZIP file containing a PNG, EPS and PDF.</li>
-						<li>Select the Form Request Entry assoiated with the UID post.</li>
+						<li>Create a new UID post and upload a PNG and ZIP file containing the new UID images.</li>
 					</ul>
 
 				</li>

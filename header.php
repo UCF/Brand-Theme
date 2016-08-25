@@ -5,7 +5,13 @@
 	</head>
 	<body ontouchstart <?php echo body_class(); ?>>
 		<header>
-			<div class="header-image-container" style="background-image: url(<?php echo wp_get_attachment_url( $post->page_background_image ); ?>);">
+			<?php
+				$background_image = THEME_STATIC_URL . "/img/brand-header.jpg";
+				if( $post->page_background_image ) {
+					$background_image = wp_get_attachment_url( $post->page_background_image );
+				}
+			?>
+			<div class="header-image-container" style="background-image: url(<?php echo $background_image ?>);">
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-6 col-sm-offset-3">
@@ -16,7 +22,7 @@
 			</div>
 			<div class="nav-container container-fluid">
 				<div class="navbar-header">
-					<span class="navbar-title"></span>
+					<span class="visible-xs navbar-title">Navigation</span>
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mobile-nav" aria-expanded="false">
 						<span class="sr-only">Toggle navigation</span>
 						<span class="icon-bar"></span>
