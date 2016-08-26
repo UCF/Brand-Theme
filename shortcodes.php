@@ -575,7 +575,7 @@ class UIDSearchSC extends Shortcode {
 	<div ng-app="UIDSearch" class="uid-search" ng-controller="UIDSearchController as uidSearchCtrl" ng-cloak>
 		<div class="row uid-search-form-inner">
 			<div class="col-md-8">
-				<label for="uid-search" class="sr-only">Search for a unit identifier</label>
+				<label for="uid-search" class="sr-only">Search for a Unit Identity Lock-up</label>
 				<input id="uid-search" class="form-control input-lg"
 					ng-model="uidSearchCtrl.searchQuery.term" ng-model-options="{ debounce: 300 }"
 					placeholder="Enter a unit name such as 'College of Sciences' or 'Registars Office'">
