@@ -410,7 +410,7 @@ class HeadingSC extends Shortcode {
 			</div>
 		</div>
 		<?php endif; ?>
-		<div class="container-wide" style="<?php echo $inline_css ?><?php echo $background_image ?>">
+		<div class="container-wide heading" style="<?php echo $inline_css ?><?php echo $background_image ?>">
 			<div class="heading container">
 				<div class="row">
 					<div class="col-md-12 <?php echo $css_class ?> <?php echo $content_align ?>">

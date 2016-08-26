@@ -93,7 +93,7 @@ main {
       font-weight: bold;
       margin-bottom: 15px;
       padding-left: 30px;
-      text-indent: -28px;
+      text-indent: -30px;
 
       &::before {
         background-color: #F8C400;
@@ -101,15 +101,15 @@ main {
         color: white;
         content: counter(item, decimal);
         display: inline-block;
-        height: 19px;
+        height: 24px;
         margin-right: 5px;
         padding: 0;
         position: relative;
         text-align: center;
         text-indent: 0;
-        top: -4px;
+        top: -3px;
         vertical-align: bottom;
-        width: 19px;
+        width: 24px;
       }
     }
   }
