@@ -79,6 +79,22 @@ main {
     margin-bottom: 30px;
   }
 
+  .aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .alignleft {
+      float: left;
+      margin: 0.5em 1em 0.5em 0;
+  }
+
+  .alignright {
+      float: right;
+      margin: 0.5em 0 0.5em 1em;
+  }
+
   hr {
     border-color: #000;
     border-width: 1px;
