@@ -172,7 +172,7 @@ function define_customizer_sections( $wp_customize ) {
 	$wp_customize->add_section(
 		THEME_CUSTOMIZER_PREFIX . 'footer',
 		array(
-			'title' => 'Footer'
+			'title' => 'Header/Footer'
 		)
 	);
 	$wp_customize->add_section(
@@ -386,7 +386,20 @@ function define_customizer_fields( $wp_customize ) {
 	);
 
 
-	// Footer
+	// Header/Footer
+	$wp_customize->add_setting(
+		'default_header'
+	);
+	$wp_customize->add_control(
+		'default_header',
+		array(
+			'type'        => 'text',
+			'label'       => 'Default Header Image',
+			'description' => 'Default header image if one is not specified for the page',
+			'section'     => THEME_CUSTOMIZER_PREFIX . 'footer'
+		)
+	);
+
 	$wp_customize->add_setting(
 		'contact_marketing'
 	);

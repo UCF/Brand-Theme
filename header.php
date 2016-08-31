@@ -6,8 +6,8 @@
 	<body ontouchstart <?php echo body_class(); ?>>
 		<header>
 			<?php
-				$background_image = THEME_STATIC_URL . "/img/brand-header.jpg";
-				if( $post->page_background_image ) {
+				$background_image = get_theme_mod_or_default( 'default_header' );
+				if( !empty( $post->page_background_image ) ) {
 					$background_image = wp_get_attachment_url( $post->page_background_image );
 				}
 			?>
