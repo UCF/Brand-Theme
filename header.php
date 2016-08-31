@@ -7,7 +7,7 @@
 		<header>
 			<?php
 				$background_image = get_theme_mod_or_default( 'default_header' );
-				if( !empty( $post->page_background_image ) ) {
+				if ( get_post_meta( $post->ID, ‘page_background_image’, true ) ) {
 					$background_image = wp_get_attachment_url( $post->page_background_image );
 				}
 			?>
