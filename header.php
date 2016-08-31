@@ -15,7 +15,13 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-6 col-sm-offset-3">
-							<h2><?php echo $post->page_header_copy; ?></h2>
+							<h2>
+								<?php
+								if ( get_post_meta( $post->ID, page_header_copy, true ) ) {
+									echo $post->page_header_copy;
+								}
+								?>
+							</h2>
 						</div>
 					</div>
 				</div>
