@@ -13,7 +13,7 @@ if ( $page_protected ) {
 <article>
 	<div class="container">
 		<div class="row">
-			<div class="content col-md-12">
+			<div class="content col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 				<?php the_content(); ?>
 			</div>
 		</div>
