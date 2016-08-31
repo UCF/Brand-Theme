@@ -507,7 +507,7 @@ class CalloutSC extends Shortcode {
 
 		$bgcolor = $attr['background_color'] ? $attr['background_color'] : '#f0f0f0';
 		$image = $attr['image'] ? $attr['image'] : '';
-		$copy_class = $attr['image'] ? 'col-sm-9 col-md-8 col-md-offset-1 col-lg-6 col-lg-offset-2 text-left' : 'col-sm-12 col-md-8 col-md-offset-2';
+		$copy_class = $attr['image'] ? 'col-sm-12 col-md-7 col-md-offset-1 col-lg-6 col-lg-offset-2 text-left' : 'col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2';
 		$content_align = $attr['content_align'] ? 'text-' . $attr['content_align'] : '';
 		$css_class = $attr['css_class'] ? $attr['css_class'] : '';
 		$inline_css = $attr['inline_css'] ? $attr['inline_css'] : '';
@@ -530,7 +530,7 @@ class CalloutSC extends Shortcode {
 					<div class="row content-wrap">
 						<div class="<?php echo $copy_class ?> <?php echo $content_align ?>"><?php echo $content; ?></div>
 						<?php if( !empty( $image ) ) { ?>
-						<div class="col-xs-3 col-md-2">
+						<div class="col-xs-3 col-md-3">
 							<img src="<?php echo $image ?>" class="img-responsive">
 						</div>
 						<?php } ?>
@@ -543,7 +543,7 @@ class CalloutSC extends Shortcode {
 		?>
 		<div class="container">
 			<div class="row content-wrap">
-				<div class="col-md-12">
+				<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 		<?php
 		return ob_get_clean();
 	}
@@ -573,14 +573,12 @@ class UIDSearchSC extends Shortcode {
 	};
 	</script>
 	<div ng-app="UIDSearch" class="uid-search" ng-controller="UIDSearchController as uidSearchCtrl" ng-cloak>
-		<div class="row uid-search-form-inner">
-			<div class="col-md-8">
+		<div class="uid-search-form-inner">
 				<label for="uid-search" class="sr-only">Search for a Unit Identity Lock-up</label>
 				<input id="uid-search" class="form-control input-lg"
 					ng-model="uidSearchCtrl.searchQuery.term" ng-model-options="{ debounce: 300 }"
 					placeholder="Enter a unit name such as 'College of Sciences' or 'Registars Office'">
 				<button class="btn btn-link" type="submit">Search</button>
-			</div>
 		</div>
 		<div class="glyphicon glyphicons-search"></div>
 		<div class="error uid-error" ng-show="uidSearchCtrl.error"><span class="glyphicon glyphicon-alert"></span> Error loading Unit Identifiers</div>
@@ -593,7 +591,7 @@ class UIDSearchSC extends Shortcode {
 			<div class="row uid-result-container">
 				<div ng-repeat="result in uidSearchCtrl.results">
 					<div class="clearfix" ng-if="$index % 3 == 0"></div>
-					<div class="col-md-4 uid-result">
+					<div class="col-sm-4 col-md-4 uid-result">
 						<h3>{{ result.post_title }}</h3>
 						<img ng-src="<?php echo get_amazon_url() ?>{{ result.post_name }}/{{ result.post_name }}.png" width="100%">
 						<a href="<?php echo get_amazon_url() ?>{{ result.post_name }}/{{ result.post_name }}.zip"
