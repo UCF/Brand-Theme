@@ -23,7 +23,7 @@
 				<?php endif;
 			?>
 				<div class="row">
-					<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+					<div class="col-sm-8 col-md-8">
 						<div class="form-group">
 							<label for="uid-username">NID (Network ID)</label>
 							<input name="uid-username" class="form-control" id="uid-username" type="text" placeholder="NID (Network ID)">
