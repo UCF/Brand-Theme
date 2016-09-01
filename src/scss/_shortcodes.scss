@@ -100,7 +100,10 @@
   margin: 40px 0;
 
   .content-wrap {
-    margin: 80px -10px;
+    margin: 80px 0;
+    @media (max-width: $screen-xs-max) {
+      margin: 30px 0;
+    }
 
     h2 {
       font-family: $font-family-archer;
@@ -110,6 +113,13 @@
 
       &::before {
         border-bottom: 0;
+      }
+    }
+
+    img {
+      margin: 0 auto;
+      @media (max-width: $screen-xs-max) {
+        margin: 20px auto;
       }
     }
 

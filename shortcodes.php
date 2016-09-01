@@ -459,6 +459,21 @@ class CalloutSC extends Shortcode {
 				'choices'	=> get_all_images()
 			),
 			array(
+				'name'		=> 'Image Alignment',
+				'id'		=> 'image_align',
+				'type'		=> 'dropdown',
+				'choices'	=> array(
+					array(
+						'name'	=> 'Left',
+						'value'	=> 'left'
+					),
+					array(
+						'name'	=> 'Right',
+						'value'	=> 'right'
+					)
+				)
+			),
+			array(
 				'name'		=> 'Content Alignment',
 				'id'		=> 'content_align',
 				'type'		=> 'dropdown',
@@ -507,12 +522,18 @@ class CalloutSC extends Shortcode {
 
 		$bgcolor = $attr['background_color'] ? $attr['background_color'] : '#f0f0f0';
 		$image = $attr['image'] ? $attr['image'] : '';
-		$copy_class = $attr['image'] ? 'col-sm-12 col-md-7 col-md-offset-1 col-lg-6 col-lg-offset-2 text-left' : 'col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2';
+		$grid_offset = ' col-md-offset-1 col-lg-offset-2 ';
+		$copy_class = $attr['image'] ? 'col-sm-7 col-md-7 col-lg-6 text-left' : 'col-sm-10 col-md-10 col-lg-8';
 		$content_align = $attr['content_align'] ? 'text-' . $attr['content_align'] : '';
+		$image_align = $attr['image_align'] ? $attr['image_align'] : '';
 		$css_class = $attr['css_class'] ? $attr['css_class'] : '';
 		$inline_css = $attr['inline_css'] ? $attr['inline_css'] : '';
 		$affix = $attr['affix'] ? filter_var( $attr['affix'], FILTER_VALIDATE_BOOLEAN ) : false;
 		$content = do_shortcode( $content );
+
+		if( $image == '' || $image_align == 'right' ) {
+			$copy_class = $copy_class . $grid_offset;
+		}
 
 		$inline_css = 'background-color: ' . $bgcolor . ';' . $inline_css;
 		if ( $affix ) {
@@ -528,9 +549,14 @@ class CalloutSC extends Shortcode {
 			<div class="callout <?php echo $css_class ?>" style="<?php echo $inline_css ?>">
 				<div class="container">
 					<div class="row content-wrap">
+						<?php if( !empty( $image ) && $image_align == 'left' ) { ?>
+						<div class="col-sm-3 col-md-3 <?php echo $grid_offset ?>">
+							<img src="<?php echo $image ?>" class="img-responsive">
+						</div>
+						<?php } ?>
 						<div class="<?php echo $copy_class ?> <?php echo $content_align ?>"><?php echo $content; ?></div>
-						<?php if( !empty( $image ) ) { ?>
-						<div class="col-xs-3 col-md-3">
+						<?php if( !empty( $image ) && $image_align == 'right' ) { ?>
+						<div class="col-sm-3 col-md-3">
 							<img src="<?php echo $image ?>" class="img-responsive">
 						</div>
 						<?php } ?>
