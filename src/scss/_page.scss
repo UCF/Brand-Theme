@@ -142,6 +142,46 @@ main {
 
 } // main close
 
-.single-uid {
-  margin-bottom: 40px;
+.social {
+  margin-bottom: 24px;
+
+  .social-icon {
+    background: #3e3e3e;
+    border-radius: 50%;
+    display: inline-block;
+    height: 32px;
+    margin: 0 5px;
+    padding-top: 10px;
+    width: 32px;
+
+    &:hover {
+      background: #000;
+    }
+  }
+
+  span {
+    color: #fff;
+    font-size: 24px;
+    line-height: 0;
+    padding: 6px;
+
+    &.fa-facebook {
+      font-size: 20px;
+      padding: 6px 8px 0;
+    }
+
+    &.fa-twitter {
+      font-size: 20px;
+    }
+
+    &.fa-google-plus {
+      font-size: 20px;
+      padding: 0 2px 0 4px;
+    }
+
+    &.fa-linkedin {
+      font-size: 20px;
+      padding: 4px 8px;
+    }
+  }
 }

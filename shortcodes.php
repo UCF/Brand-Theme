@@ -622,7 +622,7 @@ class UIDSearchSC extends Shortcode {
 						<img ng-src="<?php echo get_amazon_url() ?>{{ result.post_name }}/{{ result.post_name }}.png" width="100%">
 						<a href="<?php echo get_amazon_url() ?>{{ result.post_name }}/{{ result.post_name }}.zip"
 							class="btn btn-ucf btn-download">
-							Download <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+							Download
 						</a>
 					</div>
 				</div>

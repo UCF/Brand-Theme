@@ -244,6 +244,13 @@
 
   .btn-download {
     margin-top: 20px;
+
+    &::after {
+      content: "\e025";
+      font-family: 'Glyphicons Halflings';
+      position: relative;
+      top: 1px;
+    }
   }
 
   .request-form {
@@ -251,6 +258,8 @@
   }
 
   .single-uid {
+    margin-bottom: 40px;
+
     .btn-ucf {
       margin-top: 40px;
     }
