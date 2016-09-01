@@ -6,9 +6,10 @@
 	<body ontouchstart <?php echo body_class(); ?>>
 		<header>
 			<?php
-				$background_image = get_theme_mod_or_default( 'default_header' );
-				if ( get_post_meta( $post->ID, 'page_background_image', true ) ) {
-					$background_image = wp_get_attachment_url( $post->page_background_image );
+				if ( $background_image = get_post_meta( $post->ID, 'page_background_image', TRUE ) ) {
+					$background_image = wp_get_attachment_url( $background_image );
+				} else {
+					$background_image = get_theme_mod_or_default( 'default_header' );
 				}
 			?>
 			<div class="header-image-container" style="background-image: url(<?php echo $background_image ?>);">
@@ -17,9 +18,9 @@
 						<div class="col-sm-6 col-sm-offset-3">
 							<h2>
 								<?php
-								if ( get_post_meta( $post->ID, page_header_copy, true ) ) {
-									echo $post->page_header_copy;
-								}
+									if( $header_copy = get_post_meta( $post->ID, 'page_header_copy', TRUE ) ) {
+										echo $header_copy;
+									}
 								?>
 							</h2>
 						</div>

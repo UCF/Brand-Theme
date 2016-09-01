@@ -405,7 +405,7 @@ class HeadingSC extends Shortcode {
 		$content = do_shortcode( $content );
 
 		// Close out our existing .span, .row and .container
-		if( $attr['close_container'] ): ?>
+		if( filter_var( $attr['close_container'], FILTER_VALIDATE_BOOLEAN ) ): ?>
 				</div>
 			</div>
 		</div>
@@ -421,7 +421,7 @@ class HeadingSC extends Shortcode {
 		</div>
 		<?php
 		// Reopen standard .container, .row and .span
-		if( $attr['open_container'] ): ?>
+		if( filter_var( $attr['open_container'], FILTER_VALIDATE_BOOLEAN ) ): ?>
 		<div class="container">
 			<div class="row content-wrap">
 				<div class="col-md-12">
