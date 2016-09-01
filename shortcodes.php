@@ -607,9 +607,11 @@ class UIDSearchSC extends Shortcode {
 				<button class="btn btn-link" type="submit">Search</button>
 		</div>
 		<div class="glyphicon glyphicons-search"></div>
-		<div class="error uid-error" ng-show="uidSearchCtrl.error"><span class="glyphicon glyphicon-alert"></span> Error loading Unit Identifiers</div>
+		<div class="error uid-error alert alert-danger" ng-show="uidSearchCtrl.error"><span class="glyphicon glyphicon-alert"></span> Error loading Unit Identifiers</div>
 		<div class="loading" ng-show="uidSearchCtrl.loading"><span class="glyphicon glyphicon-refresh glyphicon-spin"></span> Searching for Unit Identifiers</div>
-		<div class="loading" ng-show="uidSearchCtrl.noResults"><span class="glyphicon glyphicon-refresh glyphicon-spin"></span> No results found for "{{uidSearchCtrl.searchQuery.term}}"</div>
+		<div class="alert alert-info" ng-show="uidSearchCtrl.noResults">
+			<span class="glyphicon glyphicon-comment"></span> We didn't find any unit indentity lock-ups that matched your search. You may request one below.
+		</div>
 
 		<div ng-if="uidSearchCtrl.results.length">
 			<hr>
