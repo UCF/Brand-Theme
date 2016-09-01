@@ -1,6 +1,6 @@
-# UID Manager
+# Brand Guidelines Theme
 
-WordPress theme that provides an interface for browsing and downloading existing UIDs and managing new UID requests.
+WordPress theme for brand website with brand guidelines and provides an interface for browsing and downloading existing UILs and managing new UIL requests.
 
 
 ## Installation Requirements:
