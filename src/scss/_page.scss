@@ -60,8 +60,8 @@ main {
   }
 
   .h3 {
-    font-weight: bold;
     font-size: 16px;
+    font-weight: bold;
     margin-bottom: 12px;
   }
 
@@ -75,7 +75,8 @@ main {
     margin-bottom: 10px;
   }
 
-  p, ul {
+  p,
+  ul {
     margin-bottom: 30px;
   }
 
@@ -86,13 +87,13 @@ main {
   }
 
   .alignleft {
-      float: left;
-      margin: 0.5em 1em 0.5em 0;
+    float: left;
+    margin: .5em 1em .5em 0;
   }
 
   .alignright {
-      float: right;
-      margin: 0.5em 0 0.5em 1em;
+    float: right;
+    margin: .5em 0 .5em 1em;
   }
 
   hr {
@@ -114,7 +115,7 @@ main {
       &::before {
         background-color: #F8C400;
         border-radius: 100%;
-        color: white;
+        color: #fff;
         content: counter(item, decimal);
         display: inline-block;
         height: 24px;
@@ -131,13 +132,13 @@ main {
   }
 
   .callout-lg-heading {
-      @include knockout();
-      background-color: $ucf-gold;
-      color: #fff;
-      font-size: 46px;
-      line-height: 50px;
-      padding: 30px 0;
-      text-transform: uppercase;
+    @include knockout();
+    background-color: $ucf-gold;
+    color: #fff;
+    font-size: 46px;
+    line-height: 50px;
+    padding: 30px 0;
+    text-transform: uppercase;
   }
 
 } // main close
@@ -181,7 +182,7 @@ main {
 
       &.fa-youtube {
         font-size: 20px;
-        padding: 0px 7px;
+        padding: 0 7px;
       }
     }
 
