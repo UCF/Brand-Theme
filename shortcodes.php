@@ -405,12 +405,12 @@ class HeadingSC extends Shortcode {
 		$content = do_shortcode( $content );
 
 		// Close out our existing .span, .row and .container
-		if( $attr['close_container'] ): ?>
+		if( filter_var( $attr['close_container'], FILTER_VALIDATE_BOOLEAN ) ): ?>
 				</div>
 			</div>
 		</div>
 		<?php endif; ?>
-		<div class="container-wide" style="<?php echo $inline_css ?><?php echo $background_image ?>">
+		<div class="container-wide heading" style="<?php echo $inline_css ?><?php echo $background_image ?>">
 			<div class="heading container">
 				<div class="row">
 					<div class="col-md-12 <?php echo $css_class ?> <?php echo $content_align ?>">
@@ -421,7 +421,7 @@ class HeadingSC extends Shortcode {
 		</div>
 		<?php
 		// Reopen standard .container, .row and .span
-		if( $attr['open_container'] ): ?>
+		if( filter_var( $attr['open_container'], FILTER_VALIDATE_BOOLEAN ) ): ?>
 		<div class="container">
 			<div class="row content-wrap">
 				<div class="col-md-12">
@@ -457,6 +457,21 @@ class CalloutSC extends Shortcode {
 				'image'		=> 'Display image to the right of the copy.',
 				'type'		=> 'dropdown',
 				'choices'	=> get_all_images()
+			),
+			array(
+				'name'		=> 'Image Alignment',
+				'id'		=> 'image_align',
+				'type'		=> 'dropdown',
+				'choices'	=> array(
+					array(
+						'name'	=> 'Left',
+						'value'	=> 'left'
+					),
+					array(
+						'name'	=> 'Right',
+						'value'	=> 'right'
+					)
+				)
 			),
 			array(
 				'name'		=> 'Content Alignment',
@@ -507,12 +522,18 @@ class CalloutSC extends Shortcode {
 
 		$bgcolor = $attr['background_color'] ? $attr['background_color'] : '#f0f0f0';
 		$image = $attr['image'] ? $attr['image'] : '';
-		$copy_class = $attr['image'] ? 'col-sm-9 col-md-8 col-md-offset-1 col-lg-6 col-lg-offset-2 text-left' : 'col-sm-12 col-md-8 col-md-offset-2';
+		$grid_offset = ' col-md-offset-1 col-lg-offset-2 ';
+		$copy_class = $attr['image'] ? 'col-sm-7 col-md-7 col-lg-6 text-left' : 'col-sm-10 col-md-10 col-lg-8';
 		$content_align = $attr['content_align'] ? 'text-' . $attr['content_align'] : '';
+		$image_align = $attr['image_align'] ? $attr['image_align'] : '';
 		$css_class = $attr['css_class'] ? $attr['css_class'] : '';
 		$inline_css = $attr['inline_css'] ? $attr['inline_css'] : '';
 		$affix = $attr['affix'] ? filter_var( $attr['affix'], FILTER_VALIDATE_BOOLEAN ) : false;
 		$content = do_shortcode( $content );
+
+		if( $image == '' || $image_align == 'right' ) {
+			$copy_class = $copy_class . $grid_offset;
+		}
 
 		$inline_css = 'background-color: ' . $bgcolor . ';' . $inline_css;
 		if ( $affix ) {
@@ -528,9 +549,14 @@ class CalloutSC extends Shortcode {
 			<div class="callout <?php echo $css_class ?>" style="<?php echo $inline_css ?>">
 				<div class="container">
 					<div class="row content-wrap">
+						<?php if( !empty( $image ) && $image_align == 'left' ) { ?>
+						<div class="col-sm-3 col-md-3 <?php echo $grid_offset ?>">
+							<img src="<?php echo $image ?>" class="img-responsive">
+						</div>
+						<?php } ?>
 						<div class="<?php echo $copy_class ?> <?php echo $content_align ?>"><?php echo $content; ?></div>
-						<?php if( !empty( $image ) ) { ?>
-						<div class="col-xs-3 col-md-2">
+						<?php if( !empty( $image ) && $image_align == 'right' ) { ?>
+						<div class="col-sm-3 col-md-3">
 							<img src="<?php echo $image ?>" class="img-responsive">
 						</div>
 						<?php } ?>
@@ -543,7 +569,7 @@ class CalloutSC extends Shortcode {
 		?>
 		<div class="container">
 			<div class="row content-wrap">
-				<div class="col-md-12">
+				<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 		<?php
 		return ob_get_clean();
 	}
@@ -573,19 +599,19 @@ class UIDSearchSC extends Shortcode {
 	};
 	</script>
 	<div ng-app="UIDSearch" class="uid-search" ng-controller="UIDSearchController as uidSearchCtrl" ng-cloak>
-		<div class="row uid-search-form-inner">
-			<div class="col-md-8">
-				<label for="uid-search" class="sr-only">Search for a unit identifier</label>
+		<div class="uid-search-form-inner">
+				<label for="uid-search" class="sr-only">Search for a Unit Identity Lock-up</label>
 				<input id="uid-search" class="form-control input-lg"
 					ng-model="uidSearchCtrl.searchQuery.term" ng-model-options="{ debounce: 300 }"
 					placeholder="Enter a unit name such as 'College of Sciences' or 'Registars Office'">
 				<button class="btn btn-link" type="submit">Search</button>
-			</div>
 		</div>
 		<div class="glyphicon glyphicons-search"></div>
-		<div class="error uid-error" ng-show="uidSearchCtrl.error"><span class="glyphicon glyphicon-alert"></span> Error loading Unit Identifiers</div>
+		<div class="error uid-error alert alert-danger" ng-show="uidSearchCtrl.error"><span class="glyphicon glyphicon-alert"></span> Error loading Unit Identifiers</div>
 		<div class="loading" ng-show="uidSearchCtrl.loading"><span class="glyphicon glyphicon-refresh glyphicon-spin"></span> Searching for Unit Identifiers</div>
-		<div class="loading" ng-show="uidSearchCtrl.noResults"><span class="glyphicon glyphicon-refresh glyphicon-spin"></span> No results found for "{{uidSearchCtrl.searchQuery.term}}"</div>
+		<div class="alert alert-info" ng-show="uidSearchCtrl.noResults">
+			<span class="glyphicon glyphicon-comment"></span> We didn't find any unit indentity lock-ups that matched your search. You may request one below.
+		</div>
 
 		<div ng-if="uidSearchCtrl.results.length">
 			<hr>
@@ -593,12 +619,12 @@ class UIDSearchSC extends Shortcode {
 			<div class="row uid-result-container">
 				<div ng-repeat="result in uidSearchCtrl.results">
 					<div class="clearfix" ng-if="$index % 3 == 0"></div>
-					<div class="col-md-4 uid-result">
+					<div class="col-sm-4 col-md-4 uid-result">
 						<h3>{{ result.post_title }}</h3>
 						<img ng-src="<?php echo get_amazon_url() ?>{{ result.post_name }}/{{ result.post_name }}.png" width="100%">
 						<a href="<?php echo get_amazon_url() ?>{{ result.post_name }}/{{ result.post_name }}.zip"
 							class="btn btn-ucf btn-download">
-							Download <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+							Download
 						</a>
 					</div>
 				</div>

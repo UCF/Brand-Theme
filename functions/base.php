@@ -431,7 +431,7 @@ class AmazonField extends Field {
 				</li>
 			</ul>
 			<div>
-				<a href="<?php echo get_permalink( $POST->ID ) ?>">Verify UID download page</a>
+				<a href="<?php echo get_permalink( $post->ID ) ?>">Verify UIL download page</a>
 			</div>
 		</div>
 		<?php

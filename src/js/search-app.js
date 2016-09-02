@@ -36,10 +36,10 @@ function UIDSearchController($scope, UIDSearchService) {
 
     function setUids(data) {
         ctrl.loading = false;
-        if (data.error === true) {
-            ctrl.error = true;
-        } else if (data.length === 0) {
+        if (data === null) {
             ctrl.noResults = true;
+        } else if (data.error && data.error === true) {
+            ctrl.error = true;
         }
         ctrl.results = data;
         setTimeout(function () {

@@ -1,46 +1,46 @@
 
 .home {
 
-    .copy-block {
-        padding: 40px 0;
+  .copy-block {
+    padding: 40px 0;
+  }
+
+  .personality-container {
+    min-height: 200px;
+    padding-top: 45px;
+
+    div {
+      padding: 5px 8px;
+      text-transform: uppercase;
     }
 
-    .personality-container {
-        min-height: 175px;
-        padding-top: 45px;
-
-        div {
-            padding: 5px 8px;;
-            text-transform: uppercase;
-        }
-
-        .we-are {
-            @include knockout();
-            background-color: #000;
-            color: #fff;
-            display: inline-block;
-            font-size: 18px;
-            letter-spacing: 3px;
-        }
-
-        .personality {
-            background-color: $ucf-gold;
-            color: #000;
-            font-family: $font-family-sans-serif;
-            font-weight: 600;
-            font-size: 24px;
-            display: inline-block;
-        }
+    .we-are {
+      @include knockout();
+      background-color: #000;
+      color: #fff;
+      display: inline-block;
+      font-size: 18px;
+      letter-spacing: 3px;
     }
 
-    .pillars {
-
-        h3 {
-            font-family: $font-family-archer;
-            font-size: 20px;
-            font-weight: bold;
-            margin-top: 0;
-        }
+    .personality {
+      background-color: $ucf-gold;
+      color: #000;
+      font-family: $font-family-sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      display: inline-block;
     }
+  }
+
+  .pillars {
+
+    h3 {
+      font-family: $font-family-archer;
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 0;
+    }
+  }
 
 }

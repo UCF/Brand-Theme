@@ -2,14 +2,10 @@
 
 <div class="container">
 	<div class="row">
-		<div class="content col-md-12">
-			<h1>Log In</h1>
-<<<<<<< HEAD
-			<p class="sub-heading">
-=======
+		<div class="content col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+			<h2>Unit Identity Lock-up Access</h2>
 			<p class="h2">
->>>>>>> single-uid
-				You must log in to access or request a Unit Identifier. Please enter your UCF Federated Identity below.
+				You must log in to access or request a Unit Identity Lock-up. Please enter your UCF Federated Identity (NID) to log in.
 			</p>
 			<form method="post" id="ldap-auth-form" action=".">
 				<?php if ( $ldap_error ): ?>
@@ -27,7 +23,7 @@
 				<?php endif;
 			?>
 				<div class="row">
-					<div class="col-md-8 col-sm-12">
+					<div class="col-md-12">
 						<div class="form-group">
 							<label for="uid-username">NID (Network ID)</label>
 							<input name="uid-username" class="form-control" id="uid-username" type="text" placeholder="NID (Network ID)">

@@ -24,9 +24,13 @@
 
 // Navbar
 .nav-container {
-  transition: background-color 0.3s ease;
   background-color: #fff;
   border-bottom: 1px solid $ucf-gold;
+  transition: background-color .3s ease;
+
+  .navbar-collapse {
+    text-align: center;
+  }
 
   .navbar-header {
     background-color: $ucf-gold;
@@ -45,10 +49,35 @@
   }
 
   nav {
-    padding: 5px 0;
 
     .nav {
-      margin: 0;
+
+      @media (min-width: $screen-md-min) {
+        &.navbar-nav {
+          float: none;
+
+          li {
+            display: inline-block;
+            float: none;
+          }
+        }
+      }
+
+      @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+        &>li>a {
+          font-size: 10px;
+          padding: 10px;
+        }
+      }
+
+      @media (max-width: $screen-xs-max) {
+        &.navbar-nav {
+
+          li {
+            text-align: left;
+          }
+        }
+      }
 
       >li>a,
       .open a {
@@ -58,11 +87,11 @@
   }
 
   .navbar-title {
-      float: left;
-      font-family: Georgia,serif,serif;
-      font-size: 20px;
-      padding: 11px 16px;
-      position: relative;
+    float: left;
+    font-family: $font-family-serif;
+    font-size: 20px;
+    padding: 11px 16px;
+    position: relative;
   }
 
   .menu-item {
@@ -82,12 +111,10 @@
       font-size: 12px;
       font-weight: 400;
       letter-spacing: 2px;
-      margin-right: 5px;
       text-transform: uppercase;
 
       @media (min-width: $screen-lg-min) {
         font-size: 14px;
-        margin-right: 20px;
       }
 
       &:hover {
@@ -112,9 +139,9 @@
     box-shadow: none;
     padding: 0 15px;
 
-    @media (max-width: $screen-sm-max) {
+    @media (max-width: $screen-xs-max) {
       .menu-item {
-        border-bottom: 0;
+        border: 0;
 
         a:hover {
           background-color: inherit;
@@ -124,6 +151,7 @@
 
     >li {
       border-bottom: 1px solid #aaa;
+      display: block !important;
       margin: 0;
 
       &:last-child {
