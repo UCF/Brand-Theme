@@ -141,97 +141,61 @@ main {
     text-transform: uppercase;
   }
 
-} // main close
-
-.social {
-  margin-bottom: 24px;
-
-  .social-icon {
-    background: #3e3e3e;
+  .social-color {
     border-radius: 50%;
     display: inline-block;
     height: 32px;
-    margin: 0 5px;
-    padding-top: 10px;
+    padding: 4px 6px;
     width: 32px;
 
-    span {
-      color: #3e3e3e;
-      font-size: 24px;
-      line-height: 0;
-      padding: 6px;
-
-      &.fa-facebook {
-        font-size: 20px;
-        padding: 6px 10px 0;
-      }
-
-      &.fa-twitter {
-        font-size: 20px;
-      }
-
-      &.fa-google-plus {
-        font-size: 20px;
-        padding: 0 2px 0 4px;
-      }
-
-      &.fa-linkedin {
-        font-size: 20px;
-        padding: 4px 8px;
-      }
-
-      &.fa-youtube {
-        font-size: 20px;
-        padding: 0 7px;
-      }
-    }
-
-    &:hover {
-      background: #000;
+    a {
+      color: #fff;
+      font-size: 20px;
+      text-decoration: none;
+      padding: 2px 2px 0;
     }
 
     &.bg-facebook {
       background: #3b5998;
 
-      span {
-        color: #fff;
-      }
-
       &:hover {
         background: #2f4271;
       }
+
+      .fa-facebook {
+        padding: 3px 4px 0;
+      }
+
     }
 
     &.bg-twitter {
       background: #55acee;
 
-      span {
-        color: #fff;
-      }
-
       &:hover {
         background: #2380a7;
+      }
+
+      .fa-twitter {
+        padding: 3px 2px 0;
       }
     }
 
     &.bg-google-plus {
       background: #dd4b39;
-
-      span {
-        color: #fff;
-      }
+      font-size: 18px;
 
       &:hover {
         background: #a13826;
+      }
+
+      .fa-google-plus {
+        font-size: 18px;
+        padding: 0;
       }
     }
 
     &.bg-linkedin {
       background: #007bb5;
-
-      span {
-        color: #fff;
-      }
 
       &:hover {
         background: #0d5d89;
@@ -241,14 +205,11 @@ main {
     &.bg-youtube {
       background: #bb0000;
 
-      span {
-        color: #fff;
-      }
-
       &:hover {
         background: #94101c;
       }
     }
 
   }
-}
+
+} // main close
