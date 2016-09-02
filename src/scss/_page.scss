@@ -44,11 +44,7 @@ main {
 
   // The first h2 on the page has a different style
   h1 + h2,
-<<<<<<< HEAD
-  .sub-heading {
-=======
   .h2 {
->>>>>>> single-uid
     font-family: $font-family-archer;
     font-size: 28px;
     font-style: italic;
