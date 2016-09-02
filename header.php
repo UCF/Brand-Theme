@@ -4,6 +4,7 @@
 		<?php wp_head(); ?>
 	</head>
 	<body ontouchstart <?php echo body_class(); ?>>
+		<?php echo google_tag_manager(); ?>
 		<header>
 			<?php
 				if ( $background_image = get_post_meta( $post->ID, 'page_background_image', TRUE ) ) {

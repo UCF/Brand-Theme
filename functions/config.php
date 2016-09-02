@@ -244,8 +244,8 @@ function define_customizer_fields( $wp_customize ) {
 		'ga_account',
 		array(
 			'type'        => 'text',
-			'label'       => 'Google Analytics Account',
-			'description' => 'Example: <em>UA-9876543-21</em>. Leave blank for development.',
+			'label'       => 'Google Tag Manager ID',
+			'description' => 'Example: <em>MTG-ABC123</em>. Leave blank for development.',
 			'section'     => THEME_CUSTOMIZER_PREFIX . 'analytics'
 		)
 	);
@@ -665,41 +665,6 @@ function localize_frontend_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'localize_frontend_scripts' );
-
-/**
- * Hook frontend theme script output into wp_head().
- **/
-function hook_frontend_theme_scripts() {
-	ob_start();
-?>
-	<!--[if lte IE 9]>
-	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-
-	<?php if ( GA_ACCOUNT or CB_UID ): ?>
-	<script>
-
-		<?php if ( GA_ACCOUNT ): ?>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-		ga('create', '<?php echo GA_ACCOUNT; ?>', 'auto');
-		ga('send', 'pageview');
-		<?php endif; ?>
-
-		<?php if ( CB_UID ): ?>
-		var CB_UID      = '<?php echo CB_UID; ?>';
-		var CB_DOMAIN   = '<?php echo CB_DOMAIN; ?>';
-		<?php endif; ?>
-
-	</script>
-	<?php endif;?>
-
-<?php
-	echo ob_get_clean();
-}
-add_action( 'wp_head', 'hook_frontend_theme_scripts' );
 
 
 /**
