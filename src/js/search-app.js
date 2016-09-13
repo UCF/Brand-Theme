@@ -45,7 +45,7 @@ function UIDSearchController($scope, UIDSearchService) {
         setTimeout(function () {
             $(".uid-result-container").find("h3").matchHeight();
         }, 500);
-        $(".request-form").delay(2000).fadeIn();
+        $(".request-form").fadeIn();
     }
 
     $scope.$watch(angular.bind(ctrl, function () {
