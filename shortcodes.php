@@ -600,7 +600,7 @@ class UIDSearchSC extends Shortcode {
 	</script>
 	<div ng-app="UIDSearch" class="uid-search" ng-controller="UIDSearchController as uidSearchCtrl" ng-cloak>
 		<div class="uid-search-form-inner">
-				<label for="uid-search" class="sr-only">Search for a Unit Identity Lock up</label>
+				<label for="uid-search" class="sr-only">Search for a Unit Identity Lockup</label>
 				<input id="uid-search" class="form-control input-lg"
 					ng-model="uidSearchCtrl.searchQuery.term" ng-model-options="{ debounce: 300 }"
 					placeholder="Enter a unit name such as 'College of Sciences' or 'Registars Office'">
@@ -610,7 +610,7 @@ class UIDSearchSC extends Shortcode {
 		<div class="error uid-error alert alert-danger" ng-show="uidSearchCtrl.error"><span class="glyphicon glyphicon-alert"></span> Error loading Unit Identifiers</div>
 		<div class="loading" ng-show="uidSearchCtrl.loading"><span class="glyphicon glyphicon-refresh glyphicon-spin"></span> Searching for Unit Identifiers</div>
 		<div class="alert alert-info" ng-show="uidSearchCtrl.noResults">
-			<span class="glyphicon glyphicon-comment"></span> We didn't find any unit indentity lock ups that matched your search. You may request one below.
+			<span class="glyphicon glyphicon-comment"></span> We didn't find any unit indentity lockups that matched your search. You may request one below.
 		</div>
 
 		<div ng-if="uidSearchCtrl.results.length">
