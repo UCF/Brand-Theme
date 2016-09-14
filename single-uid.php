@@ -7,7 +7,7 @@
 		<div class="row">
 			<div class="content col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 	            <h1><?php the_title(); ?></h1>
-                <img src="<?php echo get_amazon_url() . $post->post_name . "/" . $post->post_name;?>.png">
+                <img src="<?php echo get_amazon_url() . $post->post_name . "/" . $post->post_name;?>.png" width="100%">
 			</div>
 			<div class="content margin-bottom-50 col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
                 <a href="<?php echo get_amazon_url() . $post->post_name . "/" . $post->post_name;?>.zip"
