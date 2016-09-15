@@ -207,3 +207,18 @@ dl.inline dt{
     top: 1px;
   }
 }
+
+// Jump links on the Writing Style Guild page
+.jump-fixed-top {
+  background: #000;
+  left: 0;
+  position: fixed;
+  text-align: center;
+  top: 51px;
+  width: 100%;
+  z-index: 500;
+
+  .jump-group {
+    float: none !important;
+  }
+}
