@@ -176,32 +176,49 @@
   }
 }
 
-.color-swatch {
-  border: 2px solid #000;
-  padding: 10px;
 
-  div {
-    height: 100px;
-    width: 100%;
+.jump-group a {
+  padding: 6px 8px;
+}
 
-    &.ucf-black {
-      background-color: $ucf-black;
-    }
+dl.inline dd {
+  display: inline;
+  margin: 0;
 
-    &.ucf-gold {
-      background-color: $ucf-gold;
-    }
-
-    &.ucf-gold-metalic {
-      background-color: $ucf-gold-metalic;
-    }
+  ul {
+    margin: 5px 0 0;
   }
+}
+dl.inline dd:after{
+  display: block;
+  content: '';
+}
+dl.inline dt{
+  display: inline-block;
+  margin: 30px 0 0;
+}
 
-  p {
-    font-weight: bold;
-    margin-bottom: 0;
-    margin-top: 5px;
-    text-align: center;
-    text-transform: uppercase;
+.btn-download {
+
+  &::after {
+    content: '\e025';
+    font-family: 'Glyphicons Halflings';
+    position: relative;
+    top: 1px;
+  }
+}
+
+// Jump links on the Writing Style Guild page
+.jump-fixed-top {
+  background: #000;
+  left: 0;
+  position: fixed;
+  text-align: center;
+  top: 51px;
+  width: 100%;
+  z-index: 500;
+
+  .jump-group {
+    float: none !important;
   }
 }

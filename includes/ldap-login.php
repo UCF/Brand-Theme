@@ -3,9 +3,9 @@
 <div class="container">
 	<div class="row">
 		<div class="content col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-			<h2>Unit Identity Lock-up Access</h2>
+			<h2>Unit Identity Lockup Access</h2>
 			<p class="h2">
-				You must log in to access or request a Unit Identity Lock-up. Please enter your UCF Federated Identity (NID) to log in.
+				You must log in to access or request a Unit Identity Lockup. Please enter your UCF Federated Identity (NID) to log in.
 			</p>
 			<form method="post" id="ldap-auth-form" action=".">
 				<?php if ( $ldap_error ): ?>
