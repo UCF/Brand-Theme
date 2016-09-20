@@ -31,7 +31,7 @@ define('AMAZON_AWS_URL', 'https://s3.amazonaws.com/' );
 Config::$custom_post_types = array(
 	'Page',
 	'Attachment',
-	'Uid'
+	'Uil'
 );
 
 
