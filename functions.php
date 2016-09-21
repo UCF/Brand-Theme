@@ -158,8 +158,11 @@ function attach_post_metadata_properties( $post ) {
 
 function api_get_uils( $request ) {
 	$posts = get_posts( array(
+		'orderby' => 'title',
+		'order'   => 'ASC',
 		'post_type' => 'uil',
-		'post_per_page' => -1,
+		'nopaging' => true,
+		'posts_per_page' => -1,
 		's' => $request->get_param( 's' )
 	) );
 

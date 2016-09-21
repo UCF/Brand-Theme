@@ -589,6 +589,7 @@ class UIDSearchSC extends Shortcode {
 		ob_start();
 		$bucket = get_theme_mod_or_default( 'amazon_bucket' );
 		$folder = get_theme_mod_or_default( 'amazon_folder' );
+		$uil_results_copy = get_theme_mod_or_default( 'uil_results_copy' );
 ?>
 	<script>
 		var creds = {
@@ -616,7 +617,9 @@ class UIDSearchSC extends Shortcode {
 		<div ng-if="uidSearchCtrl.results.length">
 			<hr>
 			<h2>Results</h2>
-			<p><?php echo get_theme_mod_or_default( 'uil_results_copy' ) ?><p>
+			<?php if( !empty( $uil_results_copy ) ) : ?>
+				<p><?php echo $uil_results_copy ?><p>
+			<?php endif; ?>
 			<div class="row uid-result-container">
 				<div ng-repeat="result in uidSearchCtrl.results">
 					<div class="clearfix" ng-if="$index % 3 == 0"></div>
