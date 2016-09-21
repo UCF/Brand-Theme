@@ -52,10 +52,7 @@ $(function () {
         }, 500);
     }
 
-    /**
-     * Init
-     */
-    var init = function () {
+    var initJumpLinksInit = function () {
         if ($jumpGroup.length) {
             offset = $navContainer.offset().top;
             jumpOffset = $jumpGroup.offset().top - 50;
@@ -63,6 +60,23 @@ $(function () {
             initNavAffix();
             $jumpGroup.find('.jump-group').on('click', 'a', smoothScroll);
         }
+    };
+
+    var initDownloadLink = function () {
+        console.log($('.uid-result-container').length);
+        $('.uid-search').on('click', '.btn-download', function(e) {
+            e.preventDefault();
+            window.open($(this).attr('href'));
+            // window.open('mysite.com/file2');
+        });
+    };
+
+    /**
+     * Init
+     */
+    var init = function () {
+        initJumpLinksInit();
+        initDownloadLink();
     };
 
     init();
