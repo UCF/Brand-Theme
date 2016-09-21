@@ -135,38 +135,38 @@ function define_customizer_sections( $wp_customize ) {
 			'title' => 'Header'
 		)
 	);
-	$wp_customize->add_section(
-		THEME_CUSTOMIZER_PREFIX.'remote_menus',
-		array(
-			'title' => 'Remote Menus'
-		)
-	);
+	// $wp_customize->add_section(
+	// 	THEME_CUSTOMIZER_PREFIX.'remote_menus',
+	// 	array(
+	// 		'title' => 'Remote Menus'
+	// 	)
+	// );
 	$wp_customize->add_section(
 		THEME_CUSTOMIZER_PREFIX . 'analytics',
 		array(
 			'title' => 'Analytics'
 		)
 	);
-	$wp_customize->add_section(
-		THEME_CUSTOMIZER_PREFIX . 'events',
-		array(
-			'title'       => 'Events',
-			'description' => 'Settings for event lists used throughout the site.'
-		)
-	);
-	$wp_customize->add_section(
-		THEME_CUSTOMIZER_PREFIX . 'news',
-		array(
-			'title'       => 'News',
-			'description' => 'Settings for news feeds used throughout the site.'
-		)
-	);
-	$wp_customize->add_section(
-		THEME_CUSTOMIZER_PREFIX . 'search',
-		array(
-			'title'       => 'Search',
-		)
-	);
+	// $wp_customize->add_section(
+	// 	THEME_CUSTOMIZER_PREFIX . 'events',
+	// 	array(
+	// 		'title'       => 'Events',
+	// 		'description' => 'Settings for event lists used throughout the site.'
+	// 	)
+	// );
+	// $wp_customize->add_section(
+	// 	THEME_CUSTOMIZER_PREFIX . 'news',
+	// 	array(
+	// 		'title'       => 'News',
+	// 		'description' => 'Settings for news feeds used throughout the site.'
+	// 	)
+	// );
+	// $wp_customize->add_section(
+	// 	THEME_CUSTOMIZER_PREFIX . 'search',
+	// 	array(
+	// 		'title'       => 'Search',
+	// 	)
+	// );
 	$wp_customize->add_section(
 		THEME_CUSTOMIZER_PREFIX . 'footer',
 		array(
@@ -180,15 +180,21 @@ function define_customizer_sections( $wp_customize ) {
 		)
 	);
 	$wp_customize->add_section(
-		THEME_CUSTOMIZER_PREFIX . 'webfonts',
+		THEME_CUSTOMIZER_PREFIX . 'uil',
 		array(
-			'title' => 'Web Fonts'
+			'title' => 'UIL'
 		)
 	);
 	$wp_customize->add_section(
 		THEME_CUSTOMIZER_PREFIX . 'amazon_credentials',
 		array(
-			'title' => 'Amazon S3 API Credentials'
+			'title' => 'Amazon S3'
+		)
+	);
+	$wp_customize->add_section(
+		THEME_CUSTOMIZER_PREFIX . 'webfonts',
+		array(
+			'title' => 'Web Fonts'
 		)
 	);
 
@@ -518,6 +524,24 @@ function define_customizer_fields( $wp_customize ) {
 								project has been configured to deliver fonts to this site\'s domain.<br>
 								See the <a target="_blank" href="http://www.typography.com/cloud/user-guide/managing-domains">Cloud.Typography docs on managing domains</a> for more info.',
 			'section'     => THEME_CUSTOMIZER_PREFIX . 'webfonts'
+		)
+	);
+
+
+	// UIL
+	$wp_customize->add_setting(
+		'uil_results_copy',
+		array(
+			'default'     => get_setting_default( 'uil_results_copy' )
+		)
+	);
+	$wp_customize->add_control(
+		'uil_results_copy',
+		array(
+			'type'        => 'textarea',
+			'label'       => 'UIL Results Copy',
+			'description' => 'Copy dispalyed after the UIL results heading.',
+			'section'     => THEME_CUSTOMIZER_PREFIX . 'uil'
 		)
 	);
 
