@@ -156,9 +156,9 @@ function attach_post_metadata_properties( $post ) {
 	return $post;
 }
 
-function api_get_uids( $request ) {
+function api_get_uils( $request ) {
 	$posts = get_posts( array(
-		'post_type' => 'uid',
+		'post_type' => 'uil',
 		'post_per_page' => -1,
 		's' => $request->get_param( 's' )
 	) );
@@ -171,9 +171,9 @@ function api_get_uids( $request ) {
 }
 
 add_action( 'rest_api_init', function() {
-	register_rest_route( 'rest', '/uids', array(
+	register_rest_route( 'rest', '/uils', array(
 		'methods'  => 'GET',
-		'callback' => 'api_get_uids'
+		'callback' => 'api_get_uils'
 	) );
 } );
 
