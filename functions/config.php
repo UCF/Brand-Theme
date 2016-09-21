@@ -135,12 +135,12 @@ function define_customizer_sections( $wp_customize ) {
 			'title' => 'Header'
 		)
 	);
-	// $wp_customize->add_section(
-	// 	THEME_CUSTOMIZER_PREFIX.'remote_menus',
-	// 	array(
-	// 		'title' => 'Remote Menus'
-	// 	)
-	// );
+	$wp_customize->add_section(
+		THEME_CUSTOMIZER_PREFIX.'remote_menus',
+		array(
+			'title' => 'Remote Menus'
+		)
+	);
 	$wp_customize->add_section(
 		THEME_CUSTOMIZER_PREFIX . 'analytics',
 		array(
