@@ -11,8 +11,8 @@ $(function () {
     var $body = $('body'),
         $navContainer = $('.nav-container'),
         $jumpGroup = $('.jump-group-container'),
-        offset = $navContainer.offset().top,
-        jumpOffset = $jumpGroup.offset().top - 50;
+        offset,
+        jumpOffset;
 
     var scroll = function () {
         var scrollTop = $(window).scrollTop();
@@ -56,8 +56,13 @@ $(function () {
      * Init
      */
     var init = function () {
-        initNavAffix();
-        $('.jump-group').on('click', 'a', smoothScroll);
+        if ($jumpGroup.length) {
+            offset = $navContainer.offset().top;
+            jumpOffset = $jumpGroup.offset().top - 50;
+
+            initNavAffix();
+            $jumpGroup.find('.jump-group').on('click', 'a', smoothScroll);
+        }
     };
 
     init();
