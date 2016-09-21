@@ -265,7 +265,7 @@ WebcomAdmin.S3CRUD = function ($) {
 
   function UIDFileUploadFactory() {
     var getFileList = function (callback) {
-      var $postName = $('#editable-post-name');
+      var $postName = $('#editable-post-name-full');
       if ($postName.length) {
         var params = {
           Bucket: creds.bucket,
@@ -324,7 +324,7 @@ WebcomAdmin.S3CRUD = function ($) {
         ctrl.loading = true;
         ctrl.error = false;
         var orgFilename = $scope.file.name,
-          postName = $('#editable-post-name');
+          postName = $('#editable-post-name-full');
 
         if (postName.length) {
           if (orgFilename.indexOf('.zip') !== -1 || orgFilename.indexOf('.png') !== -1) {

@@ -319,14 +319,14 @@ class Attachment extends CustomPostType {
 	}
 }
 
-class Uid extends CustomPostType {
+class Uil extends CustomPostType {
 	public
-		$name           = 'uid',
-		$plural_name    = 'UIDs',
-		$singular_name  = 'UID',
-		$add_new_item   = 'Add New UID',
-		$edit_item      = 'Edit UID',
-		$new_item       = 'New UID',
+		$name           = 'uil',
+		$plural_name    = 'UILs',
+		$singular_name  = 'UIL',
+		$add_new_item   = 'Add New UIL',
+		$edit_item      = 'Edit UIL',
+		$new_item       = 'New UIL',
 		$public         = True,
 		$use_editor     = False,
 		$use_order      = False,
@@ -365,15 +365,15 @@ class Uid extends CustomPostType {
 		$prefix = $this->options( 'name' ).'_';
 		return array(
 			array (
-				'name' => 'Requested UID',
-				'description' => 'Select client UID request.',
+				'name' => 'Requested UIL',
+				'description' => 'Select client UIL request.',
 				'id' => $prefix.'request',
 				'type' => 'select',
 				'choices' => $this->get_request_entries(),
 			),
 			array(
-				'name' => 'UID Artwork',
-				'description' => 'Upload a 400px wide PNG visible by client in UID search and ZIP file containing all the UID artwork for the client.',
+				'name' => 'UIL Artwork',
+				'description' => 'Upload a 400px wide PNG visible by client in UIL search and ZIP file containing all the UIL artwork for the client.',
 				'id' => $prefix.'amazon',
 				'type' => 'amazon',
 			),

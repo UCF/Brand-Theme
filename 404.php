@@ -4,16 +4,22 @@
 <?php get_header(); ?>
 
 <article>
-	<h1>Page Not Found</h1>
-	<?php
-	$page = get_page_by_title( '404' );
-	if ( $page && $content = $page->post_content ) {
-		echo apply_filters( 'the_content', $content );
-	}
-	else {
-		echo 'Sorry, the page you requested does not exist.';
-	}
-	?>
+	<div class="container">
+			<div class="row">
+				<div class="content col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2 footer-margin">
+					<h1>Page Not Found</h1>
+					<?php
+					$page = get_page_by_title( '404' );
+					if ( $page && $content = $page->post_content ) {
+						echo apply_filters( 'the_content', $content );
+					}
+					else {
+						echo 'Sorry, the page you requested does not exist.';
+					}
+					?>
+			</div>
+		</div>
+	</div>
 </article>
 
 <?php get_footer(); ?>
