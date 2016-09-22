@@ -581,7 +581,7 @@ class CalloutSC extends Shortcode {
 class UIDSearchSC extends Shortcode {
 	public
 		$name        = 'UIDSearch', // The name of the shortcode.
-		$command     = 'uid-search', // The command used to call the shortcode.
+		$command     = 'uil-search', // The command used to call the shortcode.
 		$description = 'Insert UIL Search field and results', // The description of the shortcode.
 		$callback    = 'callback',
 		$wysiwyg     = True; // Whether to add it to the shortcode Wysiwyg modal.

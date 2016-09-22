@@ -52,10 +52,7 @@ $(function () {
         }, 500);
     }
 
-    /**
-     * Init
-     */
-    var init = function () {
+    var initJumpLinksInit = function () {
         if ($jumpGroup.length) {
             offset = $navContainer.offset().top;
             jumpOffset = $jumpGroup.offset().top - 50;
@@ -63,6 +60,13 @@ $(function () {
             initNavAffix();
             $jumpGroup.find('.jump-group').on('click', 'a', smoothScroll);
         }
+    };
+
+    /**
+     * Init
+     */
+    var init = function () {
+        initJumpLinksInit();
     };
 
     init();

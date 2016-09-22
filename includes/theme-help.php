@@ -10,7 +10,7 @@
 		<div class="sections">
 			<ul>
 				<li class="section"><a href="#posting">Posting</a></li>
-				<li class="section"><a href="#uids">UIDs</a></li>
+				<li class="section"><a href="#uils">UILs</a></li>
 				<li class="section"><a href="#shortcodes">Shortcodes</a></li>
 			</ul>
 		</div>
@@ -25,13 +25,13 @@
 					</p>
 					<h3>Content Types</h3>
 					<p>
-						The primary types of content that can be created in this site are <strong>Pages</strong> and <strong>Unit Identifiers (UIDs)</strong>.
+						The primary types of content that can be created in this site are <strong>Pages</strong> and <strong>Unit Identifiers (UILs)</strong>.
 					</p>
 					<p>
 						<strong>Pages (WordPress default)</strong> will be used to setup most of the content with the aid of shortcodes.
 					</p>
 					<p>
-						<strong>UIDs</strong> are images that colleges and departments use for letterhead, websites and printed materials.
+						<strong>UILs</strong> are images that colleges and departments use for letterhead, websites and printed materials.
 					</p>
 					<p>
 						<strong>Shortcodes</strong> are small snippets of code, wrapped in square brackets [], that do some function or add some
@@ -40,34 +40,34 @@
 					</p>
 				</li>
 
-				<li class="section" id="uids">
-					<h3>UIDs</h3>
+				<li class="section" id="uils">
+					<h3>UILs</h3>
 					<p>
-						<strong>UIDs</strong> are images that colleges and departments use for letterhead, websites and printed materials.
+						<strong>UILs</strong> are images that colleges and departments use for letterhead, websites and printed materials.
 					</p>
-					<h3>User UID Search and Request Process</h3>
+					<h3>User UIL Search and Request Process</h3>
 					<ul>
-						<li>Users are required to login to search or request a new UID.</li>
-						<li>The user can search for a UID to determine if the UID is availabe.</li>
-						<li>If the user finds the UID they are looking for they can download a zip file containing all the formats available for the UID.</li>
-						<li>If the UID is not found the user may request a new UID via the UID Request Form displayed below the search results.</li>
+						<li>Users are required to login to search or request a new UIL.</li>
+						<li>The user can search for a UIL to determine if the UIL is availabe.</li>
+						<li>If the user finds the UIL they are looking for they can download a zip file containing all the formats available for the UIL.</li>
+						<li>If the UIL is not found the user may request a new UIL via the UIL Request Form displayed below the search results.</li>
 						<li>An email is sent to the designers about the request and the user is sent a confirmation email.</li>
 					</ul>
 
 					<h3>Approval Process</h3>
 					<ul>
 						<li>Login and navigate to Forms -> Request A Unit Identifier -> Entries section of the WordPress Admin.</li>
-						<li>Click on the UID Request</li>
+						<li>Click on the UIL Request</li>
 						<li>
 							On the right sidebar a Notifications box will be available
 							<ul>
 								<li>Check the box next to "Admin Notification" to resend the request information.</li>
-								<li>Check the box next to the "Request Approved" to approve the request and send an email to the requester that the UID has been approved and is available to download. Add the link to the new UID in the notes section at the bottom.</li>
+								<li>Check the box next to the "Request Approved" to approve the request and send an email to the requester that the UIL has been approved and is available to download. Add the link to the new UIL in the notes section at the bottom.</li>
 								<li>Check the box next to the "Request Denied" to deny the request. An email is sent to the requester notifying them the request has been denied.</li>
 							</ul>
 						</li>
-						<li>Prior to approving the request create the new UID images using Illustrator.</li>
-						<li>Create a new UID post and upload a PNG and ZIP file containing the new UID images.</li>
+						<li>Prior to approving the request create the new UIL images using Illustrator.</li>
+						<li>Create a new UIL post and upload a PNG and ZIP file containing the new UIL images.</li>
 					</ul>
 
 				</li>
@@ -94,7 +94,7 @@
 							<a href="#shortcodes-heading">Heading</a>
 						</li>
 						<li>
-							<a href="#shortcodes-uidsearch">UIDSearch</a>
+							<a href="#shortcodes-uilsearch">UILSearch</a>
 						</li>
 					</ul>
 
@@ -107,7 +107,7 @@
 					<p>
 						The shortcodes listed below have a <strong>starting tag</strong> ([my-shortcode]) and an <strong>ending tag</strong> ([/my-shortcode]).  Depending on
 						the shortcode used, such as the [heading] and [callout] shortcodes, <strong>content</strong> between the starting and ending tags is used.  Other
-						shortcodes, like the [uid-search] shortcode, do not use any content between the starting and ending tags.
+						shortcodes, like the [uil-search] shortcode, do not use any content between the starting and ending tags.
 					</p>
 					<p>
 						Some shortcodes use <strong>attributes</strong> to define extra options for whatever the given shortcode does.  For example, the [callout] and [sidebar]
@@ -255,13 +255,13 @@
 					<h4>Example</h4>
 					<pre><code>[heading background="path/to/image.png"]&lt;h2&gt;Large Heading&lt;/h2&gt;&lt;a href="link.html"&gt;Link text&lt;/a&gt;[/heading]</code></pre>
 
-					<h3 id="shortcodes-uidsearch">UID Search</h3>
+					<h3 id="shortcodes-uilsearch">UIL Search</h3>
 					<p>
-						Inserts the necessary code for the UID Search component.
+						Inserts the necessary code for the UIL Search component.
 					</p>
 
 					<h4>Example</h4>
-					<pre><code>[uid-search][/uid-search]</code></pre>
+					<pre><code>[uil-search][/uil-search]</code></pre>
 
 				</li>
 			</ul>

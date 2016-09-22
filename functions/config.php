@@ -147,26 +147,6 @@ function define_customizer_sections( $wp_customize ) {
 			'title' => 'Analytics'
 		)
 	);
-	// $wp_customize->add_section(
-	// 	THEME_CUSTOMIZER_PREFIX . 'events',
-	// 	array(
-	// 		'title'       => 'Events',
-	// 		'description' => 'Settings for event lists used throughout the site.'
-	// 	)
-	// );
-	// $wp_customize->add_section(
-	// 	THEME_CUSTOMIZER_PREFIX . 'news',
-	// 	array(
-	// 		'title'       => 'News',
-	// 		'description' => 'Settings for news feeds used throughout the site.'
-	// 	)
-	// );
-	// $wp_customize->add_section(
-	// 	THEME_CUSTOMIZER_PREFIX . 'search',
-	// 	array(
-	// 		'title'       => 'Search',
-	// 	)
-	// );
 	$wp_customize->add_section(
 		THEME_CUSTOMIZER_PREFIX . 'footer',
 		array(
