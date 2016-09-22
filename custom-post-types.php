@@ -373,7 +373,7 @@ class Uil extends CustomPostType {
 			),
 			array(
 				'name' => 'UIL Artwork',
-				'description' => 'Upload a 400px wide PNG visible by client in UIL search and ZIP file containing all the UIL artwork for the client.',
+				'description' => 'Upload a PNG for display on the website and a ZIP file containing all the UIL artwork.',
 				'id' => $prefix.'amazon',
 				'type' => 'amazon',
 			),

@@ -418,15 +418,17 @@ class AmazonField extends Field {
 			<ul ng-show="!fileUploadCtrl.loading">
 				<li ng-repeat="file in fileUploadCtrl.fileList">
 					<h3>
-						<img class="preview-image" ng-if="file.Key.indexOf('.png') != -1" ng-src="<?php echo AMAZON_AWS_URL ?>{{ fileUploadCtrl.bucket }}/{{ file.Key }}">
-						<a class="button button-small" ng-click="fileUploadCtrl.deleteFile($index)">
-							Delete
-						</a>
 						<p>
-							<a href="<?php echo AMAZON_AWS_URL ?>{{ fileUploadCtrl.bucket }}/{{ file.Key }}">
+							<a href="<?php echo AMAZON_AWS_URL ?>{{ fileUploadCtrl.bucket }}/{{ file.Key }}" ng-if="file.Key.indexOf('.png') != -1" target="_blank">
+								<img class="preview-image" ng-src="<?php echo AMAZON_AWS_URL ?>{{ fileUploadCtrl.bucket }}/{{ file.Key }}">
+							</a>
+							<a href="<?php echo AMAZON_AWS_URL ?>{{ fileUploadCtrl.bucket }}/{{ file.Key }}" ng-if="file.Key.indexOf('.zip') != -1" target="_blank">
 								{{ file.Key | getfilename }}
 							</a>
 						</p>
+						<a class="button button-small" ng-click="fileUploadCtrl.deleteFile($index)">
+							Delete
+						</a>
 					</h3>
 				</li>
 			</ul>

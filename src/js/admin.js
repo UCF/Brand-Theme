@@ -260,16 +260,19 @@ WebcomAdmin.S3CRUD = function ($) {
   angular.module('UIDFileUpload').controller('UIDFileUploadController', UIDFileUploadController);
   angular.module('UIDFileUpload').directive('uidFileUploadDirective', UIDFileUploadDirective);
   angular.module('UIDFileUpload').filter('getfilename', getFilenameFilter);
+  angular.module('UIDFileUpload').filter('exactmatchfilter', exactMatchFilter);
 
   // Factory
 
-  function UIDFileUploadFactory() {
+  UIDFileUploadFactory.$inject = ['$filter'];
+  function UIDFileUploadFactory($filter) {
     var getFileList = function (callback) {
       var $postName = $('#editable-post-name-full');
       if ($postName.length) {
-        var params = {
+        var postNameStr = $postName.text(),
+          params = {
           Bucket: creds.bucket,
-          Prefix: creds.folder + '/' + $postName.text()
+          Prefix: creds.folder + '/' + postNameStr
         };
 
         aws.listObjectsV2(params, function (err, data) {
@@ -277,7 +280,7 @@ WebcomAdmin.S3CRUD = function ($) {
             callback({ error: true });
             console.log(err, err.stack);
           } else {
-            callback(data.Contents);
+            callback($filter('exactmatchfilter')(data.Contents,postNameStr));
           }
         });
       } else {
@@ -337,8 +340,6 @@ WebcomAdmin.S3CRUD = function ($) {
 
             postName = creds.folder + '/' + postName + '/' + postName;
             var params = { Bucket: creds.bucket, Key: postName + extension, ContentType: $scope.file.type, Body: $scope.file, ServerSideEncryption: 'AES256' };
-
-            console.log(params);
 
             aws.putObject(params, function (err, data) {
               if (err) {
@@ -414,6 +415,21 @@ WebcomAdmin.S3CRUD = function ($) {
     return function (item) {
       var itemArray = item.split('/');
       return itemArray[itemArray.length-1];
+    };
+  }
+
+  function exactMatchFilter() {
+    return function (array, search) {
+      var matchArray = [];
+
+      // find items that are an exact match
+      array.forEach(function(element) {
+        if (element.Key.indexOf('/' + search + '.png') !== -1 || element.Key.indexOf('/' + search + '.zip') !== -1) {
+          matchArray.push(element);
+        }
+      }, this);
+
+      return matchArray;
     };
   }
 

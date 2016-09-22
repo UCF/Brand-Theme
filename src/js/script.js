@@ -63,7 +63,7 @@ $(function () {
     };
 
     var initDownloadLink = function () {
-        console.log($('.uid-result-container').length);
+        // console.log($('.uid-result-container').length);
         $('.uid-search').on('click', '.btn-download', function(e) {
             e.preventDefault();
             window.open($(this).attr('href'));
