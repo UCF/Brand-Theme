@@ -62,21 +62,11 @@ $(function () {
         }
     };
 
-    var initDownloadLink = function () {
-        // console.log($('.uid-result-container').length);
-        $('.uid-search').on('click', '.btn-download', function(e) {
-            e.preventDefault();
-            window.open($(this).attr('href'));
-            // window.open('mysite.com/file2');
-        });
-    };
-
     /**
      * Init
      */
     var init = function () {
         initJumpLinksInit();
-        initDownloadLink();
     };
 
     init();
