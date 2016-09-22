@@ -611,14 +611,14 @@ class UIDSearchSC extends Shortcode {
 		<div class="error uid-error alert alert-danger" ng-show="uidSearchCtrl.error"><span class="glyphicon glyphicon-alert"></span> Error loading Unit Identifiers</div>
 		<div class="loading" ng-show="uidSearchCtrl.loading"><span class="glyphicon glyphicon-refresh glyphicon-spin"></span> Searching for Unit Identifiers</div>
 		<div class="alert alert-info" ng-show="uidSearchCtrl.noResults">
-			<span class="glyphicon glyphicon-comment"></span> We didn't find any unit indentity lockups that matched your search. You may request one below.
+			<span class="glyphicon glyphicon-comment"></span> We didn't find any unit identity lockups that matched your search. You may request one below.
 		</div>
 
 		<div ng-if="uidSearchCtrl.results.length">
 			<hr>
 			<h2>Results</h2>
 			<?php if( !empty( $uil_results_copy ) ) : ?>
-				<p><?php echo $uil_results_copy ?><p>
+				<p><?php echo $uil_results_copy ?></p>
 			<?php endif; ?>
 			<div class="row uid-result-container">
 				<div ng-repeat="result in uidSearchCtrl.results">
