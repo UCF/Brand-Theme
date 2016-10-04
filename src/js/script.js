@@ -23,24 +23,28 @@ $(function () {
             $navContainer.removeClass('navbar-fixed-top');
             $body.removeClass('fixed-navbar');
         }
-        if (scrollTop >= jumpOffset) {
-            $jumpGroup.addClass('jump-fixed-top');
-            $body.addClass('fixed-jump');
-        } else {
-            $jumpGroup.removeClass('jump-fixed-top');
-            $body.removeClass('fixed-jump');
+        if ($jumpGroup.length) {
+            if (scrollTop >= jumpOffset) {
+                $jumpGroup.addClass('jump-fixed-top');
+                $body.addClass('fixed-jump');
+            } else {
+                $jumpGroup.removeClass('jump-fixed-top');
+                $body.removeClass('fixed-jump');
+            }
         }
     };
 
     var onResize = function () {
         offset = $navContainer.offset().top;
-        jumpOffset = $jumpGroup.offset().top;
+        if ($jumpGroup.length) {
+            jumpOffset = $jumpGroup.offset().top;
+        }
     };
 
     var initNavAffix = function () {
         $(document).on('scroll', scroll);
+        offset = $navContainer.offset().top;
         $body.scrollspy({ target: '.nav-container' });
-        $body.scrollspy({ target: '.jump-group' });
         $(window).on('resize', onResize);
         scroll();
     };
@@ -54,10 +58,8 @@ $(function () {
 
     var initJumpLinksInit = function () {
         if ($jumpGroup.length) {
-            offset = $navContainer.offset().top;
+            $body.scrollspy({ target: '.jump-group' });
             jumpOffset = $jumpGroup.offset().top - 50;
-
-            initNavAffix();
             $jumpGroup.find('.jump-group').on('click', 'a', smoothScroll);
         }
     };
@@ -66,6 +68,7 @@ $(function () {
      * Init
      */
     var init = function () {
+        initNavAffix();
         initJumpLinksInit();
     };
 
