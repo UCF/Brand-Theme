@@ -35,11 +35,48 @@ function display_site_title() {
 function ldap_auth( $username, $password ) {
 	$ldapbind = false;
 	putenv('LDAPTLS_REQCERT=never');
-	if ( $ds=ldap_connect( 'ldaps://' . LDAP_HOST . ':' . LDAP_PORT ) ) {
-		ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, 3);
-		ldap_set_option($ds, LDAP_OPT_REFERRALS, 0);
-		$ldapbind = ldap_bind( $ds, $username . "@" . LDAP_HOST, $password );
-		return $ldapbind;
+
+	if ( $ldap_con=ldap_connect( 'ldaps://' . LDAP_HOST . ':' . LDAP_PORT ) ) {
+		ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION, 3);
+		ldap_set_option($ldap_con, LDAP_OPT_REFERRALS, 0);
+
+		if( $ldapbind = ldap_bind( $ldap_con, $username . "@" . LDAP_HOST, $password ) ) {
+			return ldap_query( $ldap_con, $username );
+		} else {
+			return false;
+		}
+	} else {
+		return false;
+	}
+}
+
+
+/**
+ * LDAP Query to check to see if user is faculty or staff.
+ *
+ * @param string $ldap_con LDAP connection.
+ * @param string $username The username to authenticate.
+ * @return bool true if username is facutly or staff, otherwise false
+ *
+ * @author RJ Bruneel
+ */
+function ldap_query( $ldap_con, $username ) {
+	$ldap_base_dn = "OU=People,DC=net,DC=ucf,DC=edu";
+	$search_filter = "(samAccountName=" . $username . ")";
+	$attributes = array();
+	$attributes[] = 'ucfPortalRole';
+
+	$result = ldap_search( $ldap_con, $ldap_base_dn, $search_filter, $attributes );
+	if (FALSE !== $result){
+		$entries = ldap_get_entries($ldap_con, $result);
+		$entry = $entries[0]["ucfportalrole"];
+
+		if ( ( in_array( "CF_STAFF", $entry ) && in_array( "FX_ENTERPRISE_EMAIL", $entry ) )
+			|| ( in_array( "CF_FACULTY", $entry ) && in_array( "FX_ENTERPRISE_EMAIL", $entry ) ) ) {
+			return true;
+		} else {
+			return false;
+		}
 	} else {
 		return false;
 	}
@@ -99,7 +136,6 @@ function ldap_destroy_session() {
  **/
 function ldap_required() {
 	session_start();
-
 	$ldap_error = false;
 
 	if ( ldap_session_timed_out() ) {
