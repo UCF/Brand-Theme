@@ -34,13 +34,15 @@ function display_site_title() {
  */
 function ldap_auth( $username, $password ) {
 	$ldapbind = false;
-	$ldap = ldap_connect( LDAP_HOST );
-	if ( $ldap ) {
-		$ldapbind = ldap_bind( $ldap, $username . '@' . LDAP_HOST, $password );
+	putenv('LDAPTLS_REQCERT=never');
+	if ( $ds=ldap_connect( 'ldaps://' . LDAP_HOST . ':' . LDAP_PORT ) ) {
+		ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, 3);
+		ldap_set_option($ds, LDAP_OPT_REFERRALS, 0);
+		$ldapbind = ldap_bind( $ds, $username . "@" . LDAP_HOST, $password );
+		return $ldapbind;
 	} else {
-		echo 'Could not connect.';
+		return false;
 	}
-	return $ldapbind;
 }
 
 
