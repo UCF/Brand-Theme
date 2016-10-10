@@ -317,7 +317,7 @@ function ucf_brand_force_ssl() {
 	global $wp;
 
 	if ( FORCE_SSL_ADMIN && ! is_ssl() ) {
-		$url = add_query_arg( $wp->query_string, '', home_url( $wp->request ) );
+		$url = home_url( $wp->request );
 		$url = str_replace('http://', 'https://', $url);
 		wp_redirect( $url, 301 );
 	}
