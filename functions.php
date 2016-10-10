@@ -350,4 +350,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	return ob_get_clean();
 }
 
+// Template redirect, force ssl
+function ucf_brand_force_ssl() {
+	global $wp;
+
+	if ( FORCE_SSL_ADMIN && ! is_ssl() ) {
+		$url = home_url( $wp->request, 'https' );
+		wp_redirect( $url, 301 );
+	}
+}
+
+if ( FORCE_SSL_ADMIN && function_exists( 'ucf_brand_force_ssl' ) ) {
+	add_action( 'template_redirect', 'ucf_brand_force_ssl' );
+}
+
 ?>
