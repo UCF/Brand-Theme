@@ -41,7 +41,12 @@ function ldap_auth( $username, $password ) {
 		ldap_set_option($ldap_con, LDAP_OPT_REFERRALS, 0);
 
 		if( $ldapbind = ldap_bind( $ldap_con, $username . "@" . LDAP_HOST, $password ) ) {
-			return ldap_query( $ldap_con, $username );
+			if ( $user_obj = ldap_query( $ldap_con, $username ) ) {
+				return $user_obj;
+			} else {
+				// TODO, unauthorized error.
+			}
+
 		} else {
 			return false;
 		}
@@ -61,25 +66,12 @@ function ldap_auth( $username, $password ) {
  * @author RJ Bruneel
  */
 function ldap_query( $ldap_con, $username ) {
-	$ldap_base_dn = "OU=People,DC=net,DC=ucf,DC=edu";
-	$search_filter = "(samAccountName=" . $username . ")";
-	$attributes = array();
-	$attributes[] = 'ucfPortalRole';
+	$ldap_base_dn = 'OU=People,DC=net,DC=ucf,DC=edu';
+	$search_filter = '(&(sAMAccountName=' . $username . ')(|(&(ucfPortalRole=CF_STAFF)(ucfPortalRole=FX_ENTERPRISE_EMAIL))(&(ucfPortalRole=CF_FACULTY)(ucfPortalRole=FX_ENTERPRISE_EMAIL))))';
 
-	$result = ldap_search( $ldap_con, $ldap_base_dn, $search_filter, $attributes );
-	if (FALSE !== $result){
-		$entries = ldap_get_entries($ldap_con, $result);
-		$entry = $entries[0]["ucfportalrole"];
+	$result = ldap_search( $ldap_con, $ldap_base_dn, $search_filter );
 
-		if ( ( in_array( "CF_STAFF", $entry ) && in_array( "FX_ENTERPRISE_EMAIL", $entry ) )
-			|| ( in_array( "CF_FACULTY", $entry ) && in_array( "FX_ENTERPRISE_EMAIL", $entry ) ) ) {
-			return true;
-		} else {
-			return false;
-		}
-	} else {
-		return false;
-	}
+	return $result ? $result : false;
 }
 
 
