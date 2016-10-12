@@ -8,7 +8,7 @@
 				You must log in to access or request a Unit Identity Lockup. Please enter your UCF Federated Identity (NID) to log in.
 			</p>
 			<form method="post" id="ldap-auth-form" action=".">
-				<?php if ( $ldap_error ): ?>
+				<?php if ( $ldap_error == 'login_error' ): ?>
 				<div class="alert alert-danger">
 					<strong>Error:</strong>
 					<p>
@@ -18,6 +18,22 @@
 						To verify your NID, go to <a href="https://my.ucf.edu/">myUCF</a> and select "What are my PID and NID?"<br>
 						To reset your password, go to the <a href="https://mynid.ucf.edu/">Change Your NID Password</a> page.<br>
 						For further help, contact the Service Desk at 407-823-5117, Monday-Friday 8am-5pm.
+					</p>
+				</div>
+				<?php endif;
+				if ( $ldap_error == 'role_error' ): ?>
+				<div class="alert alert-danger">
+					<strong>Error:</strong>
+					<p>
+						You must be either faculty or staff in order to log in.
+					</p>
+				</div>
+				<?php endif;
+				if ( $ldap_error == 'conn_error' ): ?>
+				<div class="alert alert-danger">
+					<strong>Error:</strong>
+					<p>
+						Unable to connect to the authentication server at this time, please try again later.
 					</p>
 				</div>
 				<?php endif;
