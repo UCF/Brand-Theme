@@ -6,6 +6,7 @@ require_once 'custom-post-types.php';   // Where per theme post types are define
 require_once 'functions/config.php';    // Where per theme settings are registered
 require_once 'functions/admin.php';     // Admin/login functions
 require_once 'shortcodes.php';          // Per theme shortcodes
+require_once 'third-party/gw-gravity-forms-notes-merge-tag.php'; // Gravity Wiz // Gravity Forms // Notes Merge Tag
 
 /**
  * Conditionally displays a <h1> or <span> for the site's primary title
