@@ -28,7 +28,7 @@ function display_site_title() {
  *
  * @param string  $username The username to authenticate.
  * @param string  $password The password to authenticate.
- * @return bool True if username/password was authenticated, otherwise false
+ * @return obj or string returns error string or ldap object
  *
  * @author Brandon T. Groves
  */
@@ -41,12 +41,16 @@ function ldap_auth( $username, $password ) {
 		ldap_set_option($ldap_con, LDAP_OPT_REFERRALS, 0);
 
 		if( $ldapbind = ldap_bind( $ldap_con, $username . "@" . LDAP_HOST, $password ) ) {
-			return ldap_query( $ldap_con, $username );
+			if ( $user_obj = ldap_query( $ldap_con, $username ) ) {
+				return $user_obj;
+			} else {
+				return 'role_error';
+			}
 		} else {
-			return false;
+			return 'login_error';
 		}
 	} else {
-		return false;
+		return 'conn_error';
 	}
 }
 
@@ -61,25 +65,12 @@ function ldap_auth( $username, $password ) {
  * @author RJ Bruneel
  */
 function ldap_query( $ldap_con, $username ) {
-	$ldap_base_dn = "OU=People,DC=net,DC=ucf,DC=edu";
-	$search_filter = "(samAccountName=" . $username . ")";
-	$attributes = array();
-	$attributes[] = 'ucfPortalRole';
+	$ldap_base_dn = 'OU=People,DC=net,DC=ucf,DC=edu';
+	$search_filter = '(&(sAMAccountName=' . $username . ')(|(&(ucfPortalRole=CF_STAFF)(ucfPortalRole=FX_ENTERPRISE_EMAIL))(&(ucfPortalRole=CF_FACULTY)(ucfPortalRole=FX_ENTERPRISE_EMAIL))))';
+	$result = ldap_search( $ldap_con, $ldap_base_dn, $search_filter );
+	$info = ldap_get_entries($ldap_con, $result);
 
-	$result = ldap_search( $ldap_con, $ldap_base_dn, $search_filter, $attributes );
-	if (FALSE !== $result){
-		$entries = ldap_get_entries($ldap_con, $result);
-		$entry = $entries[0]["ucfportalrole"];
-
-		if ( ( in_array( "CF_STAFF", $entry ) && in_array( "FX_ENTERPRISE_EMAIL", $entry ) )
-			|| ( in_array( "CF_FACULTY", $entry ) && in_array( "FX_ENTERPRISE_EMAIL", $entry ) ) ) {
-			return true;
-		} else {
-			return false;
-		}
-	} else {
-		return false;
-	}
+	return ( $info["count"] == 0 ) ? false : $result;
 }
 
 
@@ -136,7 +127,13 @@ function ldap_destroy_session() {
  **/
 function ldap_required() {
 	session_start();
+
+	if ( $_GET["logout"] ) {
+		ldap_destroy_session();
+	}
+
 	$ldap_error = false;
+	$ldap_obj = false;
 
 	if ( ldap_session_timed_out() ) {
 		ldap_destroy_session();
@@ -155,24 +152,23 @@ function ldap_required() {
 		&& isset( $_POST['uid-password'] )
 		&& strlen( $_POST['uid-password'] ) > 0
 	) {
+		$ldap_auth = ldap_auth( $_POST['uid-username'], $_POST['uid-password'] );
 		if (
-			ldap_auth( $_POST['uid-username'], $_POST['uid-password'] )
-			&& wp_verify_nonce( $_REQUEST['uid_auth_nonce'], 'uid-auth' )
+			$ldap_auth && wp_verify_nonce( $_REQUEST['uid_auth_nonce'], 'uid-auth' )
 		) {
-			ldap_set_session_data( $_POST['uid-username'] );
-			session_write_close();
-		}
-		else {
-			ldap_destroy_session();
-
-			$ldap_error = true;
-			require_once THEME_INCLUDES_DIR . '/ldap-login.php';
-			die;
+			if( is_resource( $ldap_auth ) ) {
+				$ldap_obj = $ldap_auth;
+				ldap_set_session_data( $_POST['uid-username'] );
+				session_write_close();
+			} else {
+				$ldap_error = $ldap_auth;
+				require_once THEME_INCLUDES_DIR . '/ldap-login.php';
+				die;
+			}
 		}
 	}
 	else {
 		ldap_destroy_session();
-
 		require_once THEME_INCLUDES_DIR . '/ldap-login.php';
 		die;
 	}
