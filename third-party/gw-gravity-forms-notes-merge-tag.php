@@ -7,7 +7,7 @@
 
 include_once ABSPATH . 'wp-admin/includes/plugin.php';
 
-if ( is_plugin_active( 'gravityforms/gravityforms.php' ) ) {
+if ( is_plugin_active( 'gravityforms/gravityforms.php' ) && basename( $_SERVER['PHP_SELF'] ) !== 'wp-activate.php' ) {
 
 	require_once( WP_PLUGIN_DIR . '/gravityforms/entry_detail.php');
 
