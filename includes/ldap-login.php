@@ -5,7 +5,7 @@
 		<div class="content col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 			<h2>Unit Identity Lockup Access</h2>
 			<p class="h2">
-				You must log in to access or request a Unit Identity Lockup. Please enter your UCF Federated Identity (NID) to log in.
+				You must log in to access or request a Unit Identity Lockup. Please enter your NID and password to log in.
 			</p>
 			<form method="post" id="ldap-auth-form" action=".">
 				<?php if ( $ldap_error == 'login_error' ): ?>
@@ -52,7 +52,7 @@
 					</div>
 				</div>
 				<p class="forgot-password">
-					Forget your NID or pasword? Reset it <a href="http://mynid.ucf.edu/">here</a>.
+					Forgot your NID or password? Reset it <a href="http://mynid.ucf.edu/">here</a>.
 				</p>
 				<hr>
 				<?php wp_nonce_field( 'uid-auth', 'uid_auth_nonce' );
