@@ -25,6 +25,23 @@ function display_site_title() {
 
 
 /**
+ * Add shortcode to Gravity Forms "Require user to be logged in"
+ * to allow redirect to login page
+ **/
+function ci_loginRedirect( $atts , $content = null ) {
+    $currentURL = wp_login_url( get_permalink() );
+ 
+     return "<a href='$currentURL' title='Login'>";
+}
+add_shortcode( 'ci_redirect_to_login', 'ci_loginRedirect' );
+ 
+function ci_closeLoginRedirect( $atts , $content = null ) {
+     return '</a>';
+}
+add_shortcode( 'ci_close_login', 'ci_closeLoginRedirect' );
+
+
+/**
  * Authenticates the username/password combination with LDAP.
  *
  * @param string  $username The username to authenticate.
