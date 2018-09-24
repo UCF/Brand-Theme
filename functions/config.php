@@ -49,7 +49,6 @@ Config::$shortcodes = array(
 
 
 Config::$links = array(
-	array( 'rel' => 'shortcut icon', 'href' => THEME_IMG_URL.'/favicon.ico', ),
 	array( 'rel' => 'alternate', 'type' => 'application/rss+xml', 'href' => get_bloginfo( 'rss_url' ), ),
 );
 
