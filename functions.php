@@ -236,69 +236,6 @@ function get_amazon_url() {
 	return AMAZON_AWS_URL . get_theme_mod_or_default( 'amazon_bucket' ) . "/" . get_theme_mod_or_default( 'amazon_folder' ) . "/" ;
 }
 
-
-/**
- * Methods used to display the footer
- **/
-function display_social() {
-	$facebook_url   = get_theme_mod_or_default( 'facebook_url' );
-	$twitter_url    = get_theme_mod_or_default( 'twitter_url' );
-	$googleplus_url = get_theme_mod_or_default( 'googleplus_url' );
-	$linkedin_url   = get_theme_mod_or_default( 'linkedin_url' );
-	$instagram_url   = get_theme_mod_or_default( 'instagram_url' );
-	$pinterest_url   = get_theme_mod_or_default( 'pinterest_url' );
-	$youtube_url   = get_theme_mod_or_default( 'youtube_url' );
-	ob_start();
-?>
-	<div class="social">
-	<?php if ( $facebook_url ) : ?>
-		<a href="<?php echo $facebook_url; ?>" target="_blank" class="social-icon ga-event-link">
-			<span class="fa fa-facebook"></span>
-			<span class="sr-only">Like us on Facebook</span>
-		</a>
-	<?php endif; ?>
-	<?php if ( $twitter_url ) : ?>
-		<a href="<?php echo $twitter_url; ?>" target="_blank" class="social-icon ga-event-link">
-			<span class="fa fa-twitter"></span>
-			<span class="sr-only">Follow us on Twitter</span>
-		</a>
-	<?php endif; ?>
-	<?php if ( $googleplus_url ) : ?>
-		<a href="<?php echo $googleplus_url; ?>" target="_blank" class="social-icon ga-event-link">
-			<span class="fa fa-google-plus"></span>
-			<span class="sr-only">Follow us on Google+</span>
-		</a>
-	<?php endif; ?>
-	<?php if ( $linkedin_url ) : ?>
-		<a href="<?php echo $linkedin_url; ?>" target="_blank" class="social-icon ga-event-link">
-			<span class="fa fa-linkedin"></span>
-			<span class="sr-only">View our LinkedIn page</span>
-		</a>
-	<?php endif; ?>
-	<?php if ( $instagram_url ) : ?>
-		<a href="<?php echo $instagram_url; ?>" target="_blank" class="social-icon ga-event-link">
-			<span class="fa fa-instagram"></span>
-			<span class="sr-only">View our Instagram page</span>
-		</a>
-	<?php endif; ?>
-	<?php if ( $pinterest_url ) : ?>
-		<a href="<?php echo $pinterest_url; ?>" target="_blank" class="social-icon ga-event-link">
-			<span class="fa fa-pinterest-p"></span>
-			<span class="sr-only">View our Pinterest page</span>
-		</a>
-	<?php endif; ?>
-	<?php if ( $youtube_url ) : ?>
-		<a href="<?php echo $youtube_url; ?>" target="_blank" class="social-icon ga-event-link">
-			<span class="fa fa-youtube"></span>
-			<span class="sr-only">View our YouTube page</span>
-		</a>
-	<?php endif; ?>
-	</div>
-<?php
-	echo ob_get_clean();
-}
-
-
 function get_remote_menu( $menu_name ) {
 	global $wp_customize;
 	$customizing = isset( $wp_customize );
@@ -326,23 +263,6 @@ function get_remote_menu( $menu_name ) {
 		}
 	}
 	return $result;
-}
-
-
-function display_footer_menu() {
-	$menu = get_remote_menu( 'footer_menu' );
-	if ( empty( $menu) ) {
-		return;
-	}
-	ob_start();
-	?>
-		<ul class="list-inline site-footer-menu">
-	<?php foreach( $menu->items as $item ) : ?>
-		<li><a href="<?php echo $item->url; ?>"><?php echo $item->title; ?></a></li>
-	<?php endforeach; ?>
-		</ul>
-	<?php
-	echo ob_get_clean();
 }
 
 function google_tag_manager() {
