@@ -49,7 +49,6 @@ Config::$shortcodes = array(
 
 
 Config::$links = array(
-	array( 'rel' => 'shortcut icon', 'href' => THEME_IMG_URL.'/favicon.ico', ),
 	array( 'rel' => 'alternate', 'type' => 'application/rss+xml', 'href' => get_bloginfo( 'rss_url' ), ),
 );
 
@@ -152,12 +151,6 @@ function define_customizer_sections( $wp_customize ) {
 		THEME_CUSTOMIZER_PREFIX . 'footer',
 		array(
 			'title' => 'Header/Footer'
-		)
-	);
-	$wp_customize->add_section(
-		THEME_CUSTOMIZER_PREFIX . 'social',
-		array(
-			'title' => 'Social Media'
 		)
 	);
 	$wp_customize->add_section(
@@ -395,95 +388,6 @@ function define_customizer_fields( $wp_customize ) {
 			'label'       => 'Contact Marketing Copy',
 			'description' => 'Copy in the footer with information about how to contact marketing',
 			'section'     => THEME_CUSTOMIZER_PREFIX . 'footer'
-		)
-	);
-
-
-	// Social Media
-	$wp_customize->add_setting(
-		'facebook_url'
-	);
-	$wp_customize->add_control(
-		'facebook_url',
-		array(
-			'type'        => 'url',
-			'label'       => 'Facebook URL',
-			'description' => 'URL to the Facebook page you would like to direct visitors to.  Example: <em>https://www.facebook.com/UCF</em>',
-			'section'     => THEME_CUSTOMIZER_PREFIX . 'social'
-		)
-	);
-
-	$wp_customize->add_setting(
-		'twitter_url'
-	);
-	$wp_customize->add_control(
-		'twitter_url',
-		array(
-			'type'        => 'url',
-			'label'       => 'Twitter URL',
-			'description' => 'URL to the Twitter user account you would like to direct visitors to.  Example: <em>http://twitter.com/UCF</em>',
-			'section'     => THEME_CUSTOMIZER_PREFIX . 'social'
-		)
-	);
-
-	$wp_customize->add_setting(
-		'googleplus_url'
-	);
-	$wp_customize->add_control(
-		'googleplus_url',
-		array(
-			'type'        => 'url',
-			'label'       => 'Google+ URL',
-			'description' => 'URL to the Google+ user account you would like to direct visitors to.  Example: <em>http://plus.google.com/UCF</em>',
-			'section'     => THEME_CUSTOMIZER_PREFIX . 'social'
-		)
-	);
-	$wp_customize->add_setting(
-		'linkedin_url'
-	);
-	$wp_customize->add_control(
-		'linkedin_url',
-		array(
-			'type'        => 'url',
-			'label'       => 'LinkedIn URL',
-			'description' => 'URL to the LinkedIn user account you would like to direct visitors to.  Example: <em>http://linkedin.com/UCF</em>',
-			'section'     => THEME_CUSTOMIZER_PREFIX . 'social'
-		)
-	);
-	$wp_customize->add_setting(
-		'instagram_url'
-	);
-	$wp_customize->add_control(
-		'instagram_url',
-		array(
-			'type'        => 'url',
-			'label'       => 'Instagram URL',
-			'description' => 'URL to the Instagram user account you would like to direct visitors to.  Example: <em>http://instagram.com/UCF</em>',
-			'section'     => THEME_CUSTOMIZER_PREFIX . 'social'
-		)
-	);
-	$wp_customize->add_setting(
-		'pinterest_url'
-	);
-	$wp_customize->add_control(
-		'pinterest_url',
-		array(
-			'type'        => 'url',
-			'label'       => 'Pinterest URL',
-			'description' => 'URL to the Pinterest user account you would like to direct visitors to.  Example: <em>http://pinterest.com/UCF</em>',
-			'section'     => THEME_CUSTOMIZER_PREFIX . 'social'
-		)
-	);
-	$wp_customize->add_setting(
-		'youtube_url'
-	);
-	$wp_customize->add_control(
-		'youtube_url',
-		array(
-			'type'        => 'url',
-			'label'       => 'YouTube URL',
-			'description' => 'URL to the YouTube user account you would like to direct visitors to.  Example: <em>http://youtube.com/UCF</em>',
-			'section'     => THEME_CUSTOMIZER_PREFIX . 'social'
 		)
 	);
 
