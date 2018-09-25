@@ -14,19 +14,17 @@
 				}
 			?>
 			<div class="header-image-container" style="background-image: url(<?php echo $background_image ?>);">
+			<?php if( $header_copy = get_post_meta( $post->ID, 'page_header_copy', TRUE ) ) : ?>
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-6 col-sm-offset-3">
 							<h2>
-								<?php
-									if( $header_copy = get_post_meta( $post->ID, 'page_header_copy', TRUE ) ) {
-										echo $header_copy;
-									}
-								?>
+								<?php echo $header_copy; ?>
 							</h2>
 						</div>
 					</div>
 				</div>
+			<?php endif; ?>
 			</div>
 			<div class="nav-container container-fluid">
 				<div class="navbar-header">

@@ -398,10 +398,10 @@ class HeadingSC extends Shortcode {
 
 	public static function callback ( $attr, $content='' ) {
 		ob_start();
-		$background_image = $attr['background_image'] ? 'background-image: url(' . $attr['background_image'] . ');' : '';
-		$content_align = $attr['content_align'] ? 'text-' . $attr['content_align'] : '';
-		$inline_css = $attr['inline_css'] ? $attr['inline_css'] : '';
-		$css_class = $attr['css_class'] ? $attr['css_class'] : '';
+		$background_image = ( isset( $attr['background_image'] ) ) ? 'background-image: url(' . $attr['background_image'] . ');' : '';
+		$content_align = ( isset( $attr['content_align'] ) ) ? 'text-' . $attr['content_align'] : '';
+		$inline_css = ( isset( $attr['inline_css'] ) ) ? $attr['inline_css'] : '';
+		$css_class = ( isset( $attr['css_class'] ) ) ? $attr['css_class'] : '';
 		$content = do_shortcode( $content );
 
 		// Close out our existing .span, .row and .container
@@ -520,15 +520,15 @@ class CalloutSC extends Shortcode {
 	public static function callback ( $attr, $content='' ) {
 		ob_start();
 
-		$bgcolor = $attr['background_color'] ? $attr['background_color'] : '#f0f0f0';
-		$image = $attr['image'] ? $attr['image'] : '';
+		$bgcolor = ( isset( $attr['background_color'] ) ) ? $attr['background_color'] : '#f0f0f0';
+		$image = ( isset( $attr['image'] ) ) ? $attr['image'] : '';
 		$grid_offset = ' col-md-offset-1 col-lg-offset-2 ';
-		$copy_class = $attr['image'] ? 'col-sm-7 col-md-7 col-lg-6 text-left' : 'col-sm-10 col-md-10 col-lg-8';
-		$content_align = $attr['content_align'] ? 'text-' . $attr['content_align'] : '';
-		$image_align = $attr['image_align'] ? $attr['image_align'] : '';
-		$css_class = $attr['css_class'] ? $attr['css_class'] : '';
-		$inline_css = $attr['inline_css'] ? $attr['inline_css'] : '';
-		$affix = $attr['affix'] ? filter_var( $attr['affix'], FILTER_VALIDATE_BOOLEAN ) : false;
+		$copy_class = ( isset( $attr['image'] ) ) ? 'col-sm-7 col-md-7 col-lg-6 text-left' : 'col-sm-10 col-md-10 col-lg-8';
+		$content_align = ( isset( $attr['content_align'] ) ) ? 'text-' . $attr['content_align'] : '';
+		$image_align = ( isset( $attr['image_align'] ) ) ? $attr['image_align'] : '';
+		$css_class = ( isset( $attr['css_class'] ) ) ? $attr['css_class'] : '';
+		$inline_css = ( isset( $attr['inline_css'] ) ) ? $attr['inline_css'] : '';
+		$affix = ( isset( $attr['affix'] ) ) ? filter_var( $attr['affix'], FILTER_VALIDATE_BOOLEAN ) : false;
 		$content = do_shortcode( $content );
 
 		if( $image == '' || $image_align == 'right' ) {
