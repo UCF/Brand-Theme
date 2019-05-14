@@ -146,7 +146,7 @@ function ldap_destroy_session() {
 function ldap_required() {
 	session_start();
 
-	if ( $_GET["logout"] ) {
+	if ( isset( $_GET["logout"] ) ) {
 		ldap_destroy_session();
 	}
 
