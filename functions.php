@@ -41,7 +41,7 @@ function ldap_auth( $username, $password ) {
 		ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION, 3);
 		ldap_set_option($ldap_con, LDAP_OPT_REFERRALS, 0);
 
-		if( $ldapbind = ldap_bind( $ldap_con, $username . "@" . LDAP_HOST, $password ) ) {
+		if( $ldapbind = ldap_bind( $ldap_con, $username . "@" . LDAP_DOMAIN, $password ) ) {
 			if ( $user_obj = ldap_query( $ldap_con, $username ) ) {
 				return $user_obj;
 			} else {
@@ -129,7 +129,7 @@ function ldap_destroy_session() {
 function ldap_required() {
 	session_start();
 
-	if ( $_GET["logout"] ) {
+	if ( isset( $_GET["logout"] ) ) {
 		ldap_destroy_session();
 	}
 
