@@ -226,11 +226,9 @@ function get_remote_menu( $menu_name ) {
 	$result = get_transient( $result_name );
 	if ( false === $result || $customizing ) {
 		$opts = array(
-			'http' => array(
-				'timeout' => 15
-			)
+			'timeout' => 15
 		);
-		$context = stream_context_create( $opts );
+		
 		$file_location = get_theme_mod_or_default( $menu_name.'_feed' );
 		if ( empty( $file_location ) ) {
 			return;
@@ -240,7 +238,7 @@ function get_remote_menu( $menu_name ) {
 		if ( $response_code !== '200' ) {
 			return;
 		}
-		$result = json_decode( file_get_contents( $file_location, false, $context ) );
+		$result = json_decode( wp_remote_get( $file_location, $opts ) );
 		if ( ! $customizing ) {
 			set_transient( $result_name, $result, (60 * 60 * 24) );
 		}
