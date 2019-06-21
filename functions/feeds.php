@@ -44,7 +44,7 @@ class FeedManager {
 		$content   = get_site_transient( $cache_key );
 
 		if ( $content === False ) {
-			$content = @file_get_contents( $url );
+			$content = @wp_remote_get( $url );
 			if ( $content === False ) {
 				$failed  = True;
 				$content = null;
