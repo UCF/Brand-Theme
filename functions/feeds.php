@@ -44,8 +44,9 @@ class FeedManager {
 		$content   = get_site_transient( $cache_key );
 
 		if ( $content === False ) {
-			$content = @file_get_contents( $url );
-			if ( $content === False ) {
+			$content = wp_remote_get( $url );
+
+			if ( is_wp_error( $content ) ) {
 				$failed  = True;
 				$content = null;
 				error_log( 'FeedManager failed to fetch data using url of '.$url );

@@ -782,7 +782,7 @@ function get_search_results(
 	if ( strlen( $query ) > 0 ) {
 		$query_string = http_build_query( $arguments );
 		$url          = $search_url.'?'.$query_string;
-		$response     = file_get_contents( $url );
+		$response     = wp_remote_get( $url );
 
 		if ( $response ) {
 			$xml   = simplexml_load_string( $response );
@@ -1118,9 +1118,10 @@ function opengraph_setup() {
 function installed_custom_post_types() {
 	$installed = Config::$custom_post_types;
 
-	return array_map( create_function( '$class', '
-		return new $class;
-	' ), $installed );
+	return array_map(
+		function( $class ) { return new $class; },
+		$installed
+	);
 }
 
 /**
@@ -1130,9 +1131,10 @@ function installed_custom_post_types() {
 function installed_custom_taxonomies() {
 	$installed = Config::$custom_taxonomies;
 
-	return array_map( create_function( '$class', '
-		return new $class;
-	' ), $installed );
+	return array_map(
+		function( $class ) { return new $class; },
+		$installed
+	);
 }
 
 /**
@@ -1141,9 +1143,11 @@ function installed_custom_taxonomies() {
  **/
 function installed_shortcodes() {
 	$installed = Config::$shortcodes;
-	return array_map( create_function( '$class', '
-		return new $class;
-	' ), $installed );
+
+	return array_map(
+		function( $class ) { return new $class; },
+		$installed
+	);
 }
 
 function flush_rewrite_rules_if_necessary() {
