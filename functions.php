@@ -238,8 +238,8 @@ function get_remote_menu( $menu_name ) {
 		if ( $response_code !== '200' ) {
 			return;
 		}
-		$result = json_decode( wp_remote_get( $file_location, $opts ) );
-		if ( ! $customizing ) {
+		$result = json_decode( wp_remote_retrieve_body( wp_remote_get( $file_location, $opts ) ) );
+		if ( ! $customizing && $result ) {
 			set_transient( $result_name, $result, (60 * 60 * 24) );
 		}
 	}
