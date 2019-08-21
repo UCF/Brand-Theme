@@ -236,33 +236,6 @@ function get_amazon_url() {
 	return AMAZON_AWS_URL . get_theme_mod_or_default( 'amazon_bucket' ) . "/" . get_theme_mod_or_default( 'amazon_folder' ) . "/" ;
 }
 
-function get_remote_menu( $menu_name ) {
-	global $wp_customize;
-	$customizing = isset( $wp_customize );
-	$result_name = $menu_name.'_json';
-	$result = get_transient( $result_name );
-	if ( false === $result || $customizing ) {
-		$opts = array(
-			'timeout' => 15
-		);
-		
-		$file_location = get_theme_mod_or_default( $menu_name.'_feed' );
-		if ( empty( $file_location ) ) {
-			return;
-		}
-		$headers = get_headers( $file_location );
-		$response_code = substr( $headers[0], 9, 3 );
-		if ( $response_code !== '200' ) {
-			return;
-		}
-		$result = json_decode( wp_remote_retrieve_body( wp_remote_get( $file_location, $opts ) ) );
-		if ( ! $customizing && $result ) {
-			set_transient( $result_name, $result, (60 * 60 * 24) );
-		}
-	}
-	return $result;
-}
-
 function google_tag_manager() {
 	ob_start();
 	$gtm_id = get_theme_mod_or_default( 'ga_account' );
