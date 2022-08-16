@@ -5,6 +5,7 @@
 	</head>
 	<body ontouchstart <?php echo body_class(); ?>>
 		<?php echo google_tag_manager(); ?>
+		<a class="skip-navigation bg-complementary text-inverse sr-only" href="#content">Skip to main content</a>
 		<header>
 			<?php
 				if ( $background_image = get_post_meta( $post->ID, 'page_background_image', TRUE ) ) {
