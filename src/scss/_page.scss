@@ -10,6 +10,14 @@
 
 main {
 
+  a {
+    text-decoration: underline;
+  }
+
+  a:hover{
+    text-decoration: none;
+  }
+
   .content {
     margin-top: 45px;
   }
