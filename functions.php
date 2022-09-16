@@ -67,7 +67,7 @@ function ldap_auth( $username, $password ) {
  */
 function ldap_query( $ldap_con, $username ) {
 	$ldap_base_dn = 'OU=People,DC=net,DC=ucf,DC=edu';
-	$search_filter = '(&(sAMAccountName=' . $username . ')(|(&(ucfPortalRole=CF_STAFF)(ucfPortalRole=FX_ENTERPRISE_EMAIL))(&(ucfPortalRole=CF_FACULTY)(ucfPortalRole=FX_ENTERPRISE_EMAIL))))';
+	$search_filter = '(&(sAMAccountName=' . $username . ')(|(ucfPortalRole=CF_STAFF)(ucfPortalRole=CF_FACULTY)))';
 	$result = ldap_search( $ldap_con, $ldap_base_dn, $search_filter );
 	$info = ldap_get_entries($ldap_con, $result);
 
