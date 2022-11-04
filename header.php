@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-US">
 	<head>
+		<a class="skip-nagivation bg-complementary text-inverse box-shadow-soft" href="#content">Skip to main content</a>
+		<div id="ucfhb" style="min-height: 50px; background-color: #000;"></div>
 		<?php wp_head(); ?>
 	</head>
 	<body ontouchstart <?php echo body_class(); ?>>
