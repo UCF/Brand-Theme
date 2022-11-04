@@ -10,7 +10,7 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     jshint = require('gulp-jshint'),
     jshintStylish = require('jshint-stylish'),
-    scsslint = require('gulp-scss-lint'),
+    scsslint = require('gulp-sass-lint'),
     autoprefixer = require('gulp-autoprefixer'),
     browserSync = require('browser-sync').create();
 
