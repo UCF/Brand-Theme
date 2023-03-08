@@ -2,10 +2,6 @@
 <?php the_post(); ?>
 <?php
 $post = attach_post_metadata_properties( $post );
-$page_protected = filter_var( $post->page_protected_page, FILTER_VALIDATE_BOOLEAN );
-if ( $page_protected ) {
- 	ldap_required();
-}
 ?>
 
 <?php get_header(); ?>

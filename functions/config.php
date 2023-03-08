@@ -14,10 +14,6 @@ define( 'THEME_CSS_URL', THEME_STATIC_URL.'/css' );
 
 define( 'GA_ACCOUNT', get_theme_mod_or_default( 'ga_account' ) );
 
-define( 'LDAP_HOST', 'aka.net.ucf.edu' );
-define( 'LDAP_DOMAIN', 'net.ucf.edu' );
-define( 'LDAP_PORT', 636 );
-
 define( 'THEME_CUSTOMIZER_PREFIX', 'ucfgeneric_' ); // a unique prefix for panel/section IDs
 
 define('AMAZON_AWS_URL', 'https://s3.amazonaws.com/' );

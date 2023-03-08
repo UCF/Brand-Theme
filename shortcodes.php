@@ -626,7 +626,8 @@ class UIDSearchSC extends Shortcode {
 					<div class="col-sm-4 col-md-4 uid-result">
 						<h3>{{ result.post_title }}</h3>
 						<img ng-src="<?php echo get_amazon_url() ?>{{ result.post_name }}/{{ result.post_name }}.png" width="100%">
-						<a href="<?php echo get_amazon_url() ?>{{ result.post_name }}/{{ result.post_name }}.zip"
+						<a href="#" data-file="{{result.post_name}}/{{result.post_name}}.zip"
+							data-toggle="modal" data-target="#uilFormModal"
 							class="btn btn-ucf btn-download">
 							Download
 						</a>
