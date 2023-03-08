@@ -276,16 +276,6 @@ class Page extends CustomPostType {
 				'type' => 'text',
 				'description' => 'Copy displayed in the header of the page.'
 			),
-			array(
-				'name' => 'Login Required for this Page',
-				'id' => $prefix.'protected_page',
-				'type' => 'radio',
-				'description' => '',
-				'choices' => array(
-					'Yes' => True,
-					'No' => False
-				),
-			),
 		);
 	}
 }

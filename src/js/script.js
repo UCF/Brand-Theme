@@ -74,4 +74,12 @@ $(function () {
 
     init();
 
+    var initButtonListener = function () {
+      $('.uid-search').on('click', '.btn-download', function () {
+        $('.gform_body input.gform_hidden').val($(this).attr('data-file'));
+      });
+    };
+
+    $(initButtonListener);
+
 });

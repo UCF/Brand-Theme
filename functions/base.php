@@ -499,20 +499,6 @@ function get_featured_image_url( $post ) {
 
 
 /**
- * Returns true if the current request is on the login screen.
- *
- * @return boolean
- * @author Jared Lang
- **/
-function is_login() {
-	return in_array( $GLOBALS['pagenow'], array(
-			'wp-login.php',
-			'wp-register.php',
-		) );
-}
-
-
-/**
  * Given a mimetype, will attempt to return a string representing the
  * application it is associated with.  If the mimetype is unknown, the default
  * return is 'document'.
