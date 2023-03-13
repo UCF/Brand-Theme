@@ -39,7 +39,7 @@ function login_scripts() {
 	echo ob_get_clean();
 }
 
-if ( is_login() ) {
+if ( is_login_screen() ) {
 	add_action( 'login_head', 'login_scripts', 0 );
 }
 
