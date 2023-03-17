@@ -3,6 +3,6 @@
     "description": "WordPress theme for brand website with brand guidelines and provides an interface for browsing and downloading existing UILs and managing new UIL requests.",
     "type": "wordpress-theme",
     "require": {
-        "composer-installers": "~1.0"
+        "composer/installers": "~1.0"
     }
 }
