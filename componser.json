@@ -1,5 +1,5 @@
 {
-    "name": "UCF/Brand-Theme",
+    "name": "ucf/brand-theme",
     "description": "WordPress theme for brand website with brand guidelines and provides an interface for browsing and downloading existing UILs and managing new UIL requests.",
     "type": "wordpress-theme",
     "require": {
