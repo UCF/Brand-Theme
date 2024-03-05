@@ -605,16 +605,17 @@ function create_html_element( $tag, $attr=array(), $content=null, $self_close=fa
  ***************************************************************************/
 
 /**
- * University Header enqueue-ing fix.
- * */
-function add_id_to_ucfhb( $url ) {
-	if ( ( false !== strpos( $url, 'bar/js/university-header.js' ) ) || ( false !== strpos( $url, 'bar/js/university-header-full.js' ) ) ) {
-		remove_filter( 'clean_url', 'add_id_to_ucfhb', 10, 3 );
-		return "$url' id='ucfhb-script";
-	}
-	return $url;
+ * Add ID attribute to registered University Header script.
+ **/
+function ucfhb_script_handle( $tag, $handle, $src ) {
+if ( false !== strpos( $src, 'universityheader.ucf.edu' ) ) {
+	$tag = str_replace( "{$handle}-js", 'ucfhb-script', $tag );
 }
-add_filter( 'clean_url', 'add_id_to_ucfhb', 10, 3 );
+
+	return $tag;
+}
+
+add_filter( 'script_loader_tag', 'ucfhb_script_handle', 10, 3 );
 
 
 /**
