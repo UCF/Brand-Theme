@@ -124,7 +124,7 @@ class Config {
 		) {
 			// Override previously defined scripts
 			wp_deregister_script( $attr['name'] );
-			wp_enqueue_script( $attr['name'], $attr['src'], null, null, True );
+			wp_enqueue_script( $attr['name'], $attr['src'], null, null, true );
 		}
 	}
 }
@@ -406,6 +406,8 @@ class FileField extends Field {
  * */
 class AmazonField extends Field {
 	function input_html() {
+		global $post;
+
 		ob_start();
 ?>
 		<script>
@@ -634,6 +636,7 @@ function bootstrap_menus() {
 		}
 
 		function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+			$args = ! empty( $args ) ? (object) $args : null;
 
 			$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 
