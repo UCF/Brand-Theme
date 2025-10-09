@@ -197,6 +197,8 @@ abstract class Shortcode {
 				$choices = is_array( $field['choices'] ) ? $field['choices'] : array();
 				$retval .= '<select class="shortcode-editor-input" id="' . $input_id . '" type="text" name="' . $input_id . '" value="" data-parameter="' . $id . '">';
 				foreach ( $choices as $choice ) {
+					if ( ! is_array( $choice ) ) continue;
+
 					$selected = '';
 					if ( $default == $choice['value'] ) {
 						$selected = 'selected';
