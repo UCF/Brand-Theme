@@ -2,7 +2,7 @@
   "private": true,
   "devDependencies": {
     "bower": "^1.6.8",
-    "browser-sync": "^2.10.0",
+    "browser-sync": "^2.27.10",
     "gulp": "~3.9.0",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-bless": "3.0.1",
